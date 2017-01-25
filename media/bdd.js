@@ -1,8 +1,8 @@
 var bdd = [
     {
     "title": "Counter-Strike",
-    "picture": "media/add.jpg",
-    "cover": "media/hdnVg.jpg",
+    "picture": "websiteForLan/media/add.jpg",
+    "cover": "websiteForLan/media/hdnVg.jpg",
     "system": [
         "windows",
         "linux"
@@ -11,8 +11,8 @@ var bdd = [
     },
     {
     "title": "HyperDimension Neptunia Re:Birth 3 V Generation",
-    "picture": "media/add.jpg",
-    "cover": "media/add.jpg",
+    "picture": "websiteForLan/media/add.jpg",
+    "cover": "websiteForLan/media/add.jpg",
     "system": [
         "windows"
     ],
