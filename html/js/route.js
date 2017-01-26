@@ -2,7 +2,7 @@ app.config(function($stateProvider) {
     var homeState = {
         name: 'home',
         url: '/',
-        template: 'html/view/homepage.htm'
+        template: '<h1>homepage</h1>'
     }
 
     var listState = {
