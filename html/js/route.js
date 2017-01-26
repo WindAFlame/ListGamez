@@ -4,25 +4,25 @@ app.config(function($stateProvider, $urlRouterProvider) {
     
     $stateProvider
         
-        // HOME STATES AND NESTED VIEWS ========================================
+        // HOME PAGE - Welcome
         .state('home', {
             name: 'home',
             url: '/',
             templateUrl: 'html/view/homepage.htm'
         })
 
-        // HOME STATES AND NESTED VIEWS ========================================
+        // LIST GAME - Listing of all game from json
         .state('list', {
             name: 'list',
             url: '/list',
             templateUrl: 'html/view/list.htm'
         })
         
-        // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
+        // DETAIL GAME - Detail for a unique game
         .state('detail', {
             name: 'detail',
             url: '/detail',
-            template: '<h3>Its the UI-Router hello world app!</h3>'
+            template: '<h1>Not Implemented</h1>'
         });
 
 });
