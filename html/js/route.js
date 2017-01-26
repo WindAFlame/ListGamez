@@ -1,23 +1,28 @@
-app.config(function($stateProvider) {
-    var homeState = {
-        name: 'home',
-        url: '/',
-        template: '<h1>homepage</h1>'
-    }
+app.config(function($stateProvider, $urlRouterProvider) {
+    
+    $urlRouterProvider.otherwise('/home');
+    
+    $stateProvider
+        
+        // HOME STATES AND NESTED VIEWS ========================================
+        .state('home', {
+            name: 'home',
+            url: '/',
+            templateUrl: 'html/view/homepage.htm'
+        })
 
-    var listState = {
-        name: 'list',
-        url: '/list',
-        template: 'html/view/list.htm'
-    }
+        // HOME STATES AND NESTED VIEWS ========================================
+        .state('list', {
+            name: 'list',
+            url: '/list',
+            templateUrl: 'html/view/list.htm'
+        })
+        
+        // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
+        .state('detail', {
+            name: 'detail',
+            url: '/detail',
+            template: '<h3>Its the UI-Router hello world app!</h3>'
+        });
 
-    var detailState = {
-        name: 'detail',
-        url: '/detail',
-        template: '<h3>Its the UI-Router hello world app!</h3>'
-    }
-
-    $stateProvider.state(homeState);
-    $stateProvider.state(listState);
-    $stateProvider.state(detailState);
 });
