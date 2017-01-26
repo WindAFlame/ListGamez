@@ -6,3 +6,7 @@ var app = angular.module('MainApp', [
     'ngAnimate',
     'ui.router'
 ]);
+
+app.config(["$locationProvider", function($locationProvider) {
+  $locationProvider.html5Mode(true);
+}]);
