@@ -18,6 +18,6 @@ app.config(function($stateProvider) {
     }
 
     $stateProvider.state(homeState);
-    $stateProvider.state(helloState);
-    $stateProvider.state(aboutState);
+    $stateProvider.state(listState);
+    $stateProvider.state(detailState);
 });
