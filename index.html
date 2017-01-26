@@ -16,7 +16,7 @@
     <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
             <!-- Title -->
-            <span class="mdl-layout-title">Title</span>
+            <span class="mdl-layout-title">ENDY-LAN</span>
             <!-- Add spacer, to align navigation to the right -->
             <div class="mdl-layout-spacer"></div>
             <!-- Navigation. We hide it in small screens. -->
@@ -29,14 +29,19 @@
     </header>
     <main class="mdl-layout__content">
         <div class="page-content">
-            <!-- Your page content -->
-            <ui-view></ui-view>
+            <div class="mdl-grid">
+                <aside class="mdl-cell mdl-cell--2-col mdl-cell--0-col-laptop"></aside>
+                <article class="mdl-cell mdl-cell--8-col mdl-cell--12-col-laptop">
+
+                    <!-- Your page content -->
+                    <ui-view></ui-view>
+
+                </article>
+                <aside class="mdl-cell mdl-cell--2-col mdl-cell--0-col-laptop"></aside>
+            </div>
         </div>
     </main>
     </div>
-
-    
-    
     <!-- Angular.js Libraries -->
     <script src="/websiteForLan/bower_components/angular/angular.min.js"></script>
     <script src="/websiteForLan/bower_components/angular-animate/angular-animate.min.js"></script>
