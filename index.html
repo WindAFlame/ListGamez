@@ -11,19 +11,31 @@
 </head>
 <body ng-app="MainApp">
 
-    <!-- NAVIGATION -->
-    <nav class="navbar navbar-inverse" role="navigation">
-        <div class="navbar-header">
-            <a class="navbar-brand" ui-sref="#">AngularUI Router</a>
+    <!-- Always shows a header, even in smaller screens. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title">Title</span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation. We hide it in small screens. -->
+            <nav class="mdl-navigation mdl-layout--large-screen-only">
+                <a class="mdl-navigation__link" ui-sref="home">Home</a>
+                <a class="mdl-navigation__link" ui-sref="list">List</a>
+                <a class="mdl-navigation__link" ui-sref="detail">Detail</a>
+            </nav>
         </div>
-        <ul class="nav navbar-nav">
-            <li><a ui-sref="home">Home</a></li>
-            <li><a ui-sref="list">List</a></li>
-            <li><a ui-sref="detail">Detail</a></li>
-        </ul>
-    </nav>
+    </header>
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <!-- Your page content -->
+            <ui-view></ui-view>
+        </div>
+    </main>
+    </div>
 
-    <ui-view></ui-view>
+    
     
     <!-- Angular.js Libraries -->
     <script src="/websiteForLan/bower_components/angular/angular.min.js"></script>
