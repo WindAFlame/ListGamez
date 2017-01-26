@@ -1,4 +1,4 @@
-myApp.config(function($stateProvider) {
+app.config(function($stateProvider) {
     var homeState = {
         name: 'home',
         url: '/',
