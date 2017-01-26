@@ -3,5 +3,6 @@ var app = angular.module('MainApp', [
     'ngAria',
     'ngMessages',
     'ngSanitize',
-    'ngAnimate'
+    'ngAnimate',
+    'ui.router'
 ]);

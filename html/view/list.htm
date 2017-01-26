@@ -1,0 +1,37 @@
+<div class="mdl-grid">
+    <aside class="mdl-cell mdl-cell--2-col mdl-cell--0-col-tablet"></aside>
+    <article class="mdl-cell mdl-cell--8-col mdl-cell--12-col-tablet">
+        
+        <div class="mdl-grid" ng-controller="listCtrl">
+
+            <a  ng-repeat="game in games"
+                ng-href="{{game.link}}" 
+                id="card_panel-product" 
+                class=" mdl-cell mdl-cell--3-col mdl-cell--8-col-tablet
+                        mdl-shadow--2dp
+                        mdl-grid mdl-grid--no-spacing">
+                <img id="card_panel-product_image" class="mdl-cell mdl-cell--12-col" ng-src="{{game.cover}}" alt="Cover" sca>
+                <div    type"mdl-button" 
+                        id="card_panel-product_info" 
+                        class="mdl-cell mdl-cell--12-col 
+                                mdl-grid mdl-grid--no-spacing
+                                mdl-button--raised" disabled>
+                    <div id="card_panel-product_info-system" class="mdl-cell mdl-cell--1-col mdl-cell--middle">
+                        <span ng-if="game.system.indexOf('windows')>-1">
+                            <i class="fa fa-windows fa"></i>
+                        </span>
+                        <span ng-if="game.system.indexOf('linux')>-1">
+                            <i class="fa fa-linux fa"></i>
+                        </span>
+                    </div>
+                    <div id="card_panel-product_into-title"  class="mdl-cell mdl-cell--11-col mdl-cell--middle">
+                        <h1>{{game.title}}</h1>
+                    </div>                        
+                </div>                    
+            </a>
+
+        </div>
+
+    </article>
+    <aside class="mdl-cell mdl-cell--2-col mdl-cell--0-col-tablet"></aside>
+</div>
