@@ -1,8 +1,7 @@
 app.config(function($stateProvider, $urlRouterProvider) {
     
     $urlRouterProvider.otherwise('/');
-    $locationProvider.hashPrefix('');
-    
+
     $stateProvider
         
         // HOME PAGE - Welcome
