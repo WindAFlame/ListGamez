@@ -9,6 +9,9 @@ h1{
 fieldset {     
     border: 1px solid black;
 }
+.mdl-layout-title{
+    text-decoration: none;
+}
 /* CARD PRODUCT */
 #card_panel-product{
     text-decoration: none;
