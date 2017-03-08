@@ -25,7 +25,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
             params: {
                 id : null
             },
-            template: '<h1>{{id}</h1>'
+            template: '<h1>{{id}}</h1>'
         })
         
         // ABOUT - Detail of me and project
