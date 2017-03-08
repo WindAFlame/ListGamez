@@ -23,7 +23,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
             name: 'detail',
             url: '/detail',
             params: {
-                id : null
+                id : id
             },
             template: '<h1>{{id}}</h1>'
         })
