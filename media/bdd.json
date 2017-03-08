@@ -69,8 +69,7 @@
     "picture": "//images-4.gog.com/52b19c33e912370d1328c29323180a439f7782a4e0519471b2b664d6c9a64038_product_quartet_250.jpg",
     "cover": "media/ja_250.jpg",
     "download": [
-        {
-            "link": "#",
+        {"link": "#",
             "system": [
                 "windows",
                 "linux"
@@ -88,9 +87,10 @@
         },
         {
             "link": "#",
-            "system": [
+            "system": 
+                [
                 "windows"
-            ],
+                ],
             "name": "Executable for Linux",
             "size": "24MB"
         }
