@@ -12,9 +12,12 @@ app.controller('detailCtrl', function($scope,$http,$stateParams,$filter){
     var gameById = null;
     $http.get('media/bdd.json')
        .then(function(res){    
+          console.log(">Donnée à filtrer : "+res.data+".");
+          console.log("> Filtre sur gameId == "+$stateParams.gameId+".");
           gameById = $filter('filter')(res.data, {id: $stateParams.gameId });
+          console.log("> result : "+gameById+".");
         });
     // Parameters for loadPage
-    console.log("gameId : "+$stateParams.gameId)
-    console.log("gameinfo : "+gameById)
+    console.log("gameId : "+$stateParams.gameId);
+    console.log("gameinfo : "+gameById);
 });
