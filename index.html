@@ -11,7 +11,7 @@
     <!-- Your Stylesheet -->
     <link rel="stylesheet" href="/websiteForLan/html/css/main.css">
 </head>
-<body ng-app="MainApp">
+<body ng-app="MainApp" datafromjson>
 
     <!-- Always shows a header, even in smaller screens. -->
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -46,8 +46,6 @@
                 <aside class="mdl-cell mdl-cell--2-col mdl-cell--0-col-laptop"></aside>
                 <article class="mdl-cell mdl-cell--8-col mdl-cell--12-col-laptop">
 
-                    <!-- Load data -->
-                    <div datafromjson></div>
                     <!-- Your page content -->
                     <ui-view></ui-view>
 
