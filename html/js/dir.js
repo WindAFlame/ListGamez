@@ -8,6 +8,11 @@ app.directive('datafromlocaljson', ['$http', function($http) {
                 $http.get($scope.src)
                     .then(function(res){
                         $rootScope.data = res.data;
+                        if($rootScope.data!=null){
+                            console.log("Data is loaded : "+$rootScope.data);
+                        } else {
+                            console.log("No data id loaded.");
+                        }
                     });
             }
         };
