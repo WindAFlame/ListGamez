@@ -14,4 +14,4 @@ app.directive('datafromlocaljson', ['$http', function($http) {
                     });
             }
         };
-});
+}]);
