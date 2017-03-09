@@ -8,10 +8,11 @@ app.controller('listCtrl', function($scope,$http){
 
 
 app.controller('detailCtrl', function($scope,$http,$stateParams,$filter){
-    console.log("test $scope.games:"+$scope.games);
+    
     // Load Bdd
     $http.get('media/bdd.json')
        .then(function(res){
           $scope.gameById = $filter('filter')(res.data, {id: $stateParams.gameId });
         });
+    console.log("result $scope.gameById:"+$scope.gameById);
 });

@@ -5,7 +5,8 @@
     "picture": "//images-4.gog.com/e6284fdd15ef2ec6dd27b65e91be7e25ccbc8bfd981cb7624d69c365ecdd14e4_product_quartet_250.jpg",
     "cover": "media/jk2_250.jpg",
     "download": [
-        {"link": "#",
+        {
+            "link": "#",
             "system": [
                 "windows",
                 "linux"
