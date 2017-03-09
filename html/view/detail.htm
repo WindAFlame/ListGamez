@@ -22,13 +22,10 @@
                         <ul>
                             <li>Audio : 
                                 <span ng-repeat="audio in gameById[0].info.audio">
-                                    <span ng-if="audio.indexOf('de')>-1">
-                                        <span class="flag-icon flag-icon-de"></span>
+                                    <span ng-if="audio.indexOf('ge')>-1">
+                                        <span class="flag-icon flag-icon-ge"></span>
                                     </span>
-                                    <span ng-if="audio.indexOf('us')>-1">
-                                        <span class="flag-icon flag-icon-us"></span>/<span class="flag-icon flag-icon-gb"></span>
-                                    </span>
-                                    <span ng-if="audio.indexOf('gb')>-1">
+                                    <span ng-if="audio.indexOf('en')>-1">
                                         <span class="flag-icon flag-icon-us"></span>/<span class="flag-icon flag-icon-gb"></span>
                                     </span>
                                     <span ng-if="audio.indexOf('fr')>-1">
@@ -37,18 +34,14 @@
                                     <span ng-if="audio.indexOf('es')>-1">
                                         <span class="flag-icon flag-icon-es"></span>
                                     </span>
-                                </span>
-                                
+                                </span>                                
                             </li>
                             <li>Texte : 
                                 <span ng-repeat="subtitle in gameById[0].info.subtitle">
-                                    <span ng-if="audio.indexOf('de')>-1">
-                                        <span class="flag-icon flag-icon-de"></span>
+                                    <span ng-if="audio.indexOf('ge')>-1">
+                                        <span class="flag-icon flag-icon-ge"></span>
                                     </span>
-                                    <span ng-if="audio.indexOf('us')>-1">
-                                        <span class="flag-icon flag-icon-us"></span>/<span class="flag-icon flag-icon-gb"></span>
-                                    </span>
-                                    <span ng-if="audio.indexOf('gb')>-1">
+                                    <span ng-if="audio.indexOf('en')>-1">
                                         <span class="flag-icon flag-icon-us"></span>/<span class="flag-icon flag-icon-gb"></span>
                                     </span>
                                     <span ng-if="audio.indexOf('fr')>-1">
@@ -61,7 +54,14 @@
                             </li>
                         </ul>
                     <li id="detail_info-genre">Support : 
-                        <span ng-repeat="system in gameById[0].info.system">{{system}} </span>
+                        <span ng-repeat="system in gameById[0].info.system">
+                            <span ng-if="system.indexOf('windows')>-1">
+                                <i class="fa fa-windows fa"></i>
+                            </span>
+                            <span ng-if="system.indexOf('linux')>-1">
+                                <i class="fa fa-linux fa"></i>
+                            </span>
+                        </span>
                     </li>
                 </ul>
             </fieldset>
