@@ -9,10 +9,12 @@ app.controller('listCtrl', function($scope,$http){
 
 app.controller('detailCtrl', function($scope,$http,$stateParams,$filter){
     // Load Bdd
+    var gameById = null;
     $http.get('media/bdd.json')
        .then(function(res){    
-          var gameById = $filter('filter')(res.data, {id: $stateParams.gameId });
+          gameById = $filter('filter')(res.data, {id: $stateParams.gameId });
         });
     // Parameters for loadPage
-    console.log("gameinfo for "+$stateParams.gameId+" : "+gameById)
+    console.log("gameId : "+$stateParams.gameId)
+    console.log("gameinfo : "+gameById)
 });
