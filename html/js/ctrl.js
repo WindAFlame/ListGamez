@@ -11,6 +11,6 @@ app.controller('detailCtrl', function($scope,$http,$stateParams,$filter){
     // Load Bdd
     $http.get('media/bdd.json')
        .then(function(res){
-          $scope.gameById = $filter('filter')(res.data, {id: $stateParams.gameId });
+          $scope.gameById = $filter('filter')(res.data, {id: $stateParams.gameId })[0];
         });
 });
