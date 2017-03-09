@@ -4,7 +4,7 @@ app.directive('datafromlocaljson', ['$http', function($http) {
             scope:{
                 src:"="
             },
-            link: function($scope,$http) {
+            link: function($scope) {
                 $http.get($scope.src)
                     .then(function(res){
                         $scope.data = res.data;
