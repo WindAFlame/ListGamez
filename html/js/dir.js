@@ -1,6 +1,6 @@
 app.directive('datafromlocaljson', ['$http', function($http) {
     return {
-            restrict: 'A',
+            restrict: 'E',
             scope:{
                 src:"="
             },
