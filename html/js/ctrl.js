@@ -13,6 +13,7 @@ app.controller('detailCtrl', function($scope,$http,$stateParams,$filter){
     $http.get('media/bdd.json')
        .then(function(res){
           $scope.gameById = $filter('filter')(res.data, {id: $stateParams.gameId });
+          console.log("restult:"+$filter('filter')(res.data, {id: $stateParams.gameId }))
         });
     console.log("result $scope.gameById:"+$scope.gameById);
 });
