@@ -21,10 +21,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
         // DETAIL GAME - Detail for a unique game
         .state('detail', {
             name: 'detail',
-            url: '/detail',
-            params: {
-                id : null
-            },
+            url: '/detail/{gameId}',
             templateUrl: 'html/view/detail.htm'
         })
         
