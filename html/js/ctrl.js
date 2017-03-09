@@ -14,4 +14,6 @@ app.controller('detailCtrl', function($scope,$http,$stateParams,$filter){
        .then(function(res){
           $scope.gameById = $filter('filter')(res.data, {id: $stateParams.gameId })[0];
         });
+        
+    componentHandler.upgradeElement(button);
 });
