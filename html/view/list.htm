@@ -1,32 +1,31 @@
 <!-- list.htm -->
 
-<datafromlocaljson src="'media/bdd.json'"></datafromlocaljson >
 <div class="mdl-grid">
 
     <a  ng-repeat="game in data"
-                    ui-sref="detail({gameId: game.id})" 
-                    id="card_panel-product" 
-                    class=" mdl-cell mdl-cell--3-col mdl-cell--8-col-tablet
-                            mdl-shadow--2dp
-                            mdl-grid mdl-grid--no-spacing">
-                    <img id="card_panel-product_image" class="mdl-cell mdl-cell--12-col" ng-src="{{game.cover}}" alt="Cover" sca>
-                    <div id="card_panel-product_info-system">
-                        <span ng-if="game.info.system.indexOf('windows')>-1">
-                            <i class="fa fa-windows fa"></i>
-                        </span>
-                        <span ng-if="game.info.system.indexOf('linux')>-1">
-                            <i class="fa fa-linux fa"></i>
-                        </span>
-                    </div>
-                    <div    type"mdl-button" 
-                            id="card_panel-product_info" 
-                            class="mdl-cell mdl-cell--12-col 
-                                    mdl-grid mdl-grid--no-spacing
-                                    mdl-button--raised" disabled>
-                        <div id="card_panel-product_info-title"  class="mdl-cell mdl-cell--12-col mdl-cell--middle">
-                            <h1>{{game.title}}</h1>
-                        </div>                        
-                    </div>                    
-                </a>
+        ui-sref="detail({gameId: game.id})" 
+        id="card_panel-product" 
+        class=" mdl-cell mdl-cell--3-col mdl-cell--8-col-tablet
+                mdl-shadow--2dp
+                mdl-grid mdl-grid--no-spacing">
+        <img id="card_panel-product_image" class="mdl-cell mdl-cell--12-col" ng-src="{{game.cover}}" alt="Cover" sca>
+        <div id="card_panel-product_info-system">
+            <span ng-if="game.info.system.indexOf('windows')>-1">
+                <i class="fa fa-windows fa"></i>
+            </span>
+            <span ng-if="game.info.system.indexOf('linux')>-1">
+                <i class="fa fa-linux fa"></i>
+            </span>
+        </div>
+        <div    type"mdl-button" 
+                id="card_panel-product_info" 
+                class="mdl-cell mdl-cell--12-col 
+                        mdl-grid mdl-grid--no-spacing
+                        mdl-button--raised" disabled>
+            <div id="card_panel-product_info-title"  class="mdl-cell mdl-cell--12-col mdl-cell--middle">
+                <h1>{{game.title}}</h1>
+            </div>                        
+        </div>                    
+    </a>
 
 </div>
