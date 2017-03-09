@@ -15,5 +15,4 @@ app.controller('detailCtrl', function($scope,$http,$stateParams,$filter){
           $scope.gameById = $filter('filter')(res.data, {id: $stateParams.gameId })[0];
         });
         
-    componentHandler.upgradeDom()
 });
