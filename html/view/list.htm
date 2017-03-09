@@ -1,8 +1,8 @@
 <!-- list.htm -->
-data:{{data}}
-<div class="mdl-grid">
 
-    <a  ng-repeat="game in data"
+<div class="mdl-grid" ng-controller="listCtrl">
+
+    <a  ng-repeat="game in games"
                     ui-sref="detail({gameId: game.id})" 
                     id="card_panel-product" 
                     class=" mdl-cell mdl-cell--3-col mdl-cell--8-col-tablet
