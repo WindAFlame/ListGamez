@@ -1,92 +1,85 @@
 <!-- detail.htm -->
+<div class="mdl-grid mdl-shadow--2dp" ng-controller="detailCtrl">
 
-<div class="mdl-grid" ng-controller="detailCtrl">
-    <aside class="mdl-cell mdl-cell--2-col mdl-cell--0-col-tablet"></aside>
-    <article class="mdl-cell mdl-cell--8-col mdl-cell--12-col-tablet">
-    <div class="mdl-grid mdl-shadow--2dp">
-
-        <div id="detail_title" class="mdl-cell mdl-cell--12-col">
-            <h1>{{gameById[0].title}}</h1>
-        </div>
-        <div class="mdl-cell mdl-cell--12-col-desktop mdl-grid">
-            <fieldset class="mdl-cell mdl-cell--4-col-desktop">
-                <legend>Informations :</legend>
-                <ul id="detail_info">
-                    <li id="detail_info-genre">Genre : 
-                        <span ng-repeat="genre in gameById[0].info.genre">{{genre}} </span>
-                    </li>
-                    <li id="detail_info-genre">Editeur : 
-                        <span ng-repeat="editeur in gameById[0].info.editeur">{{editeur}}</span>
-                    </li>
-                    <li id="detail_info-genre">Langue : 
-                        <ul>
-                            <li>Audio : 
-                                <span ng-repeat="audio in gameById[0].info.audio">
-                                    <span ng-if="audio.indexOf('ge')>-1">
-                                        <span class="flag-icon flag-icon-ge"></span>
-                                    </span>
-                                    <span ng-if="audio.indexOf('en')>-1">
-                                        <span class="flag-icon flag-icon-us"></span>/<span class="flag-icon flag-icon-gb"></span>
-                                    </span>
-                                    <span ng-if="audio.indexOf('fr')>-1">
-                                        <span class="flag-icon flag-icon-fr"></span>
-                                    </span>
-                                    <span ng-if="audio.indexOf('es')>-1">
-                                        <span class="flag-icon flag-icon-es"></span>
-                                    </span>
-                                </span>                                
-                            </li>
-                            <li>Texte : 
-                                <span ng-repeat="subtitle in gameById[0].info.subtitle">
-                                    <span ng-if="audio.indexOf('ge')>-1">
-                                        <span class="flag-icon flag-icon-ge"></span>
-                                    </span>
-                                    <span ng-if="audio.indexOf('en')>-1">
-                                        <span class="flag-icon flag-icon-us"></span>/<span class="flag-icon flag-icon-gb"></span>
-                                    </span>
-                                    <span ng-if="audio.indexOf('fr')>-1">
-                                        <span class="flag-icon flag-icon-fr"></span>
-                                    </span>
-                                    <span ng-if="audio.indexOf('es')>-1">
-                                        <span class="flag-icon flag-icon-es"></span>
-                                    </span>
-                                </span>
-                            </li>
-                        </ul>
-                    <li id="detail_info-genre">Support : 
-                        <span ng-repeat="system in gameById[0].info.system">
-                            <span ng-if="system.indexOf('windows')>-1">
-                                <i class="fa fa-windows fa"></i>
-                            </span>
-                            <span ng-if="system.indexOf('linux')>-1">
-                                <i class="fa fa-linux fa"></i>
-                            </span>
-                        </span>
-                    </li>
-                </ul>
-            </fieldset>
-            <fieldset id="detail_info-link" class="mdl-cell mdl-cell--8-col-desktop mdl-grid">
-                <legend>Downloads Option :</legend>
-                <a ng-repeat="download in gameById[0].download" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-cell mdl-cell--12-col-desktop" href="{{download.link}}">
-                    <div class="mdl-grid mdl-grid--no-spacing">
-                        <i id="detail_info-link_icon" class="fa fa-download"></i>
-                        <div class="mdl-layout-spacer"></div>
-                        <span id="detail_info-link_text">{{download.name}}</span>           
-                        <div class="mdl-layout-spacer"></div>             
-                        <span id="detail_info-link_size">
-                            <span ng-if="download.system.indexOf('windows')>-1">
-                                <i class="fa fa-windows fa"></i>
-                            </span>
-                            <span ng-if="download.system.indexOf('linux')>-1">
-                                <i class="fa fa-linux fa"></i>
-                            </span> | {{download.size}}
-                        </span>
-                    </div>                        
-                </a>
-            </fieldset>
-        </div>
-    
+    <div id="detail_title" class="mdl-cell mdl-cell--12-col">
+        <h1>{{gameById[0].title}}</h1>
     </div>
-    </article>
-    <aside class="mdl-cell mdl-cell--2-col mdl-cell--0-col-tablet"></aside>
+    <div class="mdl-cell mdl-cell--12-col-desktop mdl-grid">
+        <fieldset class="mdl-cell mdl-cell--4-col-desktop">
+            <legend>Informations :</legend>
+            <ul id="detail_info">
+                <li id="detail_info-genre">Genre : 
+                    <span ng-repeat="genre in gameById[0].info.genre">{{genre}} </span>
+                </li>
+                <li id="detail_info-genre">Editeur : 
+                    <span ng-repeat="editeur in gameById[0].info.editeur">{{editeur}}</span>
+                </li>
+                <li id="detail_info-genre">Langue : 
+                    <ul>
+                        <li>Audio : 
+                            <span ng-repeat="audio in gameById[0].info.audio">
+                                <span ng-if="audio.indexOf('ge')>-1">
+                                    <span class="flag-icon flag-icon-ge"></span>
+                                </span>
+                                <span ng-if="audio.indexOf('en')>-1">
+                                    <span class="flag-icon flag-icon-us"></span>/<span class="flag-icon flag-icon-gb"></span>
+                                </span>
+                                <span ng-if="audio.indexOf('fr')>-1">
+                                    <span class="flag-icon flag-icon-fr"></span>
+                                </span>
+                                <span ng-if="audio.indexOf('es')>-1">
+                                    <span class="flag-icon flag-icon-es"></span>
+                                </span>
+                            </span>                                
+                        </li>
+                        <li>Texte : 
+                            <span ng-repeat="subtitle in gameById[0].info.subtitle">
+                                <span ng-if="audio.indexOf('ge')>-1">
+                                    <span class="flag-icon flag-icon-ge"></span>
+                                </span>
+                                <span ng-if="audio.indexOf('en')>-1">
+                                    <span class="flag-icon flag-icon-us"></span>/<span class="flag-icon flag-icon-gb"></span>
+                                </span>
+                                <span ng-if="audio.indexOf('fr')>-1">
+                                    <span class="flag-icon flag-icon-fr"></span>
+                                </span>
+                                <span ng-if="audio.indexOf('es')>-1">
+                                    <span class="flag-icon flag-icon-es"></span>
+                                </span>
+                            </span>
+                        </li>
+                    </ul>
+                <li id="detail_info-genre">Support : 
+                    <span ng-repeat="system in gameById[0].info.system">
+                        <span ng-if="system.indexOf('windows')>-1">
+                            <i class="fa fa-windows fa"></i>
+                        </span>
+                        <span ng-if="system.indexOf('linux')>-1">
+                            <i class="fa fa-linux fa"></i>
+                        </span>
+                    </span>
+                </li>
+            </ul>
+        </fieldset>
+        <fieldset id="detail_info-link" class="mdl-cell mdl-cell--8-col-desktop mdl-grid">
+            <legend>Downloads Option :</legend>
+            <a ng-repeat="download in gameById[0].download" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-cell mdl-cell--12-col-desktop" href="{{download.link}}">
+                <div class="mdl-grid mdl-grid--no-spacing">
+                    <i id="detail_info-link_icon" class="fa fa-download"></i>
+                    <div class="mdl-layout-spacer"></div>
+                    <span id="detail_info-link_text">{{download.name}}</span>           
+                    <div class="mdl-layout-spacer"></div>             
+                    <span id="detail_info-link_size">
+                        <span ng-if="download.system.indexOf('windows')>-1">
+                            <i class="fa fa-windows fa"></i>
+                        </span>
+                        <span ng-if="download.system.indexOf('linux')>-1">
+                            <i class="fa fa-linux fa"></i>
+                        </span> | {{download.size}}
+                    </span>
+                </div>                        
+            </a>
+        </fieldset>
+    </div>
+
 </div>
