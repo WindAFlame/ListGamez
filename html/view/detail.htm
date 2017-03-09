@@ -20,16 +20,20 @@
                             <span ng-repeat="audio in gameById[0].info.audio">
                                 <span ng-if="audio.indexOf('en')>-1">
                                     <i class="flag-icon flag-icon-us"></i>/<i class="flag-icon flag-icon-gb"></i>
+                                </span>                                
+                                <span ng-if="!audio.indexOf('en')>-1">
+                                    <i class="flag-icon flag-icon-{{audio}}"></i>
                                 </span>
-                                <i class="flag-icon flag-icon-{{audio}}"></i>
                             </span>                                
                         </li>
                         <li>Texte : 
                             <span ng-repeat="subtitle in gameById[0].info.subtitle">
                                 <span ng-if="subtitle.indexOf('en')>-1">
                                     <i class="flag-icon flag-icon-us"></i>/<i class="flag-icon flag-icon-gb"></i>
+                                </span>                              
+                                <span ng-if="!subtitle.indexOf('en')>-1">
+                                    <i class="flag-icon flag-icon-{{subtitle}}"></i>
                                 </span>
-                                <i class="flag-icon flag-icon-{{subtitle}}"></i>
                             </span>
                         </li>
                     </ul>
