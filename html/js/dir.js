@@ -1,10 +1,10 @@
-app.directive('datafromlocaljson', ['$http', function($http) {
+app.directive('datafromlocaljson', ['$http', '$scope', function($http, $scope) {
     return {
             restrict: 'E',
             scope:{
                 src:"="
             },
-            link: function($scope) {
+            link: function() {
                 $http.get($scope.src)
                     .then(function(res){
                         $scope.data = res.data;
