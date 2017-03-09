@@ -3,22 +3,17 @@
 <div class="mdl-grid" ng-controller="detailCtrl">
     <aside class="mdl-cell mdl-cell--2-col mdl-cell--0-col-tablet"></aside>
     <article class="mdl-cell mdl-cell--8-col mdl-cell--12-col-tablet">
-    Test : {{$scope.gameById}}
     <div class="mdl-grid mdl-shadow--2dp">
 
         <div id="detail_title" class="mdl-cell mdl-cell--12-col">
             <h1>{{gameById[0].title}}</h1>
         </div>
-        <!--<div id="detail_cover" class="mdl-cell mdl-cell--3-col 
-                                        mdl-grid mdl-grid--no-spacing">
-            <img id="card_image" class="mdl-cell mdl-cell--12-col" src="../../media/azerty.jpg" alt="Cover">
-        </div>-->
         <div class="mdl-cell mdl-cell--12-col-desktop mdl-grid">
             <fieldset class="mdl-cell mdl-cell--4-col-desktop">
                 <legend>Informations :</legend>
                 <ul id="detail_info">
                     <li id="detail_info-genre">Genre : 
-                        <span ng-repeat="genre in gameById[0].info.genre">{{genre}}</span>
+                        <span ng-repeat="genre in gameById[0].info.genre">{{genre}} </span>
                     </li>
                     <li id="detail_info-genre">Editeur : 
                         <span ng-repeat="editeur in gameById[0].info.editeur">{{editeur}}</span>
@@ -26,22 +21,53 @@
                     <li id="detail_info-genre">Langue : 
                         <ul>
                             <li>Audio : 
-                                <span ng-repeat="audio in gameById[0].info.audio">{{audio}}</span>
-                                <!--<span class="flag-icon flag-icon-de"></span>, <span class="flag-icon flag-icon-us"></span>/<span class="flag-icon flag-icon-gb"></span>, <span class="flag-icon flag-icon-fr"></span>-->
+                                <span ng-repeat="audio in gameById[0].info.audio">
+                                    <span ng-if="audio.indexOf('de')>-1">
+                                        <span class="flag-icon flag-icon-de"></span>
+                                    </span>
+                                    <span ng-if="audio.indexOf('us')>-1">
+                                        <span class="flag-icon flag-icon-us"></span>/<span class="flag-icon flag-icon-gb"></span>
+                                    </span>
+                                    <span ng-if="audio.indexOf('gb')>-1">
+                                        <span class="flag-icon flag-icon-us"></span>/<span class="flag-icon flag-icon-gb"></span>
+                                    </span>
+                                    <span ng-if="audio.indexOf('fr')>-1">
+                                        <span class="flag-icon flag-icon-fr"></span>
+                                    </span>
+                                    <span ng-if="audio.indexOf('es')>-1">
+                                        <span class="flag-icon flag-icon-es"></span>
+                                    </span>
+                                </span>
+                                
                             </li>
                             <li>Texte : 
-                                <span ng-repeat="subtitle in gameById[0].info.subtitle">{{subtitle}}</span>
-                                <!--<span class="flag-icon flag-icon-de"></span>, <span class="flag-icon flag-icon-us"></span>/<span class="flag-icon flag-icon-gb"></span>, <span class="flag-icon flag-icon-fr"></span>, <span class="flag-icon flag-icon-es"></span>-->
+                                <span ng-repeat="subtitle in gameById[0].info.subtitle">
+                                    <span ng-if="audio.indexOf('de')>-1">
+                                        <span class="flag-icon flag-icon-de"></span>
+                                    </span>
+                                    <span ng-if="audio.indexOf('us')>-1">
+                                        <span class="flag-icon flag-icon-us"></span>/<span class="flag-icon flag-icon-gb"></span>
+                                    </span>
+                                    <span ng-if="audio.indexOf('gb')>-1">
+                                        <span class="flag-icon flag-icon-us"></span>/<span class="flag-icon flag-icon-gb"></span>
+                                    </span>
+                                    <span ng-if="audio.indexOf('fr')>-1">
+                                        <span class="flag-icon flag-icon-fr"></span>
+                                    </span>
+                                    <span ng-if="audio.indexOf('es')>-1">
+                                        <span class="flag-icon flag-icon-es"></span>
+                                    </span>
+                                </span>
                             </li>
                         </ul>
                     <li id="detail_info-genre">Support : 
-                        <span ng-repeat="system in gameById[0].info.system">{{system}}</span>
+                        <span ng-repeat="system in gameById[0].info.system">{{system}} </span>
                     </li>
                 </ul>
             </fieldset>
             <fieldset id="detail_info-link" class="mdl-cell mdl-cell--8-col-desktop mdl-grid">
                 <legend>Downloads Option :</legend>
-                <button ng-repeat="download in gameById[0].download" class="mdl-button mdl-js-button mdl-button--raised mdl-cell mdl-cell--12-col-desktop" href="{{download.link}}">
+                <a ng-repeat="download in gameById[0].download" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-cell mdl-cell--12-col-desktop" href="{{download.link}}">
                     <div class="mdl-grid mdl-grid--no-spacing">
                         <i id="detail_info-link_icon" class="fa fa-download"></i>
                         <div class="mdl-layout-spacer"></div>
@@ -56,7 +82,7 @@
                             </span> | {{download.size}}
                         </span>
                     </div>                        
-                </button>
+                </a>
             </fieldset>
         </div>
     
