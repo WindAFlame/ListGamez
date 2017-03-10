@@ -1,8 +1,8 @@
 (function() {
         'use strict';
-        var dialog = document.querySelector('#modal-download');
+        var dialog = document.querySelector('#dialog-download');
         var closeButton = dialog.querySelector('button');
-        var showButton = document.querySelector('#show-modal-download');
+        var showButton = document.querySelector('#show-dialog-download');
         if (! dialog.showModal) {
             dialogPolyfill.registerDialog(dialog);
         }
