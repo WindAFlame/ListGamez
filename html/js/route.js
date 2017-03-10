@@ -23,14 +23,14 @@ app.config(function($stateProvider, $urlRouterProvider) {
         .state('game.list', {
             name: 'list',
             url: '/list.html',
-            templateUrl: 'html/view/list.htm'
+            templateUrl: 'html/view/game.list.htm'
         })
         
         // DETAIL GAME - Detail for a unique game
         .state('game.detail', {
             name: 'detail',
             url: '/id={gameId}',
-            templateUrl: 'html/view/detail.htm'
+            templateUrl: 'html/view/game.detail.htm'
         })
         
         // ABOUT - Detail of me and project
