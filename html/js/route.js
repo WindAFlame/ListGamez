@@ -17,7 +17,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
             abstract: true,
             url: '/game',
             templateUrl: 'html/view/game.htm',
-            controller: 'gameCtrl',
             resolve: {
                 gamesData:  function($http){
                     return $http.get('media/bdd.json')
@@ -25,8 +24,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
                         return result.data;
                     });
                 }
-            }
-                
+            },
+            controller: 'gameCtrl'
         })
         
         // LIST GAME - Listing of all game from json
