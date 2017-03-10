@@ -6,30 +6,12 @@
     "cover": "media/jk2_250.jpg",
     "download": [
         {
-            "link": "#",
+            "link": "https://drive.google.com/open?id=0B5dL26odeKVpdjQzaldIT1NwWWs",
             "system": [
-                "windows",
-                "linux"
-            ],
-            "name": "Core Pack",
-            "size": "700MB"
-        },
-        {
-            "link": "#",
-            "system": [
-                "linux"
-            ],
-            "name": "Executable for Windows",
-            "size": "24MB"
-        },
-        {
-            "link": "#",
-            "system": 
-                [
                 "windows"
-                ],
-            "name": "Executable for Linux",
-            "size": "24MB"
+            ],
+            "name": "Multiplayer Only",
+            "size": "105MB"
         }
     ],
     "info" : 
@@ -72,31 +54,6 @@
     "picture": "//images-4.gog.com/52b19c33e912370d1328c29323180a439f7782a4e0519471b2b664d6c9a64038_product_quartet_250.jpg",
     "cover": "media/ja_250.jpg",
     "download": [
-        {"link": "#",
-            "system": [
-                "windows",
-                "linux"
-            ],
-            "name": "Core Pack",
-            "size": "700MB"
-        },
-        {
-            "link": "#",
-            "system": [
-                "linux"
-            ],
-            "name": "Executable for Windows",
-            "size": "24MB"
-        },
-        {
-            "link": "#",
-            "system": 
-                [
-                "windows"
-                ],
-            "name": "Executable for Linux",
-            "size": "24MB"
-        }
     ],
     "info" : 
         {
