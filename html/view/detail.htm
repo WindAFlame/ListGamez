@@ -47,11 +47,12 @@
         </fieldset>
         <fieldset id="detail_info-link" class="mdl-cell mdl-cell--8-col-desktop mdl-grid">
             <legend>Downloads Option :</legend>
-            <a ng-repeat="download in gameById.download" 
+            <button ng-repeat="download in gameById.download" 
+                id="show-dialog"
                 type="button" 
                 class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised 
-                    mdl-cell mdl-cell--12-col-desktop" 
-                href="{{download.link}}">
+                    mdl-cell mdl-cell--12-col-desktop"
+                ng-init="var data = download">
                 <div class="mdl-grid mdl-grid--no-spacing">
                     <i id="detail_info-link_icon" class="fa fa-download"></i>
                     <div class="mdl-layout-spacer"></div>
@@ -66,7 +67,19 @@
                         </span> | {{download.size}}
                     </span>
                 </div>                        
-            </a>
+            </button>
+            <dialog class="mdl-dialog">
+                <h4 class="mdl-dialog__title">Download Information</h4>
+                <div class="mdl-dialog__content">
+                <p>
+                    {{data}}
+                </p>
+                </div>
+                <div class="mdl-dialog__actions">
+                <button type="button" class="mdl-button">Agree</button>
+                <button type="button" class="mdl-button close">Disagree</button>
+                </div>
+            </dialog>
         </fieldset>
     </div>
 
