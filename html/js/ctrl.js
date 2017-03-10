@@ -1,4 +1,4 @@
-app.controller('gameCtrl', function($scope,$http){
+app.controller('gameCtrl', function($scope, gamesData){
     $scope.games = gamesData;          
 });
 
