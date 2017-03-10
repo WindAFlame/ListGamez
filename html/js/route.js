@@ -1,13 +1,15 @@
 app.config(function($stateProvider, $urlRouterProvider) {
     
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.when("", "/home");
+    $urlRouterProvider.when("/", "/home");
+    $urlRouterProvider.otherwise('/home');
 
     $stateProvider
 
         // HOME PAGE - Welcome
         .state('home', {
             name: 'home',
-            url: '/index.html',
+            url: '/home.html',
             templateUrl: 'html/view/homepage.htm'
         })
 
@@ -21,7 +23,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
         // DETAIL GAME - Detail for a unique game
         .state('detail', {
             name: 'detail',
-            url: '/{gameId}',
+            url: '/id={gameId}',
             templateUrl: 'html/view/detail.htm'
         })
         
