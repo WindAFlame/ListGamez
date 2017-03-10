@@ -1,8 +1,8 @@
 app.config(function($stateProvider, $urlRouterProvider) {
     
-    $urlRouterProvider.when("", "/home");
-    $urlRouterProvider.when("/", "/home");
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.when("", "/home.html");
+    $urlRouterProvider.when("/", "/home.html");
+    $urlRouterProvider.otherwise('/home.html');
 
     $stateProvider
 
@@ -13,6 +13,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: 'html/view/homepage.htm'
         })
 
+        .state('game', {
+            abstract: true,
+            url: '/game',
+            templateUrl: 'html/view/game.htm',
+            controller: 'gameCtrl'
+        })
         // LIST GAME - Listing of all game from json
         .state('list', {
             name: 'list',

@@ -1,16 +1,12 @@
-app.controller('listCtrl', function($scope,$http){
-    // Load Bdd
+app.controller('gameCtrl', function($scope,$http){
+  // Load Bdd
     $http.get('media/bdd.json')
        .then(function(res){
+          console.log('Load Json File');
           $scope.games = res.data;                
         });
 });
 
-
-app.controller('detailCtrl', function($scope,$http,$stateParams,$filter){
-    // Load Bdd
-    $http.get('media/bdd.json')
-       .then(function(res){
-          $scope.gameById = $filter('filter')(res.data, {id: $stateParams.gameId })[0];
-        });
+app.controller('gameDetailCtrl', function($scope,$stateParams,$filter){
+    $scope.gameById = $filter('filter')($scope.games, {id: $stateParams.gameId })[0];
 });

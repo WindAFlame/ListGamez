@@ -1,6 +1,10 @@
-<!-- list.htm -->
+<!-- 
+    FileName =  game.list.htm
+    Child : game.htm
+    URL = /game/list.html
+-->
 
-<div class="mdl-grid" ng-controller="listCtrl">
+<div class="mdl-grid">
 
     <a  ng-repeat="game in games"
                     ui-sref="detail({gameId: game.id})" 
