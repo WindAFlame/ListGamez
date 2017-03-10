@@ -68,16 +68,15 @@
                     </span>
                 </div>                        
             </button>
-            <dialog id="dialog-download" class="mdl-dialog">
-                <h4 class="mdl-dialog__title">Download Information</h4>
+            <dialog class="mdl-dialog" id="dialog-download">
                 <div class="mdl-dialog__content">
-                <p>
-                    {{data}}
-                </p>
+                    <p>
+                        TEST
+                    </p>
                 </div>
-                <div class="mdl-dialog__actions">
-                <button type="button" class="mdl-button">Agree</button>
-                <button type="button" class="mdl-button close">Disagree</button>
+                <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                    <button type="button" class="mdl-button">Close</button>
+                    <button type="button" class="mdl-button" disabled>Inactive action</button>
                 </div>
             </dialog>
         </fieldset>
