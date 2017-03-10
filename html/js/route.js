@@ -20,14 +20,14 @@ app.config(function($stateProvider, $urlRouterProvider) {
             controller: 'gameCtrl'
         })
         // LIST GAME - Listing of all game from json
-        .state('list', {
+        .state('game.list', {
             name: 'list',
             url: '/list.html',
             templateUrl: 'html/view/list.htm'
         })
         
         // DETAIL GAME - Detail for a unique game
-        .state('detail', {
+        .state('game.detail', {
             name: 'detail',
             url: '/id={gameId}',
             templateUrl: 'html/view/detail.htm'
