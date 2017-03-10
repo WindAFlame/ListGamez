@@ -17,8 +17,18 @@ app.config(function($stateProvider, $urlRouterProvider) {
             abstract: true,
             url: '/game',
             templateUrl: 'html/view/game.htm',
-            controller: 'gameCtrl'
+            controller: 'gameCtrl',
+            resolve: {
+                gamesData:  function($http){
+                    return $http.get('media/bdd.json')
+                    .then (function (result) {
+                        return result.data;
+                    });
+                }
+            }
+                
         })
+        
         // LIST GAME - Listing of all game from json
         .state('game.list', {
             name: 'list',

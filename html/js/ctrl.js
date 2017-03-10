@@ -1,10 +1,5 @@
 app.controller('gameCtrl', function($scope,$http){
-  // Load Bdd
-    $http.get('media/bdd.json')
-       .then(function(res){
-          console.log('Load Json File');
-          $scope.games = res.data;                
-        });
+    $scope.games = gamesData;          
 });
 
 app.controller('gameDetailCtrl', function($scope,$stateParams,$filter){
