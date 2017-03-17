@@ -57,3 +57,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
         });
 
 });
+
+// Fix animate in view
+app.run(function($rootScope, $location, $timeout) {
+    $rootScope.$on('$viewContentLoaded', function() {
+        $timeout(function() {
+            componentHandler.upgradeAllRegistered();
+        });
+    });
+});

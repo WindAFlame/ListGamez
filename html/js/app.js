@@ -6,11 +6,3 @@ var app = angular.module('MainApp', [
     'ngAnimate',
     'ui.router'
 ]);
-
-app.run(function($rootScope, $location, $timeout) {
-    $rootScope.$on('$viewContentLoaded', function() {
-        $timeout(function() {
-            componentHandler.upgradeAllRegistered();
-        });
-    });
-});
