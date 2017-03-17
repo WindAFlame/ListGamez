@@ -88,5 +88,49 @@
             "linux"
             ]
         }
+    },{
+    "id": 3,
+    "title": "Age of Empires II - Gold Edition",
+    "picture": "#",
+    "cover": "#",
+    "download": [
+        {
+            "link": "#",
+            "system": [
+                "windows"
+            ],
+            "name": "Singleplayer & Multiplayer",
+            "size": "437MB"
+        }
+    ],
+    "info" : 
+        {
+        "genre" : 
+            [
+            "Stratégie"
+            ],
+        "editeur": 
+            [
+            "Microsoft Game Studios", 
+            "Ensemble Studios"
+            ],
+        "audio":
+            [
+            "en",
+            "fr"
+            ], 
+        "subtitle": 
+            [
+            "de",
+            "en",
+            "fr",
+            "es"
+            ],
+        "system": 
+            [
+
+            "windows"
+            ]
+        }
     }
 ]
