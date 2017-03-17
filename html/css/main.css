@@ -63,3 +63,7 @@ fieldset {
 }
 #detail_info-link_size{
 }
+
+a #button-portable{
+    background: yellowgreen;
+}
