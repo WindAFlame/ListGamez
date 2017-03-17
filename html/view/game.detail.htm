@@ -13,13 +13,13 @@
         <fieldset class="mdl-cell mdl-cell--4-col-desktop">
             <legend>Informations :</legend>
             <ul id="detail_info">
-                <li id="detail_info-genre"><strong>Genre :</strong>
+                <li id="detail_info-genre"><strong>Genre </strong>:
                     <span ng-repeat="genre in gameById.info.genre">{{genre}} </span>
                 </li>
-                <li id="detail_info-editor"><strong>Editeur :</strong>
+                <li id="detail_info-editor"><strong>Editeur </strong>:
                     <span ng-repeat="editor in gameById.info.editor">{{editor}} </span>
                 </li>
-                <li id="detail_info-language"><strong>Langue :</strong>
+                <li id="detail_info-language"><strong>Langue </strong>:
                     <ul>
                         <li>Audio : 
                             <span ng-repeat="audio in gameById.info.audio">
@@ -42,7 +42,7 @@
                             </span>
                         </li>
                     </ul>
-                <li id="detail_info-genre"><strong>Support :</strong>
+                <li id="detail_info-genre"><strong>Support </strong>:
                     <!-- TODO : optimize system detected in download only -->
                     <span ng-repeat="system in gameById.info.system">
                         <i class="fa fa-{{system}} fa"></i>
