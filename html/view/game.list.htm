@@ -14,6 +14,7 @@
                             mdl-grid mdl-grid--no-spacing">
                     <img id="card_panel-product_image" class="mdl-cell mdl-cell--12-col" ng-src="{{game.cover}}" alt="Cover" sca>
                     <div id="card_panel-product_info-system">
+                    <!-- TODO : optimize system detected in download only -->
                         <span ng-if="game.info.system.indexOf('windows')>-1">
                             <i class="fa fa-windows fa"></i>
                         </span>
