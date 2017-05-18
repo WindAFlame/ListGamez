@@ -11,11 +11,7 @@
 </head>
 <body ng-app="MainApp">
 
-    <main ng-controller="loadData" >
-        <h1 ng-init="setTitle('Hello World')">{{title}}</h1>
-        <button type="button" ng-click="setTitle('Button Pressed')">Change Title Name.</button>
-        <hr/>
-        <div ng-controller="formCtrl">
+    <main ng-controller="formCtrl">
         // NE FONCTIONNNE PAS CAR IL A POUR BUT D'ETRE UTILISE DANS UN FORM POUR GERER UN ENSEMBLE DE BOUTONS
         <br/>
         <ng-form
@@ -36,7 +32,6 @@
         <pre>TextInput : {{ data.textInput }}</pre>
         <pre>{{form}}</pre>
         <pre>error?{{form.textInput.$error.required}}</pre>
-        </div>
     </main>
 
     <!-- Scripts - Depandencies -->

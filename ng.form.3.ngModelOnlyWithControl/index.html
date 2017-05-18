@@ -11,11 +11,7 @@
 </head>
 <body ng-app="MainApp">
 
-    <main ng-controller="loadData" >
-        <h1 ng-init="setTitle('Hello World')">{{title}}</h1>
-        <button type="button" ng-click="setTitle('Button Pressed')">Change Title Name.</button>
-        <hr/>
-        <div ng-controller="formCtrl">
+    <main ng-controller="formCtrl">
         <ng-form
             name="form"
             ng-submit="submit()">
@@ -33,7 +29,6 @@
         </ng-form>
         <pre>{{form}}</pre>
         <pre>error?{{form.textI}}</pre>
-        </div>
     </main>
 
     <!-- Scripts - Depandencies -->

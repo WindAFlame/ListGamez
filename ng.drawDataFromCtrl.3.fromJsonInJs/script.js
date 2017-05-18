@@ -6,8 +6,7 @@ angular
         'ngSanitize',
         'ngAnimate'
     ])
-    .controller('formCtrl',function($scope){
-        $scope.form = {};
-        
+    .controller('loadData',function($scope){
+        $scope.jsonData = json;
     });
 
