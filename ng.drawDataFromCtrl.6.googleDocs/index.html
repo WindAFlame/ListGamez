@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Stylesheet - Depandencies -->
+    <!-- Stylesheet - Your Work -->
+    <link rel="stylesheet" href="">
+</head>
+<body ng-app="MainApp">
+
+    <main ng-controller="loadData">
+        <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Game Name</th>
+          <th>Comment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="row in jsonData">
+          <td><p>{{ row.id }}</p></td>
+          <td><p>{{ row.game }}</p></td>
+          <td><p>{{ row.comment }}</p></td>
+        </tr>
+      </tbody>
+    </table>
+    <pre>{{jsonData}}</pre>
+    </main>
+
+    <!-- Scripts - Depandencies -->
+    <!-- Angularjs Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-animate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-aria.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-messages.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-sanitize.min.js"></script>
+    <!-- Scripts - Your Work -->
+    <script src="script.js"></script>
+    
+</body>
+</html>
