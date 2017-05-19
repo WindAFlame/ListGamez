@@ -9,15 +9,11 @@
 </head>
 <body ng-app="MainApp">
 
-    <main ng-controller="formCtrl">
-        <form
-            method="GET"
-            action="#"
-            name="form">
-            <input type="text" name="text-input" required>
-            <input type="submit" name="submit-input">
-        </form>
-        {{form}}
+    <main>
+        <pre><strong>Need Server for Test</strong></pre>
+        <div ui-view="header"></div>
+        <div ui-view></div>
+        <div ui-view="footer"></div>
     </main>
 
     <!-- Scripts - Depandencies -->
@@ -27,6 +23,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-aria.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-messages.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-sanitize.min.js"></script>
+    <!-- Angularjs Extension -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>
     <!-- Scripts - Your Work -->
     <script src="script.js"></script>
     
