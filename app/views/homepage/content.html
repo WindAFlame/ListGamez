@@ -1,0 +1,32 @@
+<!--
+    VIEW - Homepage
+    Main page
+-->
+<main class="container">
+<!-- Presentation : START -->
+<br/>
+<section>
+    <h1 class="center">{{text.homepage.content.title}}</h1>
+    <div class="row center">
+        <h5 class="col s12 light">
+            {{text.homepage.content.describ}}
+        </h5>
+    </div>
+    <div class="row center">
+        <a href ui-serf="#!" class="btn-large waves-effect waves-light">{{text.homepage.content.button}}</a>
+    </div>
+</section>
+<br/>
+<!-- Presentation : END -->
+<!-- Description : START -->
+<section> 
+    <div class="row">
+
+        <card-off ng-repeat="card in text.homepage.content.card" icon="{{card['fa-icon']}}" title="{{card.title}}">
+            <p class="light center">{{card.text}}</p>
+        </card-off>
+    
+    </div>  
+</section>
+<!-- Description : END -->
+</main>

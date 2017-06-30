@@ -1,0 +1,23 @@
+<!--
+    Partial - HEADER
+    Generic header for all pages.
+-->
+<header>
+<nav role="navigation">
+    <div class="nav-wrapper container">
+        <a href ui-sref="game.list" class="brand-logo">{{text.header.title}}</a>
+        <ul class="right hide-on-med-and-down">
+            
+            <!-- TODO: Use Filter -->
+            <li>
+                <a href ui-sref="#!">{{text.header.section[0].name}}</a>
+            </li>
+
+            <li>
+                <a href ui-sref="#!">{{text.header.section[1].name}}</a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+</header>
