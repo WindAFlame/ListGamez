@@ -28,13 +28,35 @@ app.config(function($stateProvider, $urlRouterProvider) {
             }
         })
         // Homepage
-        // Data from bundle/homepage
         .state('base.layout.homepage', {
-            name: 'home',
             url: '/home.html',
             views: {
                 'content@base': {
                     templateUrl: 'app/views/homepage/content.html'
+                }
+            }
+        })
+        // Games
+        .state('base.layout.game', {
+            abstract: true,
+            resolve: {
+                gamesData:  function(httpFactory){
+                    return httpFactory({
+                        method: 'GET',
+                        url:'media/data.json'
+                    })
+                    .then (function (result) {
+                        return result.data;
+                    });
+                }
+            }
+        })
+        // Game List
+        .state('base.layout.game.list', {
+            url: '/games.html',
+            views: {
+                'content@base': {
+                    templateUrl: 'app/views/games/list.html'
                 }
             }
         })

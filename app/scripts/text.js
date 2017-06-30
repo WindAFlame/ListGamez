@@ -1,7 +1,7 @@
 /*
 */
 var text = {
-    "fr": 
+    "en": 
     {
         "header" : 
         {
@@ -15,7 +15,8 @@ var text = {
                     "id": 1,
                     "name": "Request"
                 }
-            ]
+            ],
+            "github": "View source on Github"
         },
         "footer" : 
         {
@@ -23,9 +24,9 @@ var text = {
         },
         "homepage" : {
             "content" : {
-                "title" : "Default Title",
+                "title" : "Welcome !",
                 "describ": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer consectetur tortor eget vehicula fermentum. Sed eget elit tellus. Pellentesque sed odio tristique, cursus lorem sed, fermentum velit. In malesuada nibh dolor. Pellentesque erat lectus, semper sollicitudin felis quis, tristique ullamcorper diam. Pellentesque eu mauris vitae massa malesuada molestie. Fusce tortor purus, mollis et diam eget, aliquam pellentesque ex. Vivamus dapibus erat ut leo ultricies malesuada.",
-                "button": "Get Started !",
+                "button": null,
                 "card": [
                     {
                         "fa-icon": "fa fa-bolt",

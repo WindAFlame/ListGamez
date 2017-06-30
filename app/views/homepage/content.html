@@ -3,22 +3,32 @@
     Main page
 -->
 <main class="container">
-<!-- Presentation : START -->
 <br/>
+<br/>
+<!-- Section 1 : Main Information  : START -->
 <section>
+    
+    <!-- Title -->
     <h1 class="center">{{text.homepage.content.title}}</h1>
+
+    <!-- Description -->
     <div class="row center">
         <h5 class="col s12 light">
             {{text.homepage.content.describ}}
         </h5>
     </div>
-    <div class="row center">
+
+    <!-- Button to access at the main feature -->
+    <div class="row center" ng-if="text.homepage.content.button != null">
         <a href ui-serf="#!" class="btn-large waves-effect waves-light">{{text.homepage.content.button}}</a>
     </div>
-</section>
+    
 <br/>
-<!-- Presentation : END -->
-<!-- Description : START -->
+<br/>
+</section>
+<!-- Section 1 : Main Information  : END -->
+<br/>
+<!-- Section 1 : Optionnal Information  : START -->
 <section> 
     <div class="row">
 
@@ -28,5 +38,7 @@
     
     </div>  
 </section>
-<!-- Description : END -->
+<br/>
+<br/>
+<!-- Section 1 : Optionnal Information  : END -->
 </main>
