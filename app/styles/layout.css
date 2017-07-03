@@ -7,3 +7,10 @@ body {
 main {
   flex: 1 0 auto;
 }
+
+/* Fix footer to bottom */
+footer {
+  width: 100%;
+  bottom: 0;
+  position: fixed;
+}
