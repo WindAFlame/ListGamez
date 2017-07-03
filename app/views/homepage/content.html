@@ -1,0 +1,36 @@
+<!--
+    VIEW - Homepage
+    Main page
+-->
+<div class="mdl-grid">
+<div class="mdl-layout-spacer"></div>
+<article class="mdl-cell mdl-cell--8-col">
+<!-- Section 1 : Main Information  : START -->
+    <section class="mdl-grid mdl-grid--no-spacing">
+        
+        <!-- Title -->
+        <h1 class="mdl-cell mdl-cell--12-col" style="text-align: center;">{{text.homepage.content.title}}</h1>
+
+        <!-- Description -->
+        <h5 class="mdl-cell mdl-cell--12-col" style="text-align: center;">{{text.homepage.content.describ}}</h5>
+
+        <!-- Button to access at the main feature -->
+        <div class="row center" ng-if="text.homepage.content.button != null">
+            <a href ui-serf="#!" class="btn-large waves-effect waves-light">{{text.homepage.content.button}}</a>
+        </div>
+        
+    </section>
+<!-- Section 1 : Main Information  : END -->
+<br/>
+<!-- Section 2 : Optionnal Information  : START -->
+    <section class="mdl-grid mdl-grid--no-spacing"> 
+
+            <card-off ng-repeat="card in text.homepage.content.card" icon="{{card['fa-icon']}}" title="{{card.title}}">
+                <p class="mdl-cell mdl-cell--12-col" style="text-align: center;">{{card.text}}</p>
+            </card-off>
+        
+    </section>
+<!-- Section 2 : Optionnal Information  : END -->
+</article>
+<div class="mdl-layout-spacer"></div>
+</div>
