@@ -1,7 +1,9 @@
-<span ui-view="header"></span>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header" ui-view="header"></header>
   <main class="mdl-layout__content">
     <div class="page-content">
       <span ui-view="content"></span>
     </div>
   </main>
-<span ui-view="footer"></span>
+</div>
+<footer class="mdl-mini-footer" ui-view="footer"></footer>
