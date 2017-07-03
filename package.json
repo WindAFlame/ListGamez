@@ -1,7 +1,7 @@
 {
   "name": "materialize-vanilla",
   "version": "1.0.0",
-  "description": "website for lan",
+  "description": "website for lan with default theme from materialize",
   "devDependencies": {
     "browser-sync": "^2.18.12",
     "gulp": "^3.9.1"
