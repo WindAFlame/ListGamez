@@ -2,10 +2,17 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  background: whitesmoke;
 }
 
 main {
   flex: 1 0 auto;
+}
+
+/* header */
+header > div > a {
+    text-decoration: none;
+    color: white;
 }
 
 /* Fix footer to bottom */
