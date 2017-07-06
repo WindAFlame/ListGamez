@@ -12,6 +12,7 @@ Prendre exemple sur https://game-db.herokuapp.com/
 * [AngularJS-Sanitize]()
 #### Extensions
 * [UI.Route](https://ui-router.github.io/)
+* [ngDialog](http://likeastore.github.io/ngDialog/)
 ### Theme
 #### Materialize Design Lite (MDL)
 * [MDL](https://getmdl.io/started/)

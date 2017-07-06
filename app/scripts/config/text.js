@@ -1,6 +1,7 @@
 /*
-*/
-var text = {
+
+ */
+let text = {
     "en": 
     {
         "header" : 
@@ -29,16 +30,19 @@ var text = {
                 "button": null,
                 "card": [
                     {
+                        "id": 0,
                         "fa-icon": "fa fa-bolt",
                         "title" : "Quick to install",
                         "text" : "You only have to decompress the game to be able to launch it."
                     },
                     {
+                        "id": 1,
                         "fa-icon": "fa fa-cog",
                         "title" : "Easy to play",
                         "text" : "All the games offered have scripts to install / to run."
                     },
                     {
+                        "id": 2,
                         "fa-icon": "fa fa-users",
                         "title" : "Powered by Community",
                         "text" : "The content of the site depends on Community, whether for requests or for improvements in content."

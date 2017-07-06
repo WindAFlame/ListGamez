@@ -12,7 +12,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
             abstract: true,
             views: {
                 'layout@': {
-                    templateUrl: 'app/views/shared/layout.html',
+                    templateUrl: 'app/views/shared/_layout.html',
                     controller: 'baseController'
                 }
             }            
@@ -32,7 +32,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: '/home.html',
             views: {
                 'content@base': {
-                    templateUrl: 'app/views/homepage/content.html'
+                    templateUrl: 'app/views/homepage/content.html',
+                    controller: 'homepageController'
                 }
             }
         })

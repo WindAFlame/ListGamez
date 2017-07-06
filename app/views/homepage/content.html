@@ -32,7 +32,7 @@
 <!-- Section 2 : Optionnal Information  : START -->
     <section class="mdl-grid mdl-grid--no-spacing"> 
 
-            <card-off ng-repeat="card in text.homepage.content.card" icon="{{card['fa-icon']}}" title="{{card.title}}">
+            <card-off ng-repeat="card in text.homepage.content.card" icon="{{card['fa-icon']}}" title="{{card.title}}" action="clickToOpen[card.id]">
                 <p class="mdl-cell mdl-cell--12-col" style="text-align: center;">{{card.text}}</p>
             </card-off>
         

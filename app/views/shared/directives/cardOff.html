@@ -4,18 +4,10 @@
         <h2 class="mdl-cell mdl-cell--12-col" style="text-align: center;"><i class="{{icon}}"></i></h2>
         <h5 class="mdl-cell mdl-cell--12-col" style="text-align: center;">{{title}}</h5>
         <div ng-transclude></div>
-        <!-- Method 1
-        <div class="mdl-cell mdl-cell--12-col mdl-grid mdl-grid--no-spacing mdl-cell--bottom">
-            <div class="mdl-layout__spacer"></div>
-            <button class="mdl-cell mdl-cell--12-col mdl-button mdl-js-button" href>Learn More</button>
-            <div class="mdl-layout__spacer"></div>
-        </div>
-        -->
-        <!-- Method 2 -->
         <div class="mdl-cell mdl-cell--12-col mdl-cell--bottom mdl-grid mdl-grid--no-spacing mdl-card__actions mdl-card--border">
             <div class="mdl-layout__spacer"></div>
-            <button class="mdl-cell mdl-cell--12-col mdl-button mdl-js-button">
-            Learn More
+            <button class="mdl-cell mdl-cell--12-col mdl-button mdl-js-button" ng-click="action()">
+                Learn More
             </button>
             <div class="mdl-layout__spacer"></div>
         </div>

@@ -8,8 +8,9 @@ app.directive('cardOff', function() {
     replace: true,
     scope: {
       title: '@',
-      icon: '@'
+      icon: '@',
+      action: '='
     },
-    templateUrl: 'app/views/shared/cardOff.html'
+    templateUrl: 'app/views/shared/directives/cardOff.html'
   };
 });
