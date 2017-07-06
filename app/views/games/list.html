@@ -2,7 +2,28 @@
     VIEW - Game List
     Draw all availible games.
 -->
-<div class="container">
-    <div>Banner</div>
-    <div>Box</div>
+<div class="mdl-grid">
+<div class="mdl-layout-spacer"></div>
+<section class="mdl-cell mdl-cell--10-col">
+    
+    <h1>Games List</h1>
+
+    <!-- TODO : Navbar : START-->
+    <div class="mdl-grid">
+        
+    </div>
+    <!-- TODO : Navbar : END -->
+
+    <!-- List Games : START-->
+    <div id="draw-game-card" class="mdl-grid">
+        <game-card ng-data="gamesData[0]"></game-card>
+        <game-card ng-data="gamesData[1]"></game-card>
+        <game-card ng-data="gamesData[2]"></game-card>
+        <game-card ng-data="gamesData[2]"></game-card>
+        <game-card ng-data="gamesData[2]"></game-card>
+    </div>
+    <!-- List Games : END-->
+
+</section>
+<div class="mdl-layout-spacer"></div>
 </div>
