@@ -11,9 +11,12 @@ var app = angular.module('MainApp', [
     // - UI.Router
     'ui.router',
     // - NgDialog
-    'ngDialog'
+    'ngDialog',
+    // -Translate
+    'pascalprecht.translate'
 ]);
 
+// Configuration - ngDialog
 app.config(['ngDialogProvider', function (ngDialogProvider) {
     ngDialogProvider.setDefaults({
         className: 'ngdialog-theme-default',

@@ -1,7 +1,9 @@
 /*
 
  */
-app.controller('homepageController', function($scope, ngDialog){
+app.controller('homepageController', function($scope, $translate, ngDialog){
+    $scope.cards = getDict($translate.use()).homepage.content.card;
+    // -ngDialog for each cardOff
     $scope.clickToOpen = {};
     // Function called by id in text.js (lang.homepage.card.id)
     $scope.clickToOpen[0] = function(){

@@ -8,19 +8,18 @@
 <article class="mdl-cell mdl-cell--8-col">
 <!-- Section 1 : Main Information  : START -->
     <section class="mdl-grid mdl-grid--no-spacing">
-        
         <!-- Title -->
-        <h1 class="mdl-cell mdl-cell--12-col" style="text-align: center;">{{text.homepage.content.title}}<br/></h1>
+        <h1 class="mdl-cell mdl-cell--12-col" style="text-align: center;">{{'homepage.content.title' | translate}}<br/></h1>
         
         <!-- Spacer -->
         <div class="mdl-cell mdl-cell--12-col" style="text-align: center;"><br><br></div>
 
         <!-- Description -->
-        <h5 class="mdl-cell mdl-cell--12-col" style="text-align: center;">{{text.homepage.content.describ}}</h5>
+        <h5 class="mdl-cell mdl-cell--12-col" style="text-align: center;">{{'homepage.content.describ' | translate}}</h5>
 
         <!-- Button to access at the main feature -->
-        <div class="row center" ng-if="text.homepage.content.button != null">
-            <a href ui-serf="#!" class="btn-large waves-effect waves-light">{{text.homepage.content.button}}</a>
+        <div class="mdl-grid center" style="text-align: center;" ng-if="null == 'homepage.content.button' | translate">
+            <button ui-serf="#!" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">{{'homepage.content.button' | translate}}</a>
         </div>
         
     </section>
@@ -30,12 +29,12 @@
 <br/>
 <br/>
 <!-- Section 2 : Optionnal Information  : START -->
-    <section class="mdl-grid mdl-grid--no-spacing"> 
-
-            <card-off ng-repeat="card in text.homepage.content.card" icon="{{card['fa-icon']}}" title="{{card.title}}" action="clickToOpen[card.id]">
+    <section class="mdl-grid mdl-grid--no-spacing">
+        
+            <card-off ng-repeat="card in cards" icon="{{card['fa-icon']}}" title="{{card.title}}" action="clickToOpen[card.id]">
                 <p class="mdl-cell mdl-cell--12-col" style="text-align: center;">{{card.text}}</p>
             </card-off>
-        
+
     </section>
 <!-- Section 2 : Optionnal Information  : END -->
 </article>

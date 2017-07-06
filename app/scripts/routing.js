@@ -20,10 +20,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
         .state('base.layout', {
             abstract: true,
             views: {
-                'header@base': {
-                    templateUrl: 'app/views/base/header.html',
-                    controller: 'headerController'
-                },
+                'header@base': {templateUrl: 'app/views/base/header.html'},
                 'footer@base': {templateUrl: 'app/views/base/footer.html'}
             }
         })
