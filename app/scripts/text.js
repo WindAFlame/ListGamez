@@ -31,17 +31,17 @@ var text = {
                     {
                         "fa-icon": "fa fa-bolt",
                         "title" : "Quick to install",
-                        "text" : "Vous n'avez qu'a décomprésser le jeu pour pouvoir le lancer."
+                        "text" : "You only have to decompress the game to be able to launch it."
                     },
                     {
                         "fa-icon": "fa fa-cog",
                         "title" : "Easy to play",
-                        "text" : "Tout les jeux proposés possèdent des scripts pour installer/exécuter sans prise de tête."
+                        "text" : "All the games offered have scripts to install / to run."
                     },
                     {
                         "fa-icon": "fa fa-users",
-                        "title" : "Own by Community",
-                        "text" : "Le contenu du site ne dépend que de vous, que ce soit pour les demandes et pour les améliorations du contenu."
+                        "title" : "Powered by Community",
+                        "text" : "The content of the site depends on Community, whether for requests or for improvements in content."
                     }
                 ]
             }
