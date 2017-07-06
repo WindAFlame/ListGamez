@@ -1,13 +1,13 @@
 <!--  -->
 <article class="mdl-cell mdl-cell--4-col">
     <div class="mdl-grid mdl-cell mdl-cell--1-offset mdl-cell--10-col mdl-cell--1-offset mdl-shadow--2dp" style="height: 100%;">
-        <h2 class="mdl-cell mdl-cell--12-col" style="text-align: center;"><i class="{{icon}}"></i></h2>
-        <h5 class="mdl-cell mdl-cell--12-col" style="text-align: center;">{{title}}</h5>
+        <h2 class="mdl-cell mdl-cell--12-col" style="text-align: center;"><i class="{{'homepage.content.card.'+cardId+'.fa-icon' | translate}}"></i></h2>
+        <h5 class="mdl-cell mdl-cell--12-col" style="text-align: center;">{{'homepage.content.card.'+cardId+'.title' | translate}}</h5>
         <div ng-transclude></div>
         <div class="mdl-cell mdl-cell--12-col mdl-cell--bottom mdl-grid mdl-grid--no-spacing mdl-card__actions mdl-card--border">
             <div class="mdl-layout__spacer"></div>
             <button class="mdl-cell mdl-cell--12-col mdl-button mdl-js-button" ng-click="action()">
-                Learn More
+                {{'homepage.content.card.'+cardId+'.button' | translate}}
             </button>
             <div class="mdl-layout__spacer"></div>
         </div>

@@ -62,32 +62,38 @@ textFR.homepage.content.card = [];
 addInHomepageContentCard(textEN,{
     "fa-icon": "fa fa-bolt",
     "title" : "Quick to install",
-    "text" : "You only have to decompress the game to be able to launch it."
+    "text" : "You only have to decompress the game to be able to launch it.",
+    "button" : "Learn More"
 });
 addInHomepageContentCard(textFR,{
     "fa-icon": "fa fa-bolt",
     "title" : "Rapide à installer",
-    "text" : "You only have to decompress the game to be able to launch it."
+    "text" : "You only have to decompress the game to be able to launch it.",
+    "button" : "En savoir plus"
 });
 addInHomepageContentCard(textEN,{
     "fa-icon": "fa fa-cog",
     "title" : "Easy to play",
-    "text" : "All the games offered have scripts to install / to run."
+    "text" : "All the games offered have scripts to install / to run.",
+    "button" : "Learn More"
 });
 addInHomepageContentCard(textFR,{
     "fa-icon": "fa fa-cog",
     "title" : "Facile à exécuter",
-    "text" : "All the games offered have scripts to install / to run."
+    "text" : "All the games offered have scripts to install / to run.",
+    "button" : "En savoir plus"
 });
 addInHomepageContentCard(textEN,{
     "fa-icon": "fa fa-users",
     "title" : "Powered by Community",
-    "text" : "The content of the site depends on Community, whether for requests or for improvements in content."
+    "text" : "The content of the site depends on Community, whether for requests or for improvements in content.",
+    "button" : "Learn More"
 });
 addInHomepageContentCard(textFR,{
     "fa-icon": "fa fa-users",
     "title" : "Evolue avec la Communauté",
-    "text" : "The content of the site depends on Community, whether for requests or for improvements in content."
+    "text" : "The content of the site depends on Community, whether for requests or for improvements in content.",
+    "button" : "En savoir plus"
 });
 // ---card/function
 function addInHomepageContentCard(dic,obj) {

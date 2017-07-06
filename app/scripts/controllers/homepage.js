@@ -2,7 +2,7 @@
 
  */
 app.controller('homepageController', function($scope, $translate, ngDialog){
-    $scope.cards = getDict($translate.use()).homepage.content.card;
+    $scope.maxCardId = getDict($translate.use()).homepage.content.card.length;
     // -ngDialog for each cardOff
     $scope.clickToOpen = {};
     // Function called by id in text.js (lang.homepage.card.id)
