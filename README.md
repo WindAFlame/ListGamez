@@ -1,11 +1,23 @@
 # Website for listing my games and share it in LAN
-
 _Material Design Lite Theme - Default_
-
+Prendre exemple sur https://game-db.herokuapp.com/
 ## Dependencies
-
+### AngularJS 1.6.X
+#### Main
 * [AngularJS](http://angularjs.org/)
+#### Modules
+* [AngularJS-Animate]()
+* [AngularJS-Aria]()
+* [AngularJS-Message]()
+* [AngularJS-Sanitize]()
+#### Extensions
 * [UI.Route](https://ui-router.github.io/)
-* [MaterialDesignLite](https://getmdl.io/)
+### Theme
+#### Materialize Design Lite (MDL)
+* [MDL](https://getmdl.io/started/)
+### Tools
+* [Validator](https://github.com/chriso/validator.js)
+### Icon - Font
 * [FontAwesome](http://fontawesome.io/3.2.1/)
+* [FlagIcon]()
 
