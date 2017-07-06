@@ -16,11 +16,9 @@
 
     <!-- List Games : START-->
     <div id="draw-game-card" class="mdl-grid">
-        <game-card ng-data="gamesData[0]"></game-card>
-        <game-card ng-data="gamesData[1]"></game-card>
-        <game-card ng-data="gamesData[2]"></game-card>
-        <game-card ng-data="gamesData[2]"></game-card>
-        <game-card ng-data="gamesData[2]"></game-card>
+
+        <game-card ng-repeat="game in gamesData | orderBy: 'title'" ng-data="game"></game-card>
+
     </div>
     <!-- List Games : END-->
 
