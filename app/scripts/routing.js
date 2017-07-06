@@ -61,7 +61,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: '/games.html',
             views: {
                 'content@base': {
-                    templateUrl: 'app/views/games/list.html',
+                    templateUrl: 'app/views/game.list/content.html',
                     controller: function($scope, jsonDataGames) {
                         $scope.gamesData = jsonDataGames;
                     }
@@ -73,7 +73,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: '/games.html?id',
             views: {
                 'content@base': {
-                    templateUrl: 'app/views/games/detail.html'
+                    templateUrl: 'app/views/game.detail/content.html'
                 }
             },
             onEnter: function($transition$, $state){
