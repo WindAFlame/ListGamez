@@ -1,0 +1,11 @@
+{
+  "name": "mdl-vanilla",
+  "version": "1.0.0",
+  "description": "website for lan with default theme from mdl",
+  "devDependencies": {
+    "browser-sync": "^2.18.12",
+    "gulp": "^3.9.1"
+  },
+  "author": "Endy WindAFlame",
+  "license": "SimPL-2.0"
+}

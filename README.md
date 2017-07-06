@@ -1,18 +1,24 @@
 # Website for listing my games and share it in LAN
-
+_Material Design Lite Theme - Default_
+Prendre exemple sur https://game-db.herokuapp.com/
 ## Dependencies
-
+### AngularJS 1.6.X
+#### Main
 * [AngularJS](http://angularjs.org/)
+#### Modules
+* [AngularJS-Animate]()
+* [AngularJS-Aria]()
+* [AngularJS-Message]()
+* [AngularJS-Sanitize]()
+#### Extensions
 * [UI.Route](https://ui-router.github.io/)
-* [MaterialDesignLite](https://getmdl.io/)
+* [ngDialog](http://likeastore.github.io/ngDialog/)
+### Theme
+#### Materialize Design Lite (MDL)
+* [MDL](https://getmdl.io/started/)
+### Tools
+* [Validator](https://github.com/chriso/validator.js)
+### Icon - Font
 * [FontAwesome](http://fontawesome.io/3.2.1/)
+* [FlagIcon]()
 
-## What's about ?
-
-It's a website for view all games informations shared for LAN.
-This informations are store in json file and the website is dynamicaly created from it.
-
-## How to Deployment ?
-
-Simple. 
-Only clone repository in your favorite web server.

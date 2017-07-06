@@ -1,0 +1,44 @@
+<!--
+    VIEW - Homepage
+    Main page
+-->
+<br/>
+<div class="mdl-grid">
+<div class="mdl-layout-spacer"></div>
+<article class="mdl-cell mdl-cell--8-col">
+<!-- Section 1 : Main Information  : START -->
+    <section class="mdl-grid mdl-grid--no-spacing">
+        <!-- Title -->
+        <h1 class="mdl-cell mdl-cell--12-col" style="text-align: center;">{{'homepage.content.title' | translate}}<br/></h1>
+        
+        <!-- Spacer -->
+        <div class="mdl-cell mdl-cell--12-col" style="text-align: center;"><br><br></div>
+
+        <!-- Description -->
+        <h5 class="mdl-cell mdl-cell--12-col" style="text-align: center;">{{'homepage.content.describ' | translate}}</h5>
+
+        <!-- Button to access at the main feature -->
+        <div class="mdl-grid center" style="text-align: center;" ng-if="null == 'homepage.content.button' | translate">
+            <button ui-serf="#!" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">{{'homepage.content.button' | translate}}</a>
+        </div>
+        
+    </section>
+<!-- Section 1 : Main Information  : END -->
+<br/>
+<br/>
+<br/>
+<br/>
+<!-- Section 2 : Optionnal Information  : START -->
+    <section class="mdl-grid mdl-grid--no-spacing">
+        
+            <card-off ng-repeat="cardId in [] | rangeFilter:maxCardId" card-id="cardId">
+                <p class="mdl-cell mdl-cell--12-col" style="text-align: center;">{{'homepage.content.card.'+cardId+'.text' | translate}}</p>
+            </card-off>
+
+    </section>
+<!-- Section 2 : Optionnal Information  : END -->
+</article>
+<div class="mdl-layout-spacer"></div>
+</div>
+<br/>
+<br/>

@@ -1,0 +1,58 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background: whitesmoke;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+/* header */
+.mdl-layout__header {
+    background-color: #424242 !important;
+}
+header > div > a {
+    text-decoration: none;
+    color: yellowgreen;
+}
+
+/* Fix footer to bottom */
+footer {
+  width: 100%;
+  bottom: 0;
+  position: fixed;
+}
+
+/* gameCard */
+#draw-game-card > .mdl-cell {
+    margin: 7px;
+    height: 100%;
+}
+.game-card {
+    display: block;
+    width: 240px;
+    text-decoration: none;
+}
+.mdl-card__media {
+    margin: 0;
+    height: 100%;
+}
+.game-card_info-system {
+    margin-top: -10%;
+    margin-left: 5%;
+    color: whitesmoke;
+}
+.game-card_title {
+    font-size: 0.9em;
+    color: black;
+    text-align: center;
+}
+.game-card > .mdl-card__actions {
+    height: 39%;
+    min-width: 100%;
+}
+
+/* Fix ngDialog - close button */
+* { margin: 0; padding: 0; border: 0; outline: 0; }
