@@ -40,42 +40,50 @@ app.config(function($stateProvider, $urlRouterProvider) {
         .state('base.layout.game', {
             abstract: true,
             resolve: {
-                gamesData:  function(httpFactory){
-                    return httpFactory({
+                jsonDataGames:  function($http){
+                    return $http({
                         method: 'GET',
                         url:'media/data.json'
                     })
-                    .then (function (result) {
+                    .then(function onSuccess(result){
                         return result.data;
+                    })
+                    .catch(function onError(result){
+                        alert('Cannot get json file !');
+                        return null;
                     });
                 }
             }
         })
-        // Game List
+        // -Game List
         .state('base.layout.game.list', {
             url: '/games.html',
             views: {
                 'content@base': {
-                    templateUrl: 'app/views/games/list.html'
+                    templateUrl: 'app/views/games/list.html',
+                    controller: function($scope, jsonDataGames) {
+                        $scope.gamesData = jsonDataGames;
+                    }
+                },
+            }
+        })
+        // -Game Detail
+        .state('base.layout.game.detail', {
+            url: '/games.html?id',
+            views: {
+                'content@base': {
+                    templateUrl: 'app/views/games/detail.html'
+                }
+            },
+            onEnter: function($transition$, $state){
+                // Get Params
+                let params = $transition$.params();
+                // CheckParams
+                if (!validator.isNumeric(params.id)){
+                    $state.go('base.layout.game.list');
                 }
             }
         })
-/*
-        .state('game', {
-            abstract: true,
-            url: '/game',
-            templateUrl: 'html/view/game.htm',
-            resolve: {
-                gamesData:  function($http){
-                    return $http.get('media/bdd.json')
-                    .then (function (result) {
-                        return result.data;
-                    });
-                }
-            },
-            controller: 'gameCtrl'
-        })
-*/
 });
 
 // Fix animate in view
