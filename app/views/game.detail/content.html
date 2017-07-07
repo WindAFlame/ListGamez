@@ -2,7 +2,109 @@
     VIEW - Game Detail
     Draw all availible games.
 -->
-<div class="container">
-    <pre>gamesData: {{gamesData}}</pre>
-    <pre>id: {{id}}</pre>
+<div class="mdl-grid">
+
+    <div class="mdl-cell mdl-cell--12-col"><br></div>
+    <!-- Title Game : START -->
+    <h1 class="mdl-cell mdl-cell--12-col" style="text-align: center;">{{gameData.title}}</h1>
+    <!-- Title Game : END-->
+    <div class="mdl-cell mdl-cell--12-col"><br></div>
+    <section class="mdl-cell mdl-cell--10-col mdl-cell--1-offset mdl-grid mdl-grid--no-spacing">
+        <div class="mdl-layout-spacer"></div>
+        <!-- Information : START -->
+        <article class="mdl-cell mdl-cell--6-col mdl-cell--middle mdl-grid mdl-grid--no-spacing">
+            <table class="mdl-cell mdl-cell--12-col mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+            <tbody>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric" style="border-right: 1px solid rgba(0,0,0,.12);">Genres</td>
+                    <td style="text-align: left;">
+                        <span ng-repeat="genre in gameData.info.genre | limitTo: maxIterate">
+                            {{genre}},
+                            <span ng-show="gameData.info.genre.length > maxIterate">, </span>
+                        </span>                        
+                    </td>
+                </tr>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric" style="border-right: 1px solid rgba(0,0,0,.12);">Features</td>
+                    <td style="text-align: left;">
+                        <span ng-repeat="feature in gameData.info.feature | limitTo: maxIterate">
+                            {{feature}},
+                            <span ng-show="gameData.info.feature.length > maxIterate">, </span>
+                        </span>        
+                    </td>
+                </tr>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric" style="border-right: 1px solid rgba(0,0,0,.12);">Developer</td>
+                    <td style="text-align: left;">
+                        <span ng-repeat="developer in gameData.info.developer | limitTo: maxIterate">
+                            {{developer}},
+                            <span ng-show="gameData.info.developer.length > maxIterate">, </span>
+                        </span>        
+                    </td>
+                </tr>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric" style="border-right: 1px solid rgba(0,0,0,.12);">Publisher</td>
+                    <td style="text-align: left;">
+                        <span ng-repeat="editor in gameData.info.editor | limitTo: maxIterate">
+                            {{editor}},
+                            <span ng-show="gameData.info.editor.length > maxIterate">, </span>
+                        </span>        
+                    </td>
+                </tr>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric" style="border-right: 1px solid rgba(0,0,0,.12);">System</td>
+                    <td style="text-align: left;">
+                        <span ng-repeat="system in gameData.info.system | limitTo: maxIterate">
+                            {{system}},
+                            <span ng-show="gameData.info.system.length > maxIterate">, </span>
+                        </span>        
+                    </td>
+                </tr>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric" style="border-right: 1px solid rgba(0,0,0,.12);">Languages (Audio)</td>
+                    <td style="text-align: left;" >
+                        <span ng-repeat="audio in gameData.info.audio">
+                            {{audio}},
+                        </span>        
+                    </td>
+                </tr>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric" style="border-right: 1px solid rgba(0,0,0,.12);">Languages (Text)</td>
+                    <td style="text-align: left;">
+                        <span ng-repeat="subtitle in gameData.info.subtitle | limitTo: maxIterate">
+                            {{subtitle}},
+                            <span ng-show="gameData.info.subtitle.length > maxIterate">, </span>
+                        </span>        
+                    </td>
+                </tr>
+                <tr>
+                    <td class="mdl-data-table__cell--non-numeric" style="border-right: 1px solid rgba(0,0,0,.12);">Release Date</td>
+                    <td style="text-align: left;">
+                        <span ng-repeat="release in gameData.info.release | limitTo: maxIterate">
+                            {{release}},
+                            <span ng-show="gameData.info.release.length > maxIterate">, </span>
+                        </span>        
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+        </article>
+        <!-- Information : END -->
+        <div class="mdl-layout-spacer"></div>
+        <!-- Links : START -->
+        <article class="mdl-cell mdl-cell--3-col mdl-grid mdl-grid--no-spacing">
+        
+            <div class="mdl-cell mdl-cell--12-col" style="text-align: center;">
+                <img src="{{gameData.cover}}" alt="Cover Game">
+            </div>
+
+            <div class="mdl-cell mdl-cell--12-col mdl-grid mdl-grid--no-spacing" ng-repeat="data in gameData.download">
+                <button href="{{data.link}}" class="mdl-cell mdl-cell--12-col mdl-button mdl-js-button mdl-button--raised">{{data.name}}</button>
+            </div>
+
+        </article>
+        <!-- Links : END -->
+        <div class="mdl-layout-spacer"></div>
+    </section>
+    
 </div>

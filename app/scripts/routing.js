@@ -70,7 +70,16 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: '/games.html?id',
             views: {
                 'content@base': {
-                    templateUrl: 'app/views/game.detail/content.html'
+                    templateUrl: 'app/views/game.detail/content.html',
+                    controller: function($scope, $filter,$transition$ , jsonDataGames) {
+                        // Get Params
+                        let params = $transition$.params();
+                        console.log('DATA:',$transition$.params());
+                        // Scope    
+                        $scope.gamesData = jsonDataGames[0];
+                        $scope.gameData = $filter('filter')(jsonDataGames, {'id': params.id})[0];
+                        $scope.id = params.id;
+                    }
                 }
             },
             onEnter: function($transition$, $state){
