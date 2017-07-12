@@ -1,3 +1,5 @@
+
+/* Fix footer */
 body {
   display: flex;
   min-height: 100vh;
@@ -7,6 +9,9 @@ body {
 main {
   flex: 1 0 auto;
 }
+
+/* Fix ngDialog - close button */
+* { margin: 0; padding: 0; border: 0; outline: 0; }
 
 /* gameCard */
 #draw-game-card > .card-image > .card-title {
@@ -18,5 +23,21 @@ main {
   font-size: 1em;
 }
 
-/* Fix ngDialog - close button */
-* { margin: 0; padding: 0; border: 0; outline: 0; }
+/* dark style */
+body{
+  background: whitesmoke !important;
+}
+header > nav{
+  background-color: #424242 !important;
+}
+.brand-logo{
+  color: yellowgreen !important;
+}
+footer {
+  background: #424242 !important;
+}
+#draw-game-card > .card-content{
+  color: black;
+  background: rgba(0,0,0,.12);
+
+}
