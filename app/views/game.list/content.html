@@ -13,7 +13,7 @@
     <!-- List Games : START-->
     <div class="row">
         
-        <game-card ng-repeat="game in gamesData" ng-data="game"></game-card>
+        <game-card ng-repeat="game in gamesData | orderBy: 'title'" ng-data="game"></game-card>
 
     </div>
     <!-- List Games : END-->

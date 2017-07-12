@@ -4,7 +4,7 @@
 <div class="col s4">
 <div id="draw-game-card" class="card">
     <div class="card-image">
-        <img src="{{ngData.cover}}">
+        <img ng-src="{{ngData.cover}}">
         <div class="card-title">
         <!-- TODO : optimize system detected in download only -->
             <span ng-if="ngData.info.system.indexOf('windows')>-1">
