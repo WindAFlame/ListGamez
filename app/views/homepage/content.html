@@ -31,7 +31,7 @@
 <!-- Section 2 : Optionnal Information  : START -->
     <section class="mdl-grid mdl-grid--no-spacing">
         
-            <card-off ng-repeat="cardId in [] | rangeFilter:maxCardId" card-id="cardId">
+            <card-off ng-repeat="cardId in [] | rangeFilter:maxCardId" card-id="cardId" action="clickToOpen[cardId]">
                 <p class="mdl-cell mdl-cell--12-col" style="text-align: center;">{{'homepage.content.card.'+cardId+'.text' | translate}}</p>
             </card-off>
 

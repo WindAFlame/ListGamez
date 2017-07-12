@@ -23,6 +23,10 @@
             "Tps", 
             "SF"
             ],
+        "developer" :
+            [
+                ""
+            ],
         "editor": 
             [
             "Lucasarts"
@@ -45,6 +49,10 @@
 
             "windows",
             "linux"
+            ],
+        "release":
+            [
+            ""
             ]
         }
     },
@@ -64,6 +72,10 @@
             "Tps", 
             "SF"
             ],
+        "developer" :
+            [
+                ""
+            ],
         "editor": 
             [
             "Lucasarts"
@@ -86,6 +98,10 @@
 
             "windows",
             "linux"
+            ],
+        "release":
+            [
+            ""
             ]
         }
     },{
@@ -99,7 +115,7 @@
             "system": [
                 "windows"
             ],
-            "name": "Singleplayer & Multiplayer",
+            "name": "GAME",
             "size": "437MB"
         }
     ],
@@ -109,10 +125,21 @@
             [
             "Stratégie"
             ],
+        "feature":
+            [
+
+            ],
+        "developer" :
+            [
+            "Ensemble Studios"
+            ],
         "editor": 
             [
-            "Microsoft Game Studios", 
-            "Ensemble Studios"
+            "Microsoft Game Studios"
+            ],
+        "system": 
+            [
+            "windows"
             ],
         "audio":
             [
@@ -126,10 +153,9 @@
             "fr",
             "es"
             ],
-        "system": 
+        "release":
             [
-
-            "windows"
+            ""
             ]
         }
     }

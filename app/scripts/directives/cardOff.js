@@ -7,7 +7,8 @@ app.directive('cardOff', function() {
     transclude: true,
     replace: true,
     scope: {
-      cardId: '='
+      cardId: '=',
+      action: '='
     },
     templateUrl: 'app/views/shared/directives/cardOff.html'
   };
