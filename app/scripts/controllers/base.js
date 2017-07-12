@@ -1,7 +1,8 @@
 /*
 
  */
-app.controller('baseController',function($scope){
-    // TODO: get Lang from browser and set default if unknown.
-    $scope.text = text.en;
+app.controller('baseController',function($scope, $translate){
+    $scope.changeLanguage = function (langKey) {
+        $translate.use(langKey);
+    };
 });

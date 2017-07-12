@@ -7,3 +7,16 @@ body {
 main {
   flex: 1 0 auto;
 }
+
+/* gameCard */
+#draw-game-card > .card-image > .card-title {
+  padding: 0 0 1% 4%;
+  font-size: 1.1em;
+}
+#draw-game-card > .card-content {
+  text-decoration: none;
+  font-size: 1em;
+}
+
+/* Fix ngDialog - close button */
+* { margin: 0; padding: 0; border: 0; outline: 0; }

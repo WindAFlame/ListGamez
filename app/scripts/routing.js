@@ -12,7 +12,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
             abstract: true,
             views: {
                 'layout@': {
-                    templateUrl: 'app/views/shared/layout.html',
+                    templateUrl: 'app/views/shared/_layout.html',
                     controller: 'baseController'
                 }
             }            
@@ -20,10 +20,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
         .state('base.layout', {
             abstract: true,
             views: {
-                'header@base': {
-                    templateUrl: 'app/views/base/header.html',
-                    controller: 'headerController'
-                },
+                'header@base': {templateUrl: 'app/views/base/header.html'},
                 'footer@base': {templateUrl: 'app/views/base/footer.html'}
             }
         })
@@ -32,7 +29,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: '/home.html',
             views: {
                 'content@base': {
-                    templateUrl: 'app/views/homepage/content.html'
+                    templateUrl: 'app/views/homepage/content.html',
+                    controller: 'homepageController'
                 }
             }
         })
@@ -40,13 +38,17 @@ app.config(function($stateProvider, $urlRouterProvider) {
         .state('base.layout.game', {
             abstract: true,
             resolve: {
-                gamesData:  function(httpFactory){
-                    return httpFactory({
+                jsonDataGames:  function($http){
+                    return $http({
                         method: 'GET',
                         url:'media/data.json'
                     })
-                    .then (function (result) {
+                    .then(function onSuccess(result){
                         return result.data;
+                    })
+                    .catch(function onError(result){
+                        alert('Cannot get json file !');
+                        return null;
                     });
                 }
             }
@@ -56,7 +58,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: '/games.html',
             views: {
                 'content@base': {
-                    templateUrl: 'app/views/games/list.html'
+                    templateUrl: 'app/views/game.list/content.html',
+                    controller: function($scope, jsonDataGames) {
+                        $scope.gamesData = jsonDataGames;
+                    }
                 }
             }
         })

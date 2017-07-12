@@ -1,0 +1,22 @@
+<!--
+    VIEW - Game List
+    Draw all availible games.
+-->
+<div class="row">
+<section class="col s12">
+    
+    <h1>Games List</h1>
+
+    <!-- TODO : Navbar : START-->
+    <!-- TODO : Navbar : END -->
+
+    <!-- List Games : START-->
+    <div class="row">
+        
+        <game-card ng-repeat="game in gamesData" ng-data="game"></game-card>
+
+    </div>
+    <!-- List Games : END-->
+
+</section>
+</div>

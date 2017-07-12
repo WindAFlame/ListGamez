@@ -1,0 +1,25 @@
+<!-- -->
+<a href ui-sref="base.layout.game.detail({id: ngData.id})">
+
+<div class="col s4">
+<div id="draw-game-card" class="card">
+    <div class="card-image">
+        <img src="{{ngData.cover}}">
+        <div class="card-title">
+        <!-- TODO : optimize system detected in download only -->
+            <span ng-if="ngData.info.system.indexOf('windows')>-1">
+                <i class="fa fa-windows fa"></i>
+            </span>
+            <span ng-if="ngData.info.system.indexOf('linux')>-1">
+                <i class="fa fa-linux fa"></i>
+            </span>
+        </div>
+    </div>
+    
+    <div class="card-content" style="padding: 8px;">
+        <div class="center">{{ngData.title}}</div>
+    </div>
+</div>
+</div>
+
+</a>

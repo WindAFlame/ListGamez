@@ -2,10 +2,13 @@
     Partial - FOOTER
     Generic footer for all pages.
 -->
-<footer class="page-footer">
 <div class="footer-copyright">
     <div class="container">
-        <span>{{text.footer.copyright}}</span>
+        <span>{{'footer.copyright' | translate}}</span>
+        <div class="grey-text text-lighten-4 right">
+            <h7>{{'footer.language' | translate}}</h7>
+            <a href ng-click="changeLanguage('en')"><span class="flag-icon flag-icon-us"></span></a>
+            <a href ng-click="changeLanguage('fr')"><span class="flag-icon flag-icon-fr"></span></a>
+        </div>
     </div>
 </div>
-</footer>

@@ -2,28 +2,25 @@
     VIEW - Homepage
     Main page
 -->
-<main class="container">
-<br/>
 <br/>
 <!-- Section 1 : Main Information  : START -->
 <section>
     
     <!-- Title -->
-    <h1 class="center">{{text.homepage.content.title}}</h1>
+    <h1 class="center">{{'homepage.content.title' | translate}}</h1>
 
     <!-- Description -->
     <div class="row center">
         <h5 class="col s12 light">
-            {{text.homepage.content.describ}}
+            {{'homepage.content.describ' | translate}}
         </h5>
     </div>
 
     <!-- Button to access at the main feature -->
-    <div class="row center" ng-if="text.homepage.content.button != null">
-        <a href ui-serf="#!" class="btn-large waves-effect waves-light">{{text.homepage.content.button}}</a>
+    <div class="row center" ng-if="null == 'homepage.content.button' | translate">
+        <a href ui-serf="#!" class="btn-large waves-effect waves-light">{{'homepage.content.button' | translate}}</a>
     </div>
     
-<br/>
 <br/>
 </section>
 <!-- Section 1 : Main Information  : END -->
@@ -32,13 +29,11 @@
 <section> 
     <div class="row">
 
-        <card-off ng-repeat="card in text.homepage.content.card" icon="{{card['fa-icon']}}" title="{{card.title}}">
-            <p class="light center">{{card.text}}</p>
+        <card-off ng-repeat="cardId in [] | rangeFilter:maxCardId" card-id="cardId" action="clickToOpen[cardId]">
+            {{'homepage.content.card.'+cardId+'.text' | translate}}
         </card-off>
     
     </div>  
 </section>
 <br/>
-<br/>
 <!-- Section 1 : Optionnal Information  : END -->
-</main>

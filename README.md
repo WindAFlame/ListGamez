@@ -15,6 +15,8 @@ _Materialize Theme - Default_
 #### Materialize-CSS
 * [JQuery]()
 * [Materialize](http://materializecss.com/)
+### Tools
+* [Validator](https://github.com/chriso/validator.js)
 ### Icon - Font
 * [FontAwesome](http://fontawesome.io/3.2.1/)
 * [FlagIcon]()

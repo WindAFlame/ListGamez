@@ -1,11 +1,15 @@
+/*
+
+ */
 app.directive('cardOff', function() {
   return {
     restrict: 'E',
     transclude: true,
+    replace: true,
     scope: {
-      title: '@',
-      icon: '@'
+      cardId: '=',
+      action: '='
     },
-    templateUrl: 'app/views/shared/cardOff.html'
+    templateUrl: 'app/views/shared/directives/cardOff.html'
   };
 });
