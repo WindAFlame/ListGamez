@@ -40,6 +40,9 @@ textFR.footer = {};
 // --copyright
 textEN.footer.copyright = "© 2017 Copyright - Text";
 textFR.footer.copyright = "© 2017 Copyright - Texte";
+// --select language
+textEN.footer.language = "Change language :";
+textFR.footer.language = "Changer la langue :";
 // -HOMEPAGE
 textEN.homepage = {};
 textFR.homepage = {};
