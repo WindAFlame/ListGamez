@@ -19,11 +19,13 @@ header > div > a {
 }
 
 /* Fix footer to bottom */
+/*
 footer {
   width: 100%;
   bottom: 0;
   position: fixed;
 }
+*/
 
 /* gameCard */
 #draw-game-card > .mdl-cell {
