@@ -27,6 +27,10 @@ footer {
 }
 */
 
+footer {
+    flex: 0 0 auto;
+}
+
 /* gameCard */
 #draw-game-card > .mdl-cell {
     margin: 7px;

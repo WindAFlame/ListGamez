@@ -5,7 +5,12 @@
 <div class="mdl-mini-footer__left-section">
   <div class="mdl-logo">{{'footer.copyright' | translate}}</div>
   <ul class="mdl-mini-footer__link-list">
-    <li><a ui-sref="#!">Help</a></li>
-    <li><a ui-sref="#!">Privacy & Terms</a></li>
+    <li><a ui-sref="#!">Help*</a></li>
+    <li><a ui-sref="#!">Privacy & Terms*</a></li>
   </ul>
+</div>
+<div class="mdl-mini-footer__right-section">
+    <h7>{{'footer.language' | translate}}</h7>
+    <button ng-click="changeLanguage('en')" class="mdl-mini-footer__social-btn"><span class="flag-icon flag-icon-us"></span></button>
+    <button ng-click="changeLanguage('fr')" class="mdl-mini-footer__social-btn"><span class="flag-icon flag-icon-fr"></span></button>
 </div>
