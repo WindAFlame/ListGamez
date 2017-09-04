@@ -1,0 +1,20 @@
+<a href ui-sref="gameDetail({id: $ctrl.gameData.id})" class="game-card mdl-cell mdl-cell--2-col mdl-shadow--2dp" mdl-upgrade>
+    <div class="mdl-grid mdl-grid--no-spacing">
+        <div class="mdl-cell mdl-cell--12-col mdl-grid mdl-grid--no-spacing">
+            <img class="mdl-card__media mdl-cell mdl-cell--12-col" ng-src="{{$ctrl.gameData.cover}}" alt="Cover" sca>
+        </div>
+        <div class="game-card_info-system">
+        <!-- TODO : optimize system detected in download only -->
+            <span ng-if="$ctrl.gameData.info.system.indexOf('windows')>-1">
+                <i class="fa fa-windows fa"></i>
+            </span>
+            <span ng-if="$ctrl.gameData.info.system.indexOf('linux')>-1">
+                <i class="fa fa-linux fa"></i>
+            </span>
+        </div>
+        <div type"mdl-button"   
+            class="mdl-cell mdl-cell--12-col mdl-card__actions mdl-button--raised mdl-grid" disabled>
+            <h1 class="game-card_title mdl-cell mdl-cell--12-col mdl-cell--middle">{{$ctrl.gameData.title}}</h1>
+        </div>  
+    </div>
+</a>

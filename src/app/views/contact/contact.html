@@ -1,0 +1,53 @@
+<mdl-container size='4'>
+    
+        <div class="mdl-cell mdl-cell--12-col"><br/></div>
+        <div class="mdl-cell mdl-cell--12-col"><br/></div>
+        
+        <form 
+            id="gform"
+            name="$ctrl.form"
+            ng-submit="$ctrl.submit()"
+            class="mdl-cell mdl-cell--12-col mdl-shadow--16dp mdl-grid">
+
+                <div class="mdl-cell mdl-cell--12-col"><br/></div>
+                <h2 class="mdl-cell mdl-cell--1-offset mdl-cell--10-col mdl-cell--1-offset">{{ 'contact.form.title' | translate }}</h2>
+                <div class="mdl-cell mdl-cell--12-col"><hr/></div>
+
+                <div class="mdl-cell mdl-cell--1-offset mdl-cell--10-col mdl-cell--1-offset mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="name" name="name" ng-model="$ctrl.values.name">
+                    <label class="mdl-textfield__label" for="name">{{ 'contact.form.name' | translate }}</label>
+                </div>
+        
+                <div class="mdl-cell mdl-cell--1-offset mdl-cell--10-col mdl-cell--1-offset mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="email" id="email" name="email" ng-model="$ctrl.values.email" required>
+                    <label class="mdl-textfield__label" for="email">{{ 'contact.form.email' | translate }}*</label>
+                </div>
+
+                <div class="mdl-cell mdl-cell--1-offset mdl-cell--10-col mdl-cell--1-offset mdl-grid mdl-grid--no-spacing">
+                <div class="mdl-cell mdl-cell--12-col mdlext-selectfield mdlext-js-selectfield mdlext-selectfield--floating-label">
+                        <select class="mdlext-selectfield__select" id="type" name="type" ng-model="$ctrl.values.type" required>
+                            <option value=""></option>
+                            <option value="Request">Request</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <label class="mdlext-selectfield__label" for="type">{{ 'contact.form.subject' | translate }}*</label>
+                    </div>
+                </div>
+
+                <div class="mdl-cell mdl-cell--1-offset mdl-cell--10-col mdl-cell--1-offset mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <textarea class="mdl-textfield__input" type="text" rows="5" id="message" name="message" ng-model="$ctrl.values.message" required></textarea>
+                    <label class="mdl-textfield__label" for="message">{{ 'contact.form.message' | translate }}*</label>
+                </div>
+
+                <label class="sr-only"></label>
+                <input id="honeypot" type="text" name="honeypot" ng-model="$ctrl.honeypot" value="" />
+
+                <button type="submit" class="mdl-cell mdl-cell--1-offset mdl-cell--10-col mdl-grid mdl-grid--no-spacing mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                    <div class="mdl-cell mdl-cell--2-offset mdl-cell--8-col" style="text-align:center;vertical-align: middle;"><strong>{{ 'contact.form.submit' | translate }}</strong></div>
+                    <div class="mdl-cell mdl-cell--2-col" ng-show="$ctrl.sendedInstance"><span class="mdl-spinner mdl-js-spinner is-active" style="vertical-align: middle;" ></span></div>
+                </button>
+                <div class="mdl-cell mdl-cell--12-col"><br/></div>
+    
+        </form>
+
+</mdl-container>

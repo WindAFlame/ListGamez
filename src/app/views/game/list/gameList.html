@@ -1,0 +1,22 @@
+<mdl-container size='10'>
+    
+    <div class="mdl-cell mdl-cell-12-col"><br/></div>
+    <h1 class="mdl-cell mdl-cell--12-col">Game List</h1>
+    
+    <!-- TODO : Navbar : START-->
+    <div class="mdl-cell mdl-cell-12-col"><br/></div>
+    <div class="mdl-cell mdl-cell--12-col mdl-grid mdl-grid--no-spacing">
+        
+    </div>
+    <!-- TODO : Navbar : END -->
+
+    <!-- List Games : START-->
+    <div class="mdl-cell mdl-cell-12-col"><br/></div>
+    <div id="draw-game-card" class="mdl-cell mdl-cell--12-col mdl-grid mdl-grid--no-spacing">
+
+        <mdl-card-game ng-repeat="game in $ctrl.games | orderBy: 'title'" game-data="game" mdl-upgrade></mdl-card-game>
+
+    </div>
+    <!-- List Games : END-->
+
+</mdl-container>

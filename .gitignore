@@ -1,4 +1,5 @@
-.bowerrc
 node_modules
-bower
-index.local.html
+.idea
+.yarn
+yarn.lock
+OLD

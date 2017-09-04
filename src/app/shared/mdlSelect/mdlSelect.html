@@ -1,0 +1,8 @@
+<div class="mdl-cell mdl-cell--12-col mdlext-selectfield mdlext-js-selectfield mdlext-selectfield--floating-label" mdl-upgrade>
+        <select class="mdlext-selectfield__select" id="{{$ctrl.iname}}" name="{{$ctrl.iname}}" required="{{$ctrl.irequired}}" ng-model="$ctrl.ngmodel">
+            <option value=""></option>
+            <option ng-repeat="opt in $ctrl.ioptions" value="{{opt.value}}">{{opt.name}}</option>
+        </select>
+        <label class="mdlext-selectfield__label" for="{{$ctrl.iname}}">{{$ctrl.ilabel}}</label>
+    </div>
+</div>
