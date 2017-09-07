@@ -1,7 +1,7 @@
 /**
  * 
  */
-app.service("sessionService", function(fileReader, $state){
+app.service("sessionService", function(fileReader, $state, $translate){
     
         let jsonData = initJsonData();
         function getJsonData() {
@@ -9,6 +9,8 @@ app.service("sessionService", function(fileReader, $state){
         };
         function setJsonData(data){
             jsonData = data;
+            console.log("Load language :",data.website.lang);
+            $translate.use(data.website.lang.toLowerCase())
         };
         function initJsonData(){
             return {
