@@ -21,6 +21,7 @@ const gameDetailState = {
     },
     component: 'gameDetail',
     onExit: null,
+    authenticate: true
 };
 /*
 

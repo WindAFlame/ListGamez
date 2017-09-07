@@ -27,8 +27,7 @@
                 <div class="mdl-cell mdl-cell--12-col mdlext-selectfield mdlext-js-selectfield mdlext-selectfield--floating-label">
                         <select class="mdlext-selectfield__select" id="type" name="type" ng-model="$ctrl.values.type" required>
                             <option value=""></option>
-                            <option value="Request">Request</option>
-                            <option value="Other">Other</option>
+                            <option ng-repeat="option in $ctrl.options" value="{{option}}">{{option}}</option>
                         </select>
                         <label class="mdlext-selectfield__label" for="type">{{ 'contact.form.subject' | translate }}*</label>
                     </div>

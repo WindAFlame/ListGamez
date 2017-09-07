@@ -8,6 +8,7 @@ const homepageState = {
         onEnter: null,
         component: 'homepage',
         onExit: null,
+        authenticate: true
 };
 /*
 

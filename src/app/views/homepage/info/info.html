@@ -1,5 +1,5 @@
 <!-- Title -->
-<h1 class="mdl-cell mdl-cell--12-col" style="text-align: center;">{{'homepage.content.title' | translate}}<br/></h1>
+<h1 class="mdl-cell mdl-cell--12-col" style="text-align: center;">{{$ctrl.title}}<br/></h1>
 
 <!-- Spacer -->
 <div class="mdl-cell mdl-cell--12-col"><br/></div>
@@ -7,7 +7,7 @@
 <div class="mdl-cell mdl-cell--12-col"><br/></div>
 
 <!-- Description -->
-<h5 class="mdl-cell mdl-cell--12-col" style="text-align: center;">{{'homepage.content.describ' | translate}}</h5>
+<h5 class="mdl-cell mdl-cell--12-col" style="text-align: center;">{{$ctrl.message}}</h5>
 
 <!-- Button to access at the main feature -->
 <div class="mdl-grid center" style="text-align: center;" ng-if="null == 'homepage.content.button' | translate">

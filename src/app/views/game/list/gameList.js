@@ -8,6 +8,7 @@ const gameListState = {
     onEnter: null,
     component: 'gameList',
     onExit: null,
+    authenticate: true
 };
 /*
 

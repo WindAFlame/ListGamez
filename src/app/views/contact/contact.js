@@ -8,13 +8,14 @@ const contactState = {
         onEnter: null,
         component: 'contact',
         onExit: null,
+        authenticate: true
 };
 /*
 
 */
 app.component('contact',{
     bindings: null,
-    controller: function($http, $state, $filter) {
+    controller: function($http, $state, $filter, sessionService) {
         /**
          * When component is loaded.
          */
@@ -24,11 +25,12 @@ app.component('contact',{
              * [name, type, message, email]
              */
             this.values = {};
+            this.options = sessionService.getJsonData().contact.subject;
             /**
              * 
              */
             this.sendedInstance = false;            
-            this.submit = contactSubmit(this, $http, $state);
+            this.submit = contactSubmit(this, $http, $state, sessionService.getJsonData().contact.gform);
         };
     },
     /**
@@ -59,14 +61,14 @@ function validateHuman(honeypot) {
  * @param {*}  
  * @param {*}  
  */
-function contactSubmit(scope, $http, $state) {
+function contactSubmit(scope, $http, $state, gform) {
     return () => {
         if (scope.form.$valid && !validateHuman(scope.honeypot)){
             if (!scope.sendedInstance){
                 scope.sendedInstance = true;
                 $http({
                     method : "POST",
-                    url : "",
+                    url : gform,
                     header : {
                         'content-type': 'application/x-www-form-urlencoded'
                     },
