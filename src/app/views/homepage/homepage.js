@@ -2,7 +2,6 @@
 
 */
 const homepageState = {
-        parent: 'layout',
         url: '/home',
         resolve: null,
         onEnter: null,

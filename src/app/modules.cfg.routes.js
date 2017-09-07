@@ -9,8 +9,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
     // For others states, look each component of this project.
     $stateProvider
-        // Parent of all pages
-        .state('layout', layoutState)
         // For route '/home'
         .state('homepage', homepageState)
         // Abstract for route '/game'

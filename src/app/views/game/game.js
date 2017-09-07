@@ -3,7 +3,6 @@
  * - Load all games from json file.
  */
 const gameState = {
-    parent: 'layout',
     url: '/game',
     resolve: {
         games: function(sessionService){

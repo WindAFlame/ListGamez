@@ -2,7 +2,6 @@
 
 */
 const loginState = {
-    parent: 'layout',
     url: '/login',
     resolve: null,
     onEnter: null,

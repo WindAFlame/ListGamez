@@ -2,7 +2,6 @@
 
 */
 const contactState = {
-        parent: 'layout',
         url: '/contact',
         resolve: null,
         onEnter: null,
