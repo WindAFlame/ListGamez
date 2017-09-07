@@ -1,0 +1,17 @@
+<mdl-container size="10">
+
+    <h1 class="mdl-cell mdl-cell--12-col">Login</h1>
+
+
+    <form 
+        class="mdl-cell mdl-cell--12-col mdl-grid"
+        name="$ctrl.form"
+        ng-submit="$ctrl.loadJsonFile()">
+
+            <input class="mdl-cell mdl-cell--12-col" type="file" id="file" class="" read-text="onFileSelect($files)" required>
+        
+            <button type="submit" class="mdl-cell mdl-cell--12-col mdl-button mdl-js-button mdl-button--raised mdl-button--colored">ReadFile</button>
+            
+    </form>
+
+</mdl-container>
