@@ -5,6 +5,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     
     // Redirection when url not known
     $urlRouterProvider.otherwise('home');
+    $urlRouterProvider.otherwise('login');
 
     // For others states, look each component of this project.
     $stateProvider
@@ -19,7 +20,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
         // For route '/game/id'
         .state('gameDetail', gameDetailState)
         // declare route '/contact'
-        .state('contact', contactState);
+        .state('contact', contactState)
+        // declare route '/login'
+        .state('login', loginState);
 });
 
 // Fix animate in view
@@ -32,3 +35,16 @@ app.run(function($rootScope, $location, $timeout) {
     });
     
 });
+
+// Authentification
+app.run(function ($transitions, $state, sessionService) {
+    
+        $transitions.onStart({}, $transition => {
+            const $toState = $transition.$to();
+            console.log('transistion',$toState.authenticate);
+            console.log('transistion',sessionService.isAuthenticated(),sessionService.getJsonData());
+            if ($toState.authenticate && !sessionService.isAuthenticated()){
+                $transition.router.stateService.transitionTo('login');
+            };
+        });
+    });
