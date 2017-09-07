@@ -1,8 +1,6 @@
 const textEN = {};
 // -HEADER
 textEN.header = {};
-// --title
-textEN.header.title = "List Gamez";
 // --section
 textEN.header.section = [];
 // --- item 0
@@ -19,10 +17,6 @@ textEN.footer.language = "Change language :";
 textEN.homepage = {};
 // --CONTENT
 textEN.homepage.content = {};
-// ---title
-textEN.homepage.content.title = "Welcome !";
-// ---describ
-textEN.homepage.content.describ = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer consectetur tortor eget vehicula fermentum. Sed eget elit tellus. Pellentesque sed odio tristique, cursus lorem sed, fermentum velit. In malesuada nibh dolor. Pellentesque erat lectus, semper sollicitudin felis quis, tristique ullamcorper diam. Pellentesque eu mauris vitae massa malesuada molestie. Fusce tortor purus, mollis et diam eget, aliquam pellentesque ex. Vivamus dapibus erat ut leo ultricies malesuada.";
 // ---button
 textEN.homepage.content.button = "";
 // ---card
