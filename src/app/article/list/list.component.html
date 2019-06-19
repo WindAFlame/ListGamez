@@ -1,0 +1,34 @@
+<div></div>
+<div class="container">
+
+  <p *ngFor="let alert of alerts">
+    <ngb-alert [type]="alert.type" (close)="close(alert)">{{ alert.message }}</ngb-alert>
+  </p>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col" sortable="name">Name</th>
+        <th scope="col" sortable="download">Link</th>
+        <th scope="col" sortable="size">Size (GB)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let game of games | async">
+        <th scope="row">{{ game.id }}</th>
+        <td>{{ game.name }}</td>
+        <td>
+          <a href="" *ngIf="!!game.hasDDlLink()" style="margin-right: 5px;">
+            <fa name="download"></fa>
+          </a>
+          <a href="" *ngIf="!!game.hasTorrentLink()">
+            <fa name="magnet"></fa>
+          </a>
+        </td>
+        <td>{{ game.size | number }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

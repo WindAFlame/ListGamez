@@ -1,13 +1,27 @@
-# Website for listing my games and share it in LAN (WebsiteForLan)
+# List Gamez
 
-## What's about ?
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.
 
-It's a website for view all games informations shared.
-This informations are store in json file and the website is dynamicaly created from it.
+## Development server
 
-## How to Deployment ?
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-Simple with 2 step :
+## Code scaffolding
 
-- Clone repository in your favorite web server.
-- Add games informations (picture, link, informations) in json.
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+## Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
