@@ -15,10 +15,13 @@ interface DownloadLink {
 
 export class Game implements GameInterface {
 
-    public id: string;
+    public id: number;
     public name: string;
     public downloads: DownloadLink[];
     public size: string;
+    public infos: [];
+    public summary: string = 'No summary.';
+    public website: string;
 
     constructor()
     constructor(id?, name?, downloads?, size?) {

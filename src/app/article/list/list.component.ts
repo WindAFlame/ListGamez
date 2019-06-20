@@ -1,11 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { plainToClass } from 'node_modules/class-transformer';
-
+import { Observable } from 'rxjs';
 import { Alert } from 'src/app/_other/alert.interface';
 import { Game } from 'src/app/_other/game.class';
-import { GAME_DATA } from './game.class';
-import { of, Observable } from 'rxjs';
+import { GameService } from 'src/app/_other/game.service';
+
 
 @Component({
   selector: 'app-list',
@@ -22,16 +21,16 @@ export class ListComponent implements OnInit {
   public games: Game[] | Observable<Game[]> = [];
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private gameS: GameService
   ) { }
 
   ngOnInit() {
-    // this.http.get<Game[]>('game.json').toPromise().then(
-    //   data => {
-    //     this.games = plainToClass(Game, data);
-    //   }
-    // );
-    this.games = of(plainToClass(Game, GAME_DATA));
+    this.loadGameList();
+  }
+
+  private loadGameList() {
+    this.games = this.gameS.getGameListFromFile();
   }
 
   public close(alert: Alert) {

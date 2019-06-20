@@ -1,4 +1,3 @@
-<div></div>
 <div class="container">
 
   <p *ngFor="let alert of alerts">
@@ -17,7 +16,7 @@
     <tbody>
       <tr *ngFor="let game of games | async">
         <th scope="row">{{ game.id }}</th>
-        <td>{{ game.name }}</td>
+        <td><a [routerLink]="['/view', game.id]">{{ game.name }}</a></td>
         <td>
           <a href="" *ngIf="!!game.hasDDlLink()" style="margin-right: 5px;">
             <fa name="download"></fa>

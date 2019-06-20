@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DetailComponent } from './article/detail/detail.component';
 import { ListComponent } from './article/list/list.component';
-import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
   { path: '', component: ListComponent },
-  // { path: 'list', component: ListComponent },
+  { path: 'view/:id', component: DetailComponent },
   { path: '', redirectTo: '', pathMatch: 'full' },
-  // { path: '**', component: PageNotFoundComponent }
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

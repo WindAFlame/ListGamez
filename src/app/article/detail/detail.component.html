@@ -1,3 +1,39 @@
-<p>
-  detail works!
-</p>
+<div class="container" *ngIf="game">
+
+  <div class="card">
+    <div class="card-header"><a href="{{game.website}}" [ngClass]="{'disabled': !game.website}">{{ game.name }} <fa
+          *ngIf="game.website" name="external-link"></fa></a></div>
+    <div class="card-body container-fluid">
+
+      <div class="row">
+        <ng-container *ngFor="let item of game.infos | keyvalue">
+          <div class="col-2">
+            {{item.key}}
+          </div>
+          <div class="col-4">
+            {{item.value}}
+          </div>
+        </ng-container>
+      </div>
+
+    </div>
+    <div class="card-footer">
+      <ng-container *ngFor="let d of game.downloads; let i = index ">
+        <span *ngIf="i > 0" style="margin-right: 10px;">or</span>
+        <a href="d.link" *ngIf="d.type === 'DDL'" style="margin-right: 5px;">
+          <fa name="download"></fa> Download
+        </a>
+        <a href="d.link" *ngIf="d.type === 'TORRENT'">
+          <fa name="magnet"></fa> Torrent
+        </a>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      {{ game.summary }}
+    </div>
+  </div>
+
+</div>
