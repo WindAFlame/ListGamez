@@ -5,22 +5,24 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-rooting.module';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
-import { DetailComponent } from './article/detail/detail.component';
-import { ListComponent } from './article/list/list.component';
+import { ArticleDetailComponent } from './article/detail/detail.component';
+import { ArticleListComponent } from './article/list/list.component';
 import { HomeComponent } from './home/home.component';
 import { TemplateComponent } from './template/template.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     TemplateComponent,
     HomeComponent,
-    ListComponent,
-    DetailComponent
+    ArticleListComponent,
+    ArticleDetailComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    ReactiveFormsModule,
     NgbModule,
     AppRoutingModule,
     AngularFontAwesomeModule

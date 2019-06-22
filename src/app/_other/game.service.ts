@@ -25,6 +25,13 @@ export class GameService {
         this.listSubj.next(this.list);
     }
 
+    public searchGame(userInput: string) {
+        let newList: Game[] = this.list;
+        if (userInput) {
+            newList = newList.filter(i => i.name.toLowerCase().includes(userInput.toLowerCase()));
+        }
+        this.listSubj.next(newList);
+    }
 
     public getGameListFromFile(): Observable<Game[]> {
         this.setList(plainToClass(Game, GAME_DATA));

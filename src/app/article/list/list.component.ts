@@ -7,11 +7,11 @@ import { GameService } from 'src/app/_other/game.service';
 
 
 @Component({
-  selector: 'app-list',
+  selector: 'app-article-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit {
+export class ArticleListComponent implements OnInit {
 
   public alerts: Alert[] = [{
     type: 'info',
@@ -29,12 +29,24 @@ export class ListComponent implements OnInit {
     this.loadGameList();
   }
 
-  private loadGameList() {
-    this.games = this.gameS.getGameListFromFile();
-  }
-
   public close(alert: Alert) {
     this.alerts.splice(this.alerts.indexOf(alert), 1);
   }
 
+  private loadGameList() {
+    this.games = this.gameS.getGameListFromFile();
+    this.subscribeSearchError();
+  }
+
+  private subscribeSearchError() {
+    this.gameS.getList().subscribe(
+      (list) => {
+        if (list.length === 0 ) {
+          this.alerts.push(
+            { type: 'warning', message: 'Your search has 0 result.'}
+          )
+        }
+      }
+    )
+  }
 }

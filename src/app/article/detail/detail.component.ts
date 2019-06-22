@@ -4,11 +4,11 @@ import { Game } from 'src/app/_other/game.class';
 import { GameService } from 'src/app/_other/game.service';
 
 @Component({
-  selector: 'app-detail',
+  selector: 'app-article-detail',
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss']
 })
-export class DetailComponent implements OnInit {
+export class ArticleDetailComponent implements OnInit {
 
   public game: Game;
 
