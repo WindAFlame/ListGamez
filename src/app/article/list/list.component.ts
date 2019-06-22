@@ -5,7 +5,6 @@ import { Alert } from 'src/app/_other/alert.interface';
 import { Game } from 'src/app/_other/game.class';
 import { GameService } from 'src/app/_other/game.service';
 
-
 @Component({
   selector: 'app-article-list',
   templateUrl: './list.component.html',
@@ -15,7 +14,7 @@ export class ArticleListComponent implements OnInit {
 
   public alerts: Alert[] = [{
     type: 'info',
-    message: 'This info bubble thing is now dismissible. ',
+    message: 'This is an information bubble. You can close it if you have read about this feature.',
   }];
 
   public games: Game[] | Observable<Game[]> = [];
