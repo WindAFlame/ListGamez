@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd, Event } from '@angular/router';
-import { GameService } from '../_other/game.service';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Event, NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-template',
@@ -12,23 +10,12 @@ export class TemplateComponent implements OnInit {
 
   public showSearchBar = false;
 
-  public searchForm: FormGroup;
-
   constructor(
-    private router: Router,
-    private formBuilder: FormBuilder,
-    private gameS: GameService
+    private router: Router
   ) { }
 
   ngOnInit() {
     this.subscribeRouteUrlEvent();
-    this.initialiseSearchForm();
-  }
-
-  public searchSubmit() {
-    if (this.searchForm.valid) {
-      this.gameS.searchGame(this.searchForm.get('userInput').value);
-    }
   }
 
   private subscribeRouteUrlEvent() {
@@ -37,11 +24,5 @@ export class TemplateComponent implements OnInit {
         this.showSearchBar = (event.url === '/');
       }
     });
-  }
-
-  private initialiseSearchForm() {
-    this.searchForm = this.formBuilder.group(
-      { userInput: ['', ] }
-    );
   }
 }

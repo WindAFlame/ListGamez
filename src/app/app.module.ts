@@ -10,11 +10,13 @@ import { ArticleListComponent } from './article/list/list.component';
 import { HomeComponent } from './home/home.component';
 import { TemplateComponent } from './template/template.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TemplateSearchBarComponent } from './template/search-bar/search-bar.component';
 
 
 @NgModule({
   declarations: [
     TemplateComponent,
+    TemplateSearchBarComponent,
     HomeComponent,
     ArticleListComponent,
     ArticleDetailComponent
