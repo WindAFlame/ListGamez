@@ -8,20 +8,20 @@ import { Router, NavigationEnd, Event } from '@angular/router';
 })
 export class TemplateComponent implements OnInit {
 
-  public showSearchBar = true;
+  public showSearchBar = false;
 
   constructor(
     private router: Router
   ) { }
 
   ngOnInit() {
-    // this.subscribeRouteUrlEvent();
+    this.subscribeRouteUrlEvent();
   }
 
   private subscribeRouteUrlEvent() {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
-        this.showSearchBar = (event.url === '/list');
+        this.showSearchBar = (event.url === '/');
       }
     });
   }
