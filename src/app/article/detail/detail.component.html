@@ -1,8 +1,8 @@
 <div class="container" *ngIf="game">
 
   <div class="card">
-    <div class="card-header"><a href="{{game.website}}" [ngClass]="{'disabled': !game.website}">{{ game.name }} <fa
-          *ngIf="game.website" name="external-link"></fa></a></div>
+    <div class="card-header"><a href="{{game.website}}" [ngClass]="{'disabled': !game.website}">{{ game.name }} <fa-icon
+          *ngIf="game.website" [icon]="['fas', 'external-link-alt']"></fa-icon></a></div>
     <div class="card-body container-fluid">
 
       <div class="row">
@@ -21,10 +21,10 @@
       <ng-container *ngFor="let d of game.downloads; let i = index ">
         <span *ngIf="i > 0" style="margin-right: 10px;">or</span>
         <a href="d.link" *ngIf="d.type === 'DDL'" style="margin-right: 5px;">
-          <fa name="download"></fa> Download
+          <fa-icon [icon]="['fas', 'download']"></fa-icon> Download
         </a>
         <a href="d.link" *ngIf="d.type === 'TORRENT'">
-          <fa name="magnet"></fa> Torrent
+          <fa-icon [icon]="['fas', 'magnet']"></fa-icon> Torrent
         </a>
       </ng-container>
     </div>
