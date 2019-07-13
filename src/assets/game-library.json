@@ -1,4 +1,4 @@
-export const GAME_DATA = [
+[
     {
         "id": 20331,
         "name": "For The King",
@@ -16,19 +16,17 @@ export const GAME_DATA = [
             }
         ],
         "size": 0.150,
-        "infos":
-        {
+        "infos": {
             "Developer": "IronOak Games",
             "Publisher": "Curve Digital",
             "Genres": "Roguelike, Strategy, Turn-based",
             "Release Date": "April 18, 2018"
         }
-
     },
     {
         "id": 10760,
         "name": "Bloodstained: Ritual of the Night",
-        "rating": undefined,
+        "rating": null,
         "summary": "Bloodstained: Ritual of the Night is an upcoming metroidvania video game developed by Inti Creates and published by 505 Games. The game is led by former Castlevania series producer Koji Igarashi, and is considered a spiritual successor to the series. Bloodstained is expected to be released in 2019 for Microsoft Windows, OS X, Linux, Nintendo Switch, PlayStation 4, and Xbox One.",
         "downloads": [
             {

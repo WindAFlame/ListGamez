@@ -24,7 +24,7 @@ export class ArticleDetailComponent implements OnInit {
   }
 
   private loadGame() {
-    this.gameS.getGameListFromFile();
+    this.gameS.getList();
     this.game = this.gameS.getGameById(this.route.snapshot.paramMap.get('id'));
   }
 

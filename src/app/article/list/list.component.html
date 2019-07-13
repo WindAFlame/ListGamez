@@ -4,7 +4,7 @@
     <ngb-alert [type]="alert.type" (close)="close(alert)">{{ alert.message }}</ngb-alert>
   </p>
 
-  <table class="table table-striped">
+  <table class="table table-striped" *ngIf="showTable">
     <thead>
       <tr>
         <th scope="col">#</th>
