@@ -1,26 +1,37 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-          <a class="navbar-brand" routerLink="/">List Gamez</a>
-      
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-              <!-- <li class="nav-item">
-                  <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Getting
-                    Started</a>
-                </li> -->
-              <!-- <li class="nav-item">
-                  <a class="nav-link" routerLink="list" routerLinkActive="active">List</a>
-                </li> -->
-            </ul>
-      
-            <app-template-search-bar *ngIf="showSearchBar"></app-template-search-bar>
-              
-          </div>
-        </div>
-      </nav>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" routerLink="/">List Gamez</a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item" ngbDropdown>
+            <a class="nav-link dropdown-toggle" id="dropdownBasic1" role="button" ngbDropdownToggle aria-haspopup="true"
+              aria-expanded="false">
+              <fa-icon [icon]="['fa', 'database']"></fa-icon> Datas
+            </a>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <app-template-data-edit></app-template-data-edit>
+              <app-template-data-import></app-template-data-import>
+              <app-template-data-export></app-template-data-export>
+            </div>
+          </li>
+          <!-- TODO: Hosting 
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/import" routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }">Getting
+              Started</a>
+          </li> -->
+          <!-- TODO: Info -->
+        </ul>
+
+        <app-template-search-bar *ngIf="showSearchBar"></app-template-search-bar>
+
+      </div>
+    </div>
+  </nav>
 </header>
 
 <main>
-    <router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </main>

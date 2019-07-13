@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -11,6 +11,9 @@ import { AppRoutingModule } from './app-rooting.module';
 import { ArticleDetailComponent } from './article/detail/detail.component';
 import { ArticleListComponent } from './article/list/list.component';
 import { HomeComponent } from './home/home.component';
+import { TemplateDataEditComponent } from './template/data/edit/edit.component';
+import { TemplateDataExportComponent } from './template/data/export/export.component';
+import { TemplateDataImportComponent } from './template/data/import/import.component';
 import { TemplateSearchBarComponent } from './template/search-bar/search-bar.component';
 import { TemplateComponent } from './template/template.component';
 
@@ -21,12 +24,16 @@ import { TemplateComponent } from './template/template.component';
     TemplateSearchBarComponent,
     HomeComponent,
     ArticleListComponent,
-    ArticleDetailComponent
+    ArticleDetailComponent,
+    TemplateDataEditComponent,
+    TemplateDataExportComponent,
+    TemplateDataImportComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     NgbModule,
     AppRoutingModule,
     FontAwesomeModule
