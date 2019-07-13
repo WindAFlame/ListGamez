@@ -26,17 +26,21 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-## Theme
+# Dependencies
 
-### 1 
+|Package|Version|
+|---|---|
+|@angular/cli|8.1.1|
+|@angular/core|8.1.1|
+|class-transformer|0.2.3|
+|angular-font-awesome|3.1.2|
+|font-awesome|4.7.0|
+|@ng-bootstrap/ng-bootstrap|5.0.0|
+|bootstrap-css-only|4.3.1|
 
-https://www.gogdb.org/product/1242384383
+# Theme
 
-### 2 
-
-https://steamdb.info/app/367500/
-
-### 3 
-
-https://nyaa.si/view/1152772
+* 1 : https://www.gogdb.org/product/1242384383
+* 2 : https://steamdb.info/app/367500/
+* 3 : https://nyaa.si/view/1152772
 
