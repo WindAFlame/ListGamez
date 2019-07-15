@@ -1,21 +1,4 @@
-<ng-template #exportData let-modal>
-    <div class="modal-header">
-        <!-- TODO: Translation -->
-        <h4 class="modal-title" id="modal-basic-title">Export to file</h4>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        <form>
-            <h3>Not available yet !</h3>
-        </form>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Export</button>
-    </div>
-</ng-template>
 
-<button (click)="open(exportData)" ngbDropdownItem disabled>
+<button (click)="gameS.downloadLibrary()" ngbDropdownItem [disabled]="hideExport">
     <fa-icon [icon]="['fas', 'file-upload']"></fa-icon> Export
 </button>

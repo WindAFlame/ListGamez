@@ -1,7 +1,8 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { plainToClass } from 'class-transformer';
-import { BehaviorSubject, Observable, of, Subject, throwError } from 'rxjs';
+import { saveAs } from 'file-saver';
+import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { GameServiceStatus } from './game-service-status.enum';
 import { Game } from './game.class';
 
@@ -99,4 +100,10 @@ export class GameService {
         });
     }
 
+    public downloadLibrary() {
+        this.getList().subscribe(res => {
+            const file = new File([JSON.stringify(res)], 'datas.json', { type: 'application/json;charset=utf-8' });
+            saveAs(file);
+        });
+    }
 }
