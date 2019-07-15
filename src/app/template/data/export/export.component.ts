@@ -12,7 +12,7 @@ export class TemplateDataExportComponent implements OnInit {
     public hideExport = false;
 
     constructor(
-        private gameS: GameService
+        public gameS: GameService
     ) { }
 
     ngOnInit() {

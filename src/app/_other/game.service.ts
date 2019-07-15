@@ -16,6 +16,7 @@ export class GameService {
 
     public userSearch = false;
 
+    // Server default value assets/game-library.json
     private readonly INTERNAL_PATH_GAME_LIBRARY = ``;
 
     constructor(

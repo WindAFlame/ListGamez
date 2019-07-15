@@ -17,7 +17,6 @@ import { TemplateDataImportComponent } from './template/data/import/import.compo
 import { TemplateSearchBarComponent } from './template/search-bar/search-bar.component';
 import { TemplateComponent } from './template/template.component';
 
-
 @NgModule({
   declarations: [
     TemplateComponent,

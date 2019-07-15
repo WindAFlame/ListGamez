@@ -8,16 +8,23 @@
             </button>
         </div>
         <div class="modal-body">
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" id="fileUpload" formControlName="fileUpload" (change)="onFileChange($event)">
-                <label class="custom-file-label" for="fileUpload">{{
-                        file ? file.name : "Choose file..."
-                }}</label>
-                <div class="invalid-feedback">Example invalid custom file feedback</div>
+            <div class="form-row">
+                <div class="input-group mb-3">
+                    <input type="file" class="custom-file-input" id="fileUpload" [ngClass]="{
+                        'is-valid': importForm.get('fileUpload').valid && !importForm.get('fileUpload').pristine,
+                        'is-invalid': importForm.get('fileUpload').invalid && !importForm.get('fileUpload').pristine
+                    }" formControlName="fileUpload" (change)="onFileChanged($event)">
+                    <label class="custom-file-label" for="fileUpload">{{
+                            file ? file.name : 'Choose file ...'
+                    }}</label>
+                    <!-- TODO: Translation -->
+                    <div class="invalid-feedback" *ngIf="importForm.get('fileUpload').invalid">Wrong type of file.</div>
+                </div>
             </div>
         </div>
         <div class="modal-footer">
-            <button type="submit" class="btn btn-outline-dark">Import</button>
+            <button type="submit" class="btn" [disabled]="!importForm.valid"
+                [ngClass]="{'btn-outline-success': importForm.valid, 'btn-outline-danger': !importForm.valid}">Import</button>
         </div>
     </form>
 </ng-template>

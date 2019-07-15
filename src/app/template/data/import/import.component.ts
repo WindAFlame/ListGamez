@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { CustomValidators } from 'src/app/_other/custom-validator';
 import { GameService } from 'src/app/_other/game.service';
 
 @Component({
@@ -22,7 +23,10 @@ export class TemplateDataImportComponent implements OnInit {
 
     ngOnInit() {
         this.importForm = this.fb.group({
-            fileUpload: ['', [Validators.required]]
+            fileUpload: ['', [
+                Validators.required,
+                CustomValidators.requiredFileType('json')
+            ]]
         });
     }
 
@@ -34,15 +38,16 @@ export class TemplateDataImportComponent implements OnInit {
         })
     }
 
-    public onFileChange(event) {
+    public onFileChanged(event) {
         this.file = event.target.files[0];
+        this.importForm.get('fileUpload').markAsDirty();
     }
 
     public onSubmit() {
         if (this.importForm.valid && this.importForm.dirty) {
             this.gameS.loadGameLibraryFromUserInput(this.file).subscribe(
                 () => { this.modalRef.close(); }
-            )
+            );
         }
     }
 
