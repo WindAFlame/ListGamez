@@ -11,11 +11,11 @@ export class GameService {
     private list: Game[] = [];
     private listSubj = new BehaviorSubject<Game[]>(this.list);
 
-    private listStatusSubj = new Subject<GameServiceStatus>();
+    private listStatusSubj = new BehaviorSubject<GameServiceStatus>(GameServiceStatus.EMPTY);
 
     public userSearch = false;
 
-    private readonly INTERNAL_PATH_GAME_LIBRARY = `assets/game-library.json`;
+    private readonly INTERNAL_PATH_GAME_LIBRARY = ``;
 
     constructor(
         private http: HttpClient
@@ -24,6 +24,7 @@ export class GameService {
     public getList(): Observable<Game[]> {
         return this.listSubj.asObservable();
     }
+
     private setList(newList: Game[]) {
         this.list = newList;
         this.listSubj.next(this.list);
@@ -75,6 +76,27 @@ export class GameService {
                     this.setList(plainToClass(Game, datas));
                 }
             );
+    }
+
+    public loadGameLibraryFromUserInput(file: File): Observable<null> {
+        const self = this;
+        return Observable.create((observer) => {
+            const reader = new FileReader();
+            reader.readAsText(file, 'UTF-8');
+            reader.onload = (evt) => {
+                const json = JSON.parse(reader.result.toString());
+                const games: any = plainToClass(Game, json);
+                this.listStatusSubj.next(GameServiceStatus.FOUND);
+                self.setList(games as Game[]);
+                observer.next();
+                observer.complete();
+            };
+            reader.onerror = (evt) => {
+                this.listStatusSubj.next(GameServiceStatus.NOT_FOUND);
+                observer.throwError(evt);
+                observer.complete();
+            };
+        });
     }
 
 }

@@ -1,19 +1,25 @@
 <ng-template #importData let-modal>
-    <div class="modal-header">
-        <!-- TODO: Translation -->
-        <h4 class="modal-title" id="modal-basic-title">Import file</h4>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        <form>
-            <h3>Not available yet !</h3>
-        </form>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Import</button>
-    </div>
+    <form [formGroup]="importForm" (submit)="onSubmit()">
+        <div class="modal-header">
+            <!-- TODO: Translation -->
+            <h4 class="modal-title" id="modal-basic-title">Import file</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="fileUpload" formControlName="fileUpload" (change)="onFileChange($event)">
+                <label class="custom-file-label" for="fileUpload">{{
+                        file ? file.name : "Choose file..."
+                }}</label>
+                <div class="invalid-feedback">Example invalid custom file feedback</div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-outline-dark">Import</button>
+        </div>
+    </form>
 </ng-template>
 
 <button (click)="open(importData)" ngbDropdownItem>
