@@ -5,7 +5,7 @@ import { ArticleListComponent } from './article/list/list.component';
 
 const appRoutes: Routes = [
   { path: '', component: ArticleListComponent },
-  { path: 'view/:id', component: ArticleDetailComponent },
+  { path: ':id', component: ArticleDetailComponent },
   { path: '', redirectTo: '', pathMatch: 'full' },
   { path: '**', redirectTo: '' }
 ];

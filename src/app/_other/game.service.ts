@@ -1,15 +1,23 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { plainToClass } from 'class-transformer';
+import { deserialize, plainToClass, serialize } from 'class-transformer';
 import { saveAs } from 'file-saver';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { GameServiceStatus } from './game-service-status.enum';
 import { Game } from './game.class';
+import { StorageService, STORAGE_KEY } from './storage.service';
 
 @Injectable({ providedIn: 'root' })
 export class GameService {
 
-    private list: Game[] = [];
+    private get list(): Game[] {
+        return deserialize(Game, this.dataStorage.get(STORAGE_KEY.GAME)) as unknown as Game[];
+    }
+
+    private set list(val: Game[]) {
+        this.dataStorage.set(STORAGE_KEY.GAME, serialize(val));
+    }
+
     private listSubj = new BehaviorSubject<Game[]>(this.list);
 
     private listStatusSubj = new BehaviorSubject<GameServiceStatus>(GameServiceStatus.EMPTY);
@@ -20,14 +28,22 @@ export class GameService {
     private readonly INTERNAL_PATH_GAME_LIBRARY = ``;
 
     constructor(
-        private http: HttpClient
-    ) { this.getInternalGameLibrary(); }
+        private http: HttpClient,
+        private dataStorage: StorageService
+    ) {
+        if (this.dataStorage.has(STORAGE_KEY.GAME)) {
+            this.listStatusSubj.next(GameServiceStatus.FOUND);
+        } else {
+            this.getInternalGameLibrary();
+        }
+    }
 
     public getList(): Observable<Game[]> {
         return this.listSubj.asObservable();
     }
 
     private setList(newList: Game[]) {
+        this.dataStorage.clean();
         this.list = newList;
         this.listSubj.next(this.list);
     }
