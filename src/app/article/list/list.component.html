@@ -16,9 +16,9 @@
     <tbody>
       <tr *ngFor="let game of games | async">
         <th scope="row">{{ game.id }}</th>
-        <td><a [routerLink]="['/view', game.id]">{{ game.name }}</a></td>
+        <td><a [routerLink]="[game.id]">{{ game.name }}</a></td>
         <td>
-          <a href="" *ngIf="!!game.hasDDlLink()" style="margin-right: 5px;">
+          <a href="" *ngIf="!!game.hasDdlLink()" style="margin-right: 5px;">
             <fa-icon [icon]="['fas', 'download']"></fa-icon>
           </a>
           <a href="" *ngIf="!!game.hasTorrentLink()">
