@@ -11,9 +11,9 @@ import { AppRoutingModule } from './app-rooting.module';
 import { ArticleDetailComponent } from './article/detail/detail.component';
 import { ArticleListComponent } from './article/list/list.component';
 import { HomeComponent } from './home/home.component';
-import { TemplateDataEditComponent } from './template/data/edit/edit.component';
-import { TemplateDataExportComponent } from './template/data/export/export.component';
-import { TemplateDataImportComponent } from './template/data/import/import.component';
+import { TemplateDataEditComponent } from './template/library/edit/edit.component';
+import { TemplateDataExportComponent } from './template/library/export/export.component';
+import { TemplateDataImportComponent } from './template/library/import/import.component';
 import { TemplateSearchBarComponent } from './template/search-bar/search-bar.component';
 import { TemplateComponent } from './template/template.component';
 
