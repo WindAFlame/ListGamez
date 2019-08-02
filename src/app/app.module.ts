@@ -10,7 +10,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-rooting.module';
 import { ArticleDetailComponent } from './article/detail/detail.component';
 import { ArticleListComponent } from './article/list/list.component';
-import { HomeComponent } from './home/home.component';
 import { TemplateDataEditComponent } from './template/library/edit/edit.component';
 import { TemplateDataExportComponent } from './template/library/export/export.component';
 import { TemplateDataImportComponent } from './template/library/import/import.component';
@@ -21,12 +20,11 @@ import { TemplateComponent } from './template/template.component';
   declarations: [
     TemplateComponent,
     TemplateSearchBarComponent,
-    HomeComponent,
     ArticleListComponent,
     ArticleDetailComponent,
     TemplateDataEditComponent,
     TemplateDataExportComponent,
-    TemplateDataImportComponent
+    TemplateDataImportComponent,
   ],
   imports: [
     BrowserModule,
