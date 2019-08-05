@@ -49,7 +49,11 @@ export class GameService {
     }
 
     public getGameById(id: string): Game {
-        return this.list.find(g => g.id === Number(id));
+        let game: Game;
+        if (this.list && id) {
+            game = this.list.find(g => g.id === Number(id));
+        }
+        return game;
     }
 
     public getStatus(): Observable<GameServiceStatus> {
