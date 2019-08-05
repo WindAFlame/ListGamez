@@ -1,0 +1,33 @@
+<form [formGroup]="libraryForm" (submit)="saveChanges(item.id)">
+
+    <div class="form-group">
+        <label for="inputName">Name</label>
+        <input type="text" class="form-control" id="inputName" formControlName="name" placeholder="Name">
+    </div>
+    <div class="form-group">
+        <label for="inputWebsite">Website</label>
+        <input type="text" class="form-control" id="inputWebsite" formControlName="website" placeholder="Website">
+    </div>
+    <div class="form-group">
+        <label for="inputInformations">Informations</label>
+        <input type="text" class="form-control" id="inputInformations" formControlName="informations" placeholder="Informations">
+    </div>
+    <!-- <div class="form-group">
+        <label for="inputRating">Rating</label>
+        <input type="text" class="form-control" id="inputRating" placeholder="Rating">
+    </div> -->
+    <div class="form-group">
+        <label for="inputSize">Size</label>
+        <input type="text" class="form-control" id="inputSize" formControlName="size" placeholder="Size">
+    </div>
+    <div class="form-group">
+        <label for="inputSummary">Summary</label>
+        <textarea class="form-control" id="inputSummary" formControlName="summary" rows="2"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="inputDownloads">Downloads</label>
+        <input type="text" class="form-control" id="inputDownloads" formControlName="downloads" placeholder="Downloads">
+    </div>
+
+    <button type="submit" class="btn btn-primary">{{ getSubmitLabel() }}</button>
+</form>

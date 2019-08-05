@@ -1,0 +1,32 @@
+<div class="container">
+
+    <h1> Manage your library </h1>
+    <br />
+
+    <ngb-accordion #acc="ngbAccordion" [closeOthers]="true" activeIds="static-1">
+
+        <ng-container *ngFor="let item of library">
+
+            <ngb-panel>
+                <ng-template ngbPanelTitle>
+                    {{ item.name }}
+                </ng-template>
+                <ng-template ngbPanelContent>
+                    <app-library-form-edit-game [item]="item"></app-library-form-edit-game>
+                </ng-template>
+            </ngb-panel>
+            
+        </ng-container>
+
+        <ngb-panel>
+            <ng-template ngbPanelTitle>
+                Add new element
+            </ng-template>
+            <ng-template ngbPanelContent>
+                <app-library-form-edit-game></app-library-form-edit-game>
+            </ng-template>
+        </ngb-panel>
+
+    </ngb-accordion>
+
+</div>
