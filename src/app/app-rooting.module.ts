@@ -1,21 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ArticleDetailComponent } from './article/detail/detail.component';
-import { ArticleListComponent } from './article/list/list.component';
 
 const appRoutes: Routes = [
-  { path: '', component: ArticleListComponent },
-  { path: ':id', component: ArticleDetailComponent },
-  { path: '', redirectTo: '', pathMatch: 'full' },
-  { path: '**', redirectTo: '' }
+    { path: '', loadChildren: () => import('./article/article.module').then(m => m.ArticleModule) },
+    { path: '', redirectTo: '', pathMatch: 'full' },
+    { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(appRoutes)
-  ],
-  exports: [
-    RouterModule
-  ]
+    imports: [
+        RouterModule.forRoot(appRoutes)
+    ],
+    exports: [
+        RouterModule
+    ]
 })
 export class AppRoutingModule { }
