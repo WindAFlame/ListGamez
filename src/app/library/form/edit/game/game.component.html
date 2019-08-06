@@ -1,4 +1,4 @@
-<form [formGroup]="libraryForm" (submit)="saveChanges(item.id)">
+<form *ngIf="libraryForm" [formGroup]="libraryForm" (submit)="saveChanges(item.id)">
 
     <div class="form-row">
         <div class="form-group col-md-6">
@@ -14,25 +14,27 @@
     <div class="form-group">
         <label for="inputInformations">Informations</label>
         <div class="card">
-            <div class="card-body">
+            <div class="card-body" formArrayName="informations">
 
-                <ng-container *ngFor="let info of libraryForm.get('informations').value">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="">Name & Value</span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Name" value="{{info.name}}">
-                        <input type="text" class="form-control" placeholder="Value" value="{{info.value}}">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-danger" type="button"
-                                (click)="removeFromInformation(info.id)">
-                                <fa-icon [icon]="['fas', 'trash-alt']"></fa-icon>
-                            </button>
+                <ng-container *ngFor="let info of libraryForm.get('informations').controls; let i = index;">
+                    <div [formGroupName]="i">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="">Name & Value</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Name" formControlName="name">
+                            <input type="text" class="form-control" placeholder="Value" formControlName="value">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-danger" type="button"
+                                    (click)="removeItemFromInformationFormArray(i)">
+                                    <fa-icon [icon]="['fas', 'trash-alt']"></fa-icon>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </ng-container>
-                <br/>
-                <button type="button" class="btn btn-secondary" (click)="addNewInformation()">Add information</button>
+                <br />
+                <button type="button" class="btn btn-secondary" (click)="addItemInInformationFormArray()">Add information</button>
 
             </div>
         </div>
@@ -56,29 +58,35 @@
     <div class="form-group">
         <label for="inputDownloads">Downloads</label>
         <div class="card">
-            <div class="card-body">
+            <div class="card-body" formArrayName="downloads">
 
-                <ng-container *ngFor="let download of libraryForm.get('downloads').value">
+                <ng-container *ngFor="let download of libraryForm.get('downloads').controls; let i = index;">
+                    <div [formGroupName]="i">
                         <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="">Type & Link</span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Name" value="{{download.type}}">
-                        <input type="text" class="form-control" placeholder="Value" value="{{download.link}}">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-danger" type="button"
-                                (click)="removeFromDownload(download.id)">
-                                <fa-icon [icon]="['fas', 'trash-alt']"></fa-icon>
-                            </button>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="">Type & Link</span>
+                            </div>
+                            <select class="custom-select" id="inputDownloadTypeSelect" formControlName="type">
+                                <option selected>Choose...</option>
+                                <option *ngFor="let type of DLT" value="{{ type }}">{{ type }}</option>
+                            </select>
+                            <input type="text" class="form-control" placeholder="Value" formControlName="link">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-danger" type="button"
+                                    (click)="removeItemFromDownloadFormArray(i)">
+                                    <fa-icon [icon]="['fas', 'trash-alt']"></fa-icon>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </ng-container>
-                <br/>
-                <button type="button" class="btn btn-secondary" (click)="addNewDownloadLink()">Add download
+                <br />
+                <button type="button" class="btn btn-secondary" (click)="addItemInDownloadFormArray()">Add download
                     link</button>
             </div>
         </div>
     </div>
 
+    <button type="button" class="btn btn-secondary" (click)="resetForm()">Reset</button>
     <button type="submit" class="btn btn-primary">{{ getSubmitLabel() }}</button>
 </form>

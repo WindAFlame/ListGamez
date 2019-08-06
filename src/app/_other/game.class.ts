@@ -10,9 +10,21 @@ interface GameInterface {
     dateUpdated?: Date; // Uploaded
 }
 
-class DownloadLink {
-    type: string;
+export class DownloadLink {
+    id: number;
+    type: DownloadLinkType;
     link: string;
+}
+
+export enum DownloadLinkType {
+    Torrent = 'TORRENT',
+    DDl = 'DDL'
+}
+
+export class GameInformations {
+    id: number;
+    name: string;
+    value: string;
 }
 
 export class Game implements GameInterface {
@@ -22,7 +34,7 @@ export class Game implements GameInterface {
     @Type(() => DownloadLink)
     public downloads: DownloadLink[];
     public size: string;
-    public infos: [];
+    public infos: GameInformations[];
     public summary = 'No summary.';
     public website: string;
 
@@ -34,12 +46,22 @@ export class Game implements GameInterface {
         this.size = size ? size : undefined;
     }
 
+    public parseGame(game: Game) {
+        this.id = game.id ? game.id : undefined;
+        this.name = game.name ? game.name : undefined;
+        this.downloads = game.downloads ? game.downloads : undefined;
+        this.size = game.size ? game.size : undefined;
+        this.infos =  game.infos ? game.infos : [];
+        this.summary = game.summary ? game.summary : 'No summary.';
+        this.website = game.website ? game.website : undefined;
+    }
+
     public hasDdlLink() {
-        return this.downloads && !!this.downloads.find(d => d.type === 'DDL');
+        return this.downloads && !!this.downloads.find(d => d.type === DownloadLinkType.DDl);
     }
 
     public hasTorrentLink() {
-        return this.downloads && !!this.downloads.find(d => d.type === 'TORRENT');
+        return this.downloads && !!this.downloads.find(d => d.type === DownloadLinkType.Torrent);
     }
 
 }

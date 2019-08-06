@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Game } from 'src/app/_other/game.class';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { classToPlain, plainToClass } from 'class-transformer';
+import { DownloadLink, DownloadLinkType, Game, GameInformations } from 'src/app/_other/game.class';
 
 @Component({
     selector: 'app-library-form-edit-game',
@@ -10,7 +11,9 @@ import { Game } from 'src/app/_other/game.class';
 export class LibraryFormEditGameComponent implements OnInit {
 
     @Input() item: Game;
+    private internalItem: Game;
     public libraryForm: FormGroup;
+    public DLT = Object.keys(DownloadLinkType);
 
     constructor(
         private formBuilder: FormBuilder
@@ -21,16 +24,33 @@ export class LibraryFormEditGameComponent implements OnInit {
     }
 
     private initialiseForm() {
+        this.initialiseItem();
+
         this.libraryForm = this.formBuilder.group({
-            id: [this.item.id, [Validators.required]],
-            name: [this.item.name, [Validators.required]],
-            website: [this.item.website, []],
-            informations: [this.item.infos, [Validators.required]],
-            size: [this.item.size, []],
-            summary: [this.item.summary, [Validators.required]],
-            downloads: [this.item.downloads, []],
+            id: [this.internalItem.id, [Validators.required]],
+            name: [this.internalItem.name, [Validators.required]],
+            website: [this.internalItem.website, []],
+            informations: this.formBuilder.array([]),
+            size: [this.internalItem.size, []],
+            summary: [this.internalItem.summary, [Validators.required]],
+            downloads: this.formBuilder.array([])
         });
-        console.log(this.libraryForm.get('informations').value)
+
+        for (const info of this.internalItem.infos) {
+            this.addItemInInformationFormArray(info);
+        }
+
+        for (const download of this.internalItem.downloads) {
+            this.addItemInDownloadFormArray(download);
+        }
+    }
+
+    private initialiseItem() {
+        this.internalItem = new Game();
+        if (this.item) {
+            const plain = classToPlain(this.item);
+            this.internalItem = plainToClass(Game, plain);
+        }
     }
 
     public saveChanges() {
@@ -45,34 +65,37 @@ export class LibraryFormEditGameComponent implements OnInit {
         }
     }
 
-    public addNewDownloadLink() {
-        const list = (this.libraryForm.get('downloads').value as Array<any>)
-        list.push({
-            id: list.length, type: '', link: ''
-        });
+    public addItemInDownloadFormArray(download?: DownloadLink) {
+        const list = (this.libraryForm.get('downloads') as FormArray);
+        list.push(this.formBuilder.group({
+            id: [list.length, [Validators.required]],
+            type: ['', [Validators.required]],
+            link: ['', [Validators.required]]
+        }));
     }
 
-    public addNewInformation() {
-        const list = (this.libraryForm.get('informations').value as Array<any>)
-        list.push({
-            id: list.length, name: '', value: ''
-        });
+    public removeItemFromDownloadFormArray(formArrayItemId: number) {
+        const list = (this.libraryForm.get('downloads') as FormArray);
+        list.removeAt(formArrayItemId);
     }
 
-    public removeFromInformation(id: number) {
-        const list = (this.libraryForm.get('informations').value as Array<any>);
-        this.removeFromArray(id, list);
+    public addItemInInformationFormArray(info?: GameInformations) {
+        const list = (this.libraryForm.get('informations') as FormArray);
+        list.push(this.formBuilder.group({
+            id: [info ? info.id : list.length, [Validators.required]],
+            name: [info ? info.name : '', [Validators.required]],
+            value: [info ? info.value : '', [Validators.required]]
+        }));
     }
 
-    public removeFromDownload(id: number) {
-        const list = (this.libraryForm.get('downloads').value as Array<any>);
-        this.removeFromArray(id, list);
-
+    public removeItemFromInformationFormArray(formArrayItemId: number) {
+        const list = (this.libraryForm.get('informations') as FormArray);
+        list.removeAt(formArrayItemId);
     }
 
-    private removeFromArray(id: number, list: Array<any>) {
-        const indexOfContentToRemove = list.findIndex(i => i.id === id) + 1;
-        list.splice(indexOfContentToRemove, 1);
+    public resetForm() {
+        this.libraryForm.reset();
+        this.initialiseForm();
     }
 
 }

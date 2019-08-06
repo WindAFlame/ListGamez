@@ -6,9 +6,9 @@
     <div class="card-body container-fluid">
 
       <div class="row">
-        <ng-container *ngFor="let item of game.infos | keyvalue">
+        <ng-container *ngFor="let item of game.infos">
           <div class="col-2">
-            {{item.key}}
+            {{item.name}}
           </div>
           <div class="col-4">
             {{item.value}}
@@ -20,10 +20,10 @@
     <div class="card-footer">
       <ng-container *ngFor="let d of game.downloads; let i = index ">
         <span *ngIf="i > 0" style="margin-right: 10px;">or</span>
-        <a href="d.link" *ngIf="d.type === 'DDL'" style="margin-right: 5px;">
+        <a href="{{d.link}}" *ngIf="d.type === DownloadLinkType.DDl" style="margin-right: 5px;">
           <fa-icon [icon]="['fas', 'download']"></fa-icon> Download
         </a>
-        <a href="d.link" *ngIf="d.type === 'TORRENT'">
+        <a href="{{d.link}}" *ngIf="d.type === DownloadLinkType.Torrent">
           <fa-icon [icon]="['fas', 'magnet']"></fa-icon> Torrent
         </a>
       </ng-container>
