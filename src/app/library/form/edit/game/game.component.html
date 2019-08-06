@@ -1,32 +1,83 @@
 <form [formGroup]="libraryForm" (submit)="saveChanges(item.id)">
 
-    <div class="form-group">
-        <label for="inputName">Name</label>
-        <input type="text" class="form-control" id="inputName" formControlName="name" placeholder="Name">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputName">Name</label>
+            <input type="text" class="form-control" id="inputName" formControlName="name" placeholder="Name">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputWebsite">Website</label>
+            <input type="text" class="form-control" id="inputWebsite" formControlName="website" placeholder="Website">
+        </div>
     </div>
-    <div class="form-group">
-        <label for="inputWebsite">Website</label>
-        <input type="text" class="form-control" id="inputWebsite" formControlName="website" placeholder="Website">
-    </div>
+
     <div class="form-group">
         <label for="inputInformations">Informations</label>
-        <input type="text" class="form-control" id="inputInformations" formControlName="informations" placeholder="Informations">
+        <div class="card">
+            <div class="card-body">
+
+                <ng-container *ngFor="let info of libraryForm.get('informations').value">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="">Name & Value</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Name" value="{{info.name}}">
+                        <input type="text" class="form-control" placeholder="Value" value="{{info.value}}">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-danger" type="button"
+                                (click)="removeFromInformation(info.id)">
+                                <fa-icon [icon]="['fas', 'trash-alt']"></fa-icon>
+                            </button>
+                        </div>
+                    </div>
+                </ng-container>
+                <br/>
+                <button type="button" class="btn btn-secondary" (click)="addNewInformation()">Add information</button>
+
+            </div>
+        </div>
     </div>
+
     <!-- <div class="form-group">
         <label for="inputRating">Rating</label>
         <input type="text" class="form-control" id="inputRating" placeholder="Rating">
     </div> -->
-    <div class="form-group">
-        <label for="inputSize">Size</label>
-        <input type="text" class="form-control" id="inputSize" formControlName="size" placeholder="Size">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputSize">Size</label>
+            <input type="text" class="form-control" id="inputSize" formControlName="size" placeholder="Size">
+        </div>
     </div>
+
     <div class="form-group">
         <label for="inputSummary">Summary</label>
         <textarea class="form-control" id="inputSummary" formControlName="summary" rows="2"></textarea>
     </div>
     <div class="form-group">
         <label for="inputDownloads">Downloads</label>
-        <input type="text" class="form-control" id="inputDownloads" formControlName="downloads" placeholder="Downloads">
+        <div class="card">
+            <div class="card-body">
+
+                <ng-container *ngFor="let download of libraryForm.get('downloads').value">
+                        <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="">Type & Link</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Name" value="{{download.type}}">
+                        <input type="text" class="form-control" placeholder="Value" value="{{download.link}}">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-danger" type="button"
+                                (click)="removeFromDownload(download.id)">
+                                <fa-icon [icon]="['fas', 'trash-alt']"></fa-icon>
+                            </button>
+                        </div>
+                    </div>
+                </ng-container>
+                <br/>
+                <button type="button" class="btn btn-secondary" (click)="addNewDownloadLink()">Add download
+                    link</button>
+            </div>
+        </div>
     </div>
 
     <button type="submit" class="btn btn-primary">{{ getSubmitLabel() }}</button>

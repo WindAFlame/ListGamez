@@ -16,12 +16,28 @@
             }
         ],
         "size": 0.150,
-        "infos": {
-            "Developer": "IronOak Games",
-            "Publisher": "Curve Digital",
-            "Genres": "Roguelike, Strategy, Turn-based",
-            "Release Date": "April 18, 2018"
-        }
+        "infos": [
+            {
+                "id": 1,
+                "name": "Developer",
+                "value": "IronOak Games"
+            },
+            {
+                "id": 2,
+                "name": "Publisher",
+                "value": "Curve Digital"
+            },
+            {
+                "id": 3,
+                "name": "Genre",
+                "value": "Roguelike, Strategy, Turn-based"
+            },
+            {
+                "id": 4,
+                "name": "Release Date",
+                "value": "April 18, 2018"
+            }
+        ]
     },
     {
         "id": 10760,
@@ -30,10 +46,12 @@
         "summary": "Bloodstained: Ritual of the Night is an upcoming metroidvania video game developed by Inti Creates and published by 505 Games. The game is led by former Castlevania series producer Koji Igarashi, and is considered a spiritual successor to the series. Bloodstained is expected to be released in 2019 for Microsoft Windows, OS X, Linux, Nintendo Switch, PlayStation 4, and Xbox One.",
         "downloads": [
             {
+                "id": 1,
                 "type": "DDL",
                 "link": ""
             },
             {
+                "id": 2,
                 "type": "TORRENT",
                 "link": ""
             }

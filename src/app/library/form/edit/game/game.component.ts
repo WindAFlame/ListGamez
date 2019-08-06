@@ -30,6 +30,7 @@ export class LibraryFormEditGameComponent implements OnInit {
             summary: [this.item.summary, [Validators.required]],
             downloads: [this.item.downloads, []],
         });
+        console.log(this.libraryForm.get('informations').value)
     }
 
     public saveChanges() {
@@ -42,6 +43,36 @@ export class LibraryFormEditGameComponent implements OnInit {
         } else {
             return 'Add item';
         }
+    }
+
+    public addNewDownloadLink() {
+        const list = (this.libraryForm.get('downloads').value as Array<any>)
+        list.push({
+            id: list.length, type: '', link: ''
+        });
+    }
+
+    public addNewInformation() {
+        const list = (this.libraryForm.get('informations').value as Array<any>)
+        list.push({
+            id: list.length, name: '', value: ''
+        });
+    }
+
+    public removeFromInformation(id: number) {
+        const list = (this.libraryForm.get('informations').value as Array<any>);
+        this.removeFromArray(id, list);
+    }
+
+    public removeFromDownload(id: number) {
+        const list = (this.libraryForm.get('downloads').value as Array<any>);
+        this.removeFromArray(id, list);
+
+    }
+
+    private removeFromArray(id: number, list: Array<any>) {
+        const indexOfContentToRemove = list.findIndex(i => i.id === id) + 1;
+        list.splice(indexOfContentToRemove, 1);
     }
 
 }
