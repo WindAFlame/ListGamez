@@ -34,7 +34,7 @@
                     </div>
                 </ng-container>
                 <br />
-                <button type="button" class="btn btn-secondary" (click)="addItemInInformationFormArray()">Add information</button>
+                <button type="button" class="btn btn-success" (click)="addItemInInformationFormArray()">Add information</button>
 
             </div>
         </div>
@@ -66,9 +66,8 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="">Type & Link</span>
                             </div>
-                            <select class="custom-select" id="inputDownloadTypeSelect" formControlName="type">
-                                <option selected>Choose...</option>
-                                <option *ngFor="let type of DLT" value="{{ type }}">{{ type }}</option>
+                            <select class="custom-select" id="inputDownloadTypeSelect" formControlName="type" [value]='download.type'>
+                                <option *ngFor="let type of DLTKeys" [value]="DLT[type]">{{ type }}</option>
                             </select>
                             <input type="text" class="form-control" placeholder="Value" formControlName="link">
                             <div class="input-group-append">
@@ -81,12 +80,12 @@
                     </div>
                 </ng-container>
                 <br />
-                <button type="button" class="btn btn-secondary" (click)="addItemInDownloadFormArray()">Add download
+                <button type="button" class="btn btn-success" (click)="addItemInDownloadFormArray()">Add download
                     link</button>
             </div>
         </div>
     </div>
 
-    <button type="button" class="btn btn-secondary" (click)="resetForm()">Reset</button>
+    <button type="button" class="btn btn-warning" (click)="resetForm()">Reset</button>
     <button type="submit" class="btn btn-primary">{{ getSubmitLabel() }}</button>
 </form>

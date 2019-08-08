@@ -13,7 +13,8 @@ export class LibraryFormEditGameComponent implements OnInit {
     @Input() item: Game;
     private internalItem: Game;
     public libraryForm: FormGroup;
-    public DLT = Object.keys(DownloadLinkType);
+    public DLT = DownloadLinkType;
+    public DLTKeys = Object.keys(DownloadLinkType);
 
     constructor(
         private formBuilder: FormBuilder
@@ -36,12 +37,20 @@ export class LibraryFormEditGameComponent implements OnInit {
             downloads: this.formBuilder.array([])
         });
 
-        for (const info of this.internalItem.infos) {
-            this.addItemInInformationFormArray(info);
+        if (this.internalItem.infos) {
+            for (const info of this.internalItem.infos) {
+                this.addItemInInformationFormArray(info);
+            }
+        } else {
+            this.addItemInInformationFormArray();
         }
 
-        for (const download of this.internalItem.downloads) {
-            this.addItemInDownloadFormArray(download);
+        if (this.internalItem.downloads) {
+            for (const download of this.internalItem.downloads) {
+                this.addItemInDownloadFormArray(download);
+            }
+        } else {
+            this.addItemInDownloadFormArray();
         }
     }
 
@@ -54,7 +63,13 @@ export class LibraryFormEditGameComponent implements OnInit {
     }
 
     public saveChanges() {
-        console.log('You are saved nothing !');
+        if (this.libraryForm.valid) {
+            this.internalItem.infos = this.libraryForm.get('informations').value;
+            this.internalItem.downloads = this.libraryForm.get('downloads').value;
+            console.log(this.internalItem);
+        } else {
+            console.log('An error was detected : ' + this.libraryForm.get);
+        }
     }
 
     public getSubmitLabel() {
