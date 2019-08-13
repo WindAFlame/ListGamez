@@ -31,6 +31,7 @@
                                 </button>
                             </div>
                         </div>
+                        <pre>{{ info.valid }}</pre>
                     </div>
                 </ng-container>
                 <br />
@@ -66,8 +67,8 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="">Type & Link</span>
                             </div>
-                            <select class="custom-select" id="inputDownloadTypeSelect" formControlName="type" [value]='download.type'>
-                                <option *ngFor="let type of DLTKeys" [value]="DLT[type]">{{ type }}</option>
+                            <select class="custom-select" class="form-control" id="inputDownloadTypeSelect" formControlName="type">
+                                <option *ngFor="let type of DLTKeys" [value]="DLT[type]" [selected]="DLT[type] === download.value.type">{{ type }}</option>
                             </select>
                             <input type="text" class="form-control" placeholder="Value" formControlName="link">
                             <div class="input-group-append">
@@ -78,6 +79,8 @@
                             </div>
                         </div>
                     </div>
+                    <pre>{{ download.valid }} : {{ download.value.type }} > {{ download.value.link }}</pre>
+                    <pre>{{ download.errors }}</pre>
                 </ng-container>
                 <br />
                 <button type="button" class="btn btn-success" (click)="addItemInDownloadFormArray()">Add download

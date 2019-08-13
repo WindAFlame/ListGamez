@@ -1,20 +1,27 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { classToPlain, plainToClass } from 'class-transformer';
 import { DownloadLink, DownloadLinkType, Game, GameInformations } from 'src/app/_other/game.class';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
     selector: 'app-library-form-edit-game',
     templateUrl: './game.component.html',
     styleUrls: ['./game.component.scss']
 })
-export class LibraryFormEditGameComponent implements OnInit {
+export class LibraryFormEditGameComponent implements OnInit, OnDestroy {
 
+    // Input object to be modified with this form.
     @Input() item: Game;
+    // Object linked to the form. Maintained by the form to facilitate the saving of changes to this object.
     private internalItem: Game;
     public libraryForm: FormGroup;
+    // Internally referenced enum to be used by template.
     public DLT = DownloadLinkType;
     public DLTKeys = Object.keys(DownloadLinkType);
+    // Subject always active as long as the component is active  or the form has not been submitted.
+    private alive$ = new Subject();
 
     constructor(
         private formBuilder: FormBuilder
@@ -24,6 +31,11 @@ export class LibraryFormEditGameComponent implements OnInit {
         this.initialiseForm();
     }
 
+    ngOnDestroy() {
+        this.alive$.next();
+        this.alive$.complete();
+    }
+
     private initialiseForm() {
         this.initialiseItem();
 
@@ -31,29 +43,47 @@ export class LibraryFormEditGameComponent implements OnInit {
             id: [this.internalItem.id, [Validators.required]],
             name: [this.internalItem.name, [Validators.required]],
             website: [this.internalItem.website, []],
-            informations: this.formBuilder.array([]),
+            informations: this.formBuilder.array(
+                this.internalItem.infos ?
+                    this.internalItem.infos.map(i => {
+                        return this.formBuilder.group({
+                            id: [i.id, [Validators.required]],
+                            name: [i.name, [Validators.required]],
+                            value: [i.value, [Validators.required]]
+                        });
+                    }) :
+                    []
+            ),
             size: [this.internalItem.size, []],
             summary: [this.internalItem.summary, [Validators.required]],
-            downloads: this.formBuilder.array([])
+            downloads: this.formBuilder.array(
+                this.internalItem.downloads ?
+                    this.internalItem.downloads.map(d => {
+                        return this.formBuilder.group({
+                            id: [d.id, [Validators.required]],
+                            type: [d.type, [Validators.required]],
+                            link: [d.link, [Validators.required]]
+                        });
+                    }) :
+                    []
+            )
         });
-
-        if (this.internalItem.infos) {
-            for (const info of this.internalItem.infos) {
-                this.addItemInInformationFormArray(info);
-            }
-        } else {
-            this.addItemInInformationFormArray();
-        }
-
-        if (this.internalItem.downloads) {
-            for (const download of this.internalItem.downloads) {
-                this.addItemInDownloadFormArray(download);
-            }
-        } else {
-            this.addItemInDownloadFormArray();
-        }
+        // No reference is used for the tables, we subscribe to the changes in these values to keep our internal objective up to date.
+        this.libraryForm.get('informations').valueChanges.pipe(
+            takeUntil(this.alive$)
+        ).subscribe(
+            val => this.internalItem.infos = val
+        );
+        this.libraryForm.get('downloads').valueChanges.pipe(
+            takeUntil(this.alive$)
+        ).subscribe(
+            val => this.internalItem.downloads = val
+        );
     }
 
+    /**
+     * Local copy of the object to be modified with the form.
+     */
     private initialiseItem() {
         this.internalItem = new Game();
         if (this.item) {
@@ -64,11 +94,10 @@ export class LibraryFormEditGameComponent implements OnInit {
 
     public saveChanges() {
         if (this.libraryForm.valid) {
-            this.internalItem.infos = this.libraryForm.get('informations').value;
-            this.internalItem.downloads = this.libraryForm.get('downloads').value;
-            console.log(this.internalItem);
+            console.log('Internal Item > ', this.internalItem);
+            this.alive$.next();
         } else {
-            console.log('An error was detected : ' + this.libraryForm.get);
+            console.log('An error was detected : ', this.libraryForm.getError);
         }
     }
 
