@@ -38,18 +38,18 @@ export class Game implements GameInterface {
     public summary = 'No summary.';
     public website: string;
 
-    constructor()
-    constructor(id?, name?, downloads?, size?) {
-        this.id = id ? id : undefined;
+    constructor(id)
+    constructor(id, name?, downloads?, size?) {
+        this.id = id;
         this.name = name ? name : undefined;
-        this.downloads = downloads ? downloads : undefined;
+        this.downloads = downloads ? downloads : [];
         this.size = size ? size : undefined;
     }
 
     public parseGame(game: Game) {
         this.id = game.id ? game.id : undefined;
         this.name = game.name ? game.name : undefined;
-        this.downloads = game.downloads ? game.downloads : undefined;
+        this.downloads = game.downloads ? game.downloads : [];
         this.size = game.size ? game.size : undefined;
         this.infos =  game.infos ? game.infos : [];
         this.summary = game.summary ? game.summary : 'No summary.';

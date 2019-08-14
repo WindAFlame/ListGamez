@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { classToPlain, plainToClass } from 'class-transformer';
 import { DownloadLink, DownloadLinkType, Game, GameInformations } from 'src/app/_other/game.class';
@@ -14,6 +14,8 @@ export class LibraryFormEditGameComponent implements OnInit, OnDestroy {
 
     // Input object to be modified with this form.
     @Input() item: Game;
+    @Input() index: number;
+    @Output() save = new EventEmitter<Game>();
     // Object linked to the form. Maintained by the form to facilitate the saving of changes to this object.
     private internalItem: Game;
     public libraryForm: FormGroup;
@@ -22,6 +24,7 @@ export class LibraryFormEditGameComponent implements OnInit, OnDestroy {
     public DLTKeys = Object.keys(DownloadLinkType);
     // Subject always active as long as the component is active  or the form has not been submitted.
     private alive$ = new Subject();
+    private readonly regexForUrl = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
 
     constructor(
         private formBuilder: FormBuilder
@@ -42,8 +45,8 @@ export class LibraryFormEditGameComponent implements OnInit, OnDestroy {
         this.libraryForm = this.formBuilder.group({
             id: [this.internalItem.id, [Validators.required]],
             name: [this.internalItem.name, [Validators.required]],
-            website: [this.internalItem.website, []],
-            informations: this.formBuilder.array(
+            website: [this.internalItem.website, [Validators.pattern(this.regexForUrl)]],
+            infos: this.formBuilder.array(
                 this.internalItem.infos ?
                     this.internalItem.infos.map(i => {
                         return this.formBuilder.group({
@@ -68,53 +71,47 @@ export class LibraryFormEditGameComponent implements OnInit, OnDestroy {
                     []
             )
         });
-        // No reference is used for the tables, we subscribe to the changes in these values to keep our internal objective up to date.
-        this.libraryForm.get('informations').valueChanges.pipe(
-            takeUntil(this.alive$)
-        ).subscribe(
-            val => this.internalItem.infos = val
-        );
-        this.libraryForm.get('downloads').valueChanges.pipe(
-            takeUntil(this.alive$)
-        ).subscribe(
-            val => this.internalItem.downloads = val
-        );
     }
 
     /**
      * Local copy of the object to be modified with the form.
      */
     private initialiseItem() {
-        this.internalItem = new Game();
         if (this.item) {
             const plain = classToPlain(this.item);
             this.internalItem = plainToClass(Game, plain);
+        } else if (this.index) {
+            this.internalItem = new Game(this.index);
         }
     }
 
     public saveChanges() {
+        this.libraryForm.markAllAsTouched();
+        console.log('Internal Item > ', this.libraryForm.value);
         if (this.libraryForm.valid) {
-            console.log('Internal Item > ', this.internalItem);
             this.alive$.next();
+            this.save.next(plainToClass(Game, this.libraryForm.value));
         } else {
             console.log('An error was detected : ', this.libraryForm.getError);
         }
     }
 
     public getSubmitLabel() {
-        if (this.item && this.item.id) {
+        if (this.item) {
             return 'Save Changes';
-        } else {
+        } else if (this.index) {
             return 'Add item';
+        } else {
+            throw Error('You need to use Input item or index to use this component.');
         }
     }
 
     public addItemInDownloadFormArray(download?: DownloadLink) {
         const list = (this.libraryForm.get('downloads') as FormArray);
         list.push(this.formBuilder.group({
-            id: [list.length, [Validators.required]],
-            type: ['', [Validators.required]],
-            link: ['', [Validators.required]]
+            id: [download ? download.id : list.length, [Validators.required]],
+            type: [download ? download.type : '', [Validators.required]],
+            link: [download ? download.link : '', [Validators.required]]
         }));
     }
 
@@ -139,7 +136,7 @@ export class LibraryFormEditGameComponent implements OnInit, OnDestroy {
 
     public resetForm() {
         this.libraryForm.reset();
-        this.initialiseForm();
+        // this.initialiseForm();
     }
 
 }

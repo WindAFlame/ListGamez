@@ -60,6 +60,21 @@ export class GameService {
         return this.listStatusSubj.asObservable();
     }
 
+    public pushGame(game: Game) {
+        const aListGame = this.list;
+        let aGame: Game;
+        if (aGame = aListGame.find(g => g.id === game.id)) {
+            aListGame.splice(
+                aListGame.findIndex(g => g.id === game.id),
+                1,
+                game
+            );
+        } else {
+            aListGame.push(game);
+        }
+        this.setList(aListGame);
+    }
+
     public searchGame(userInput: string) {
         let newList: Game[] = this.list;
         if (userInput) {
