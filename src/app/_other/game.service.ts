@@ -61,7 +61,7 @@ export class GameService {
     }
 
     public pushGame(game: Game) {
-        const aListGame = this.list;
+        const aListGame = this.list ? this.list : new Array<Game>();
         let aGame: Game;
         if (aGame = aListGame.find(g => g.id === game.id)) {
             aListGame.splice(

@@ -23,7 +23,7 @@
                 <button type="button" class="btn btn-outline-success">Add new game</button>
             </ng-template>
             <ng-template ngbPanelContent>
-                <app-library-form-edit-game [index]="library.length" (save)="saveInLibrary($event)"></app-library-form-edit-game>
+                <app-library-form-edit-game [index]="library ? library.length : 0" (save)="saveInLibrary($event)"></app-library-form-edit-game>
             </ng-template>
         </ngb-panel>
 

@@ -80,7 +80,7 @@ export class LibraryFormEditGameComponent implements OnInit, OnDestroy {
         if (this.item) {
             const plain = classToPlain(this.item);
             this.internalItem = plainToClass(Game, plain);
-        } else if (this.index) {
+        } else if (this.index >= 0) {
             this.internalItem = new Game(this.index);
         }
     }
@@ -99,7 +99,7 @@ export class LibraryFormEditGameComponent implements OnInit, OnDestroy {
     public getSubmitLabel() {
         if (this.item) {
             return 'Save Changes';
-        } else if (this.index) {
+        } else if (this.index >= 0) {
             return 'Add item';
         } else {
             throw Error('You need to use Input item or index to use this component.');
@@ -136,7 +136,6 @@ export class LibraryFormEditGameComponent implements OnInit, OnDestroy {
 
     public resetForm() {
         this.libraryForm.reset();
-        // this.initialiseForm();
     }
 
 }
