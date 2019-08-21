@@ -5,25 +5,36 @@
 
     <ngb-accordion #acc="ngbAccordion" [closeOthers]="true" activeIds="static-1">
 
-        <ng-container *ngFor="let item of library">
+        <ng-container *ngFor="let item of library; let i = index;">
 
-            <ngb-panel>
-                <ng-template ngbPanelTitle>
-                    {{ item.name }}
+            <ngb-panel id="{{'toggle-' + i}}">
+                <ng-template ngbPanelHeader>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h5 class="m-0">{{ item.name }}</h5>
+                        <div>
+                            <button ngbPanelToggle class="btn btn-sm btn-outline-warning ml-2"><fa-icon [icon]="['far', 'edit']"></fa-icon></button>
+                            <button type="button" class="btn btn-sm btn-outline-danger ml-2" (click)="removeFromLibrary(item.id)"><fa-icon [icon]="['fas', 'trash-alt']"></fa-icon></button>
+                        </div>
+                    </div>
                 </ng-template>
                 <ng-template ngbPanelContent>
-                    <app-library-form-edit-game [item]="item" (save)="saveInLibrary($event)"></app-library-form-edit-game>
+                    <app-library-form-edit-game [item]="item" (save)="saveInLibrary($event, 'toggle-' + i)">
+                    </app-library-form-edit-game>
                 </ng-template>
             </ngb-panel>
-            
+
         </ng-container>
 
-        <ngb-panel>
-            <ng-template ngbPanelTitle>
-                <button type="button" class="btn btn-outline-success">Add new game</button>
+        <ngb-panel #toggleNew id="toggle-new">
+            <ng-template ngbPanelHeader>
+                <div class="d-flex align-items-center justify-content-between">
+                    <h5 class="m-0">Add new game</h5>
+                    <button ngbPanelToggle class="btn btn-sm btn-outline-success"><fa-icon [icon]="['fas', 'plus']"></fa-icon></button>
+                </div>
             </ng-template>
             <ng-template ngbPanelContent>
-                <app-library-form-edit-game [index]="library ? library.length : 0" (save)="saveInLibrary($event)"></app-library-form-edit-game>
+                <app-library-form-edit-game [index]="library ? library.length : 0" (save)="saveInLibrary($event, toggleNew.id)">
+                </app-library-form-edit-game>
             </ng-template>
         </ngb-panel>
 

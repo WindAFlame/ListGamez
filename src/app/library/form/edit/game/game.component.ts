@@ -31,7 +31,7 @@ export class LibraryFormEditGameComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit() {
-        this.initialiseForm();
+        this.initialise();
     }
 
     ngOnDestroy() {
@@ -39,15 +39,18 @@ export class LibraryFormEditGameComponent implements OnInit, OnDestroy {
         this.alive$.complete();
     }
 
-    private initialiseForm() {
+    private initialise() {
         this.initialiseItem();
+        this.initialiseForm();
+    }
 
+    private initialiseForm() {
         this.libraryForm = this.formBuilder.group({
             id: [this.internalItem.id, [Validators.required]],
             name: [this.internalItem.name, [Validators.required]],
             website: [this.internalItem.website, [Validators.pattern(this.regexForUrl)]],
             infos: this.formBuilder.array(
-                this.internalItem.infos ?
+                (this.internalItem.infos ?
                     this.internalItem.infos.map(i => {
                         return this.formBuilder.group({
                             id: [i.id, [Validators.required]],
@@ -55,7 +58,7 @@ export class LibraryFormEditGameComponent implements OnInit, OnDestroy {
                             value: [i.value, [Validators.required]]
                         });
                     }) :
-                    []
+                    []), Validators.minLength(1)
             ),
             size: [this.internalItem.size, []],
             summary: [this.internalItem.summary, [Validators.required]],
@@ -89,6 +92,7 @@ export class LibraryFormEditGameComponent implements OnInit, OnDestroy {
         this.libraryForm.markAllAsTouched();
         console.log('Internal Item > ', this.libraryForm.value);
         if (this.libraryForm.valid) {
+            console.log(' info is valid ? ' + this.libraryForm.get('infos').valid);
             this.alive$.next();
             this.save.next(plainToClass(Game, this.libraryForm.value));
         } else {
@@ -136,6 +140,7 @@ export class LibraryFormEditGameComponent implements OnInit, OnDestroy {
 
     public resetForm() {
         this.libraryForm.reset();
+        this.initialiseForm();
     }
 
 }

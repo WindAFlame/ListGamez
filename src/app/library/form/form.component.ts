@@ -1,8 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Game } from 'src/app/_other/game.class';
 import { GameService } from 'src/app/_other/game.service';
 import { takeUntil } from 'rxjs/operators';
+import { NgbAccordion, NgbPanel } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-library-form',
@@ -14,6 +15,7 @@ export class LibraryFormComponent implements OnInit, OnDestroy {
     public library: Observable<Game[]> | Game[];
     public isCollapsed = false;
     public alive$ = new Subject<void>();
+    @ViewChild('acc', { static: true }) acc: NgbAccordion;
 
     constructor(
         private gameS: GameService
@@ -32,7 +34,12 @@ export class LibraryFormComponent implements OnInit, OnDestroy {
         this.alive$.complete();
     }
 
-    saveInLibrary(item: Game) {
+    saveInLibrary(item: Game, panelId: string) {
         this.gameS.pushGame(item);
+        this.acc.toggle(panelId);
+    }
+
+    removeFromLibrary(id: string) {
+        this.gameS.removeGame(Number(id));
     }
 }

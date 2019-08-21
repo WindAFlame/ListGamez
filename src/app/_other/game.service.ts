@@ -75,6 +75,18 @@ export class GameService {
         this.setList(aListGame);
     }
 
+    public removeGame(id: number) {
+        const aListGame = this.list;
+        let aGame: Game;
+        if (aGame = aListGame.find(g => g.id === id)) {
+            aListGame.splice(
+                aListGame.findIndex(g => g.id === id),
+                1
+            );
+        }
+        this.setList(aListGame);
+    }
+
     public searchGame(userInput: string) {
         let newList: Game[] = this.list;
         if (userInput) {
