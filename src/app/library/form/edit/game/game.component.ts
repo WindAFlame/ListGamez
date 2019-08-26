@@ -1,9 +1,8 @@
-import { Component, Input, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { classToPlain, plainToClass } from 'class-transformer';
-import { DownloadLink, DownloadLinkType, Game, GameInformations } from 'src/app/_other/game.class';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { DownloadLink, DownloadLinkType, Game, GameInformations } from 'src/app/_other/game.class';
 
 @Component({
     selector: 'app-library-form-edit-game',
@@ -51,27 +50,21 @@ export class LibraryFormEditGameComponent implements OnInit, OnDestroy {
             website: [this.internalItem.website, [Validators.pattern(this.regexForUrl)]],
             infos: this.formBuilder.array(
                 (this.internalItem.infos ?
-                    this.internalItem.infos.map(i => {
-                        return this.formBuilder.group({
-                            id: [i.id, [Validators.required]],
-                            name: [i.name, [Validators.required]],
-                            value: [i.value, [Validators.required]]
-                        });
-                    }) :
-                    []), Validators.minLength(1)
-            ),
-            size: [this.internalItem.size, []],
-            summary: [this.internalItem.summary, [Validators.required]],
-            downloads: this.formBuilder.array(
-                this.internalItem.downloads ?
-                    this.internalItem.downloads.map(d => {
-                        return this.formBuilder.group({
-                            id: [d.id, [Validators.required]],
-                            type: [d.type, [Validators.required]],
-                            link: [d.link, [Validators.required]]
-                        });
+                    this.internalItem.infos.map((i, index) => {
+                        return this.generateGameInformationFormControl(index, i);
                     }) :
                     []
+                ), Validators.required
+            ),
+            size: [this.internalItem.size, [Validators.required]],
+            summary: [this.internalItem.summary, []],
+            downloads: this.formBuilder.array(
+                (this.internalItem.downloads ?
+                    this.internalItem.downloads.map((d, index) => {
+                        return this.generateDownloadLinkFormControl(index, d);
+                    }) :
+                    []
+                ), Validators.required
             )
         });
     }
@@ -90,9 +83,7 @@ export class LibraryFormEditGameComponent implements OnInit, OnDestroy {
 
     public saveChanges() {
         this.libraryForm.markAllAsTouched();
-        console.log('Internal Item > ', this.libraryForm.value);
         if (this.libraryForm.valid) {
-            console.log(' info is valid ? ' + this.libraryForm.get('infos').valid);
             this.alive$.next();
             this.save.next(plainToClass(Game, this.libraryForm.value));
         } else {
@@ -106,17 +97,21 @@ export class LibraryFormEditGameComponent implements OnInit, OnDestroy {
         } else if (this.index >= 0) {
             return 'Add item';
         } else {
-            throw Error('You need to use Input item or index to use this component.');
+            throw Error('You need to use input item or index to use this component.');
         }
     }
 
     public addItemInDownloadFormArray(download?: DownloadLink) {
         const list = (this.libraryForm.get('downloads') as FormArray);
-        list.push(this.formBuilder.group({
-            id: [download ? download.id : list.length, [Validators.required]],
+        list.push(this.generateDownloadLinkFormControl(list.length, download));
+    }
+
+    private generateDownloadLinkFormControl(index: number, download: DownloadLink) {
+        return this.formBuilder.group({
+            id: [download ? download.id : index, [Validators.required]],
             type: [download ? download.type : '', [Validators.required]],
             link: [download ? download.link : '', [Validators.required]]
-        }));
+        });
     }
 
     public removeItemFromDownloadFormArray(formArrayItemId: number) {
@@ -125,16 +120,20 @@ export class LibraryFormEditGameComponent implements OnInit, OnDestroy {
     }
 
     public addItemInInformationFormArray(info?: GameInformations) {
-        const list = (this.libraryForm.get('informations') as FormArray);
-        list.push(this.formBuilder.group({
-            id: [info ? info.id : list.length, [Validators.required]],
+        const list = (this.libraryForm.get('infos') as FormArray);
+        list.push(this.generateGameInformationFormControl(list.length, info));
+    }
+
+    private generateGameInformationFormControl(index: number, info: GameInformations) {
+        return this.formBuilder.group({
+            id: [info ? info.id : index, [Validators.required]],
             name: [info ? info.name : '', [Validators.required]],
             value: [info ? info.value : '', [Validators.required]]
-        }));
+        });
     }
 
     public removeItemFromInformationFormArray(formArrayItemId: number) {
-        const list = (this.libraryForm.get('informations') as FormArray);
+        const list = (this.libraryForm.get('infos') as FormArray);
         list.removeAt(formArrayItemId);
     }
 

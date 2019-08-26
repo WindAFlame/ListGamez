@@ -20,7 +20,10 @@
     <div class="form-group">
         <label for="inputInformations">Informations</label>
         <div class="card">
-            <div class="card-body" formArrayName="infos">
+            <div class="card-body form-control" formArrayName="infos" [ngClass]="{
+                'is-valid': libraryForm.get('infos').valid && libraryForm.get('infos').touched,
+                'is-invalid': libraryForm.get('infos').invalid && libraryForm.get('infos').touched
+            }">
 
                 <ng-container *ngFor="let info of libraryForm.get('infos').controls; let i = index;">
                     <div [formGroupName]="i">
@@ -46,7 +49,8 @@
                     </div>
                 </ng-container>
                 <br />
-                <button type="button" class="btn btn-success" (click)="addItemInInformationFormArray()">Add information</button>
+                <button type="button" class="btn btn-success" (click)="addItemInInformationFormArray()">Add
+                    information</button>
 
             </div>
         </div>
@@ -72,7 +76,10 @@
     <div class="form-group">
         <label for="inputDownloads">Downloads</label>
         <div class="card">
-            <div class="card-body" formArrayName="downloads">
+            <div class="card-body form-control" formArrayName="downloads" [ngClass]="{
+                'is-valid': libraryForm.get('downloads').valid && libraryForm.get('downloads').touched,
+                'is-invalid': libraryForm.get('downloads').invalid && libraryForm.get('downloads').touched
+            }">
 
                 <ng-container *ngFor="let download of libraryForm.get('downloads').controls; let i = index;">
                     <div [formGroupName]="i">
@@ -84,7 +91,8 @@
                                 'is-valid': download.get('type').valid && download.get('type').touched,
                                 'is-invalid': download.get('type').invalid && download.get('type').touched
                             }" id="inputDownloadTypeSelect" formControlName="type">
-                                <option *ngFor="let type of DLTKeys" [value]="DLT[type]" [selected]="DLT[type] === download.value.type">{{ type }}</option>
+                                <option *ngFor="let type of DLTKeys" [value]="DLT[type]"
+                                    [selected]="DLT[type] === download.value.type">{{ type }}</option>
                             </select>
                             <input type="text" class="form-control" [ngClass]="{
                                 'is-valid': download.get('link').valid && download.get('link').touched,
