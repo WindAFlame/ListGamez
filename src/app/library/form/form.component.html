@@ -29,7 +29,12 @@
             <ng-template ngbPanelHeader>
                 <div class="d-flex align-items-center justify-content-between">
                     <h5 class="m-0">Add new game</h5>
-                    <button ngbPanelToggle class="btn btn-sm btn-outline-success"><fa-icon [icon]="['fas', 'plus']"></fa-icon></button>
+                    <button ngbPanelToggle *ngIf="!acc.isExpanded(toggleNew.id)" class="btn btn-sm btn-outline-success">
+                        <fa-icon [icon]="['fas', 'plus']"></fa-icon>
+                    </button>
+                    <button ngbPanelToggle *ngIf="acc.isExpanded(toggleNew.id)" class="btn btn-sm btn-outline-danger">
+                        <fa-icon [icon]="['fas', 'minus']"></fa-icon>
+                    </button>
                 </div>
             </ng-template>
             <ng-template ngbPanelContent>
