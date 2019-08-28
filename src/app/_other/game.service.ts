@@ -49,11 +49,42 @@ export class GameService {
     }
 
     public getGameById(id: string): Game {
-        return this.list.find(g => g.id === Number(id));
+        let game: Game;
+        if (this.list && id) {
+            game = this.list.find(g => g.id === Number(id));
+        }
+        return game;
     }
 
     public getStatus(): Observable<GameServiceStatus> {
         return this.listStatusSubj.asObservable();
+    }
+
+    public pushGame(game: Game) {
+        const aListGame = this.list ? this.list : new Array<Game>();
+        let aGame: Game;
+        if (aGame = aListGame.find(g => g.id === game.id)) {
+            aListGame.splice(
+                aListGame.findIndex(g => g.id === game.id),
+                1,
+                game
+            );
+        } else {
+            aListGame.push(game);
+        }
+        this.setList(aListGame);
+    }
+
+    public removeGame(id: number) {
+        const aListGame = this.list;
+        let aGame: Game;
+        if (aGame = aListGame.find(g => g.id === id)) {
+            aListGame.splice(
+                aListGame.findIndex(g => g.id === id),
+                1
+            );
+        }
+        this.setList(aListGame);
     }
 
     public searchGame(userInput: string) {

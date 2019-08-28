@@ -1,0 +1,119 @@
+<form *ngIf="libraryForm" [formGroup]="libraryForm" (submit)="saveChanges()">
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputName">Name</label>
+            <input type="text" class="form-control" [ngClass]="{
+                'is-valid': libraryForm.get('name').valid && libraryForm.get('name').touched,
+                'is-invalid': libraryForm.get('name').invalid && libraryForm.get('name').touched
+            }" id="inputName" formControlName="name" placeholder="Name">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputWebsite">Website</label>
+            <input type="url" class="form-control" [ngClass]="{
+                'is-valid': libraryForm.get('website').valid && libraryForm.get('website').touched,
+                'is-invalid': libraryForm.get('website').invalid && libraryForm.get('website').touched
+            }" id="inputWebsite" formControlName="website" placeholder="Website">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="inputInformations">Informations</label>
+        <div class="card">
+            <div class="card-body form-control" formArrayName="infos" [ngClass]="{
+                'is-valid': libraryForm.get('infos').valid && libraryForm.get('infos').touched,
+                'is-invalid': libraryForm.get('infos').invalid && libraryForm.get('infos').touched
+            }">
+
+                <ng-container *ngFor="let info of libraryForm.get('infos').controls; let i = index;">
+                    <div [formGroupName]="i">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="">Name & Value</span>
+                            </div>
+                            <input type="text" class="form-control" [ngClass]="{
+                                'is-valid': info.get('name').valid && info.get('name').touched,
+                                'is-invalid': info.get('name').invalid && info.get('name').touched
+                            }" placeholder="Name" formControlName="name">
+                            <input type="text" class="form-control" [ngClass]="{
+                                'is-valid': info.get('value').valid && info.get('value').touched,
+                                'is-invalid': info.get('value').invalid && info.get('value').touched
+                            }" placeholder="Value" formControlName="value">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-danger" type="button"
+                                    (click)="removeItemFromInformationFormArray(i)">
+                                    <fa-icon [icon]="['fas', 'trash-alt']"></fa-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                <br />
+                <button type="button" class="btn btn-success" (click)="addItemInInformationFormArray()">Add
+                    information</button>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputSize">Size</label>
+            <input type="text" class="form-control" [ngClass]="{
+                'is-valid': libraryForm.get('size').valid && libraryForm.get('size').touched,
+                'is-invalid': libraryForm.get('size').invalid && libraryForm.get('size').touched
+            }" id="inputSize" formControlName="size" placeholder="Size">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="inputSummary">Summary</label>
+        <textarea class="form-control" id="inputSummary" [ngClass]="{
+            'is-valid': libraryForm.get('summary').valid && libraryForm.get('summary').touched,
+            'is-invalid': libraryForm.get('summary').invalid && libraryForm.get('summary').touched
+        }" formControlName="summary" rows="2"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="inputDownloads">Downloads</label>
+        <div class="card">
+            <div class="card-body form-control" formArrayName="downloads" [ngClass]="{
+                'is-valid': libraryForm.get('downloads').valid && libraryForm.get('downloads').touched,
+                'is-invalid': libraryForm.get('downloads').invalid && libraryForm.get('downloads').touched
+            }">
+
+                <ng-container *ngFor="let download of libraryForm.get('downloads').controls; let i = index;">
+                    <div [formGroupName]="i">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="">Type & Link</span>
+                            </div>
+                            <select class="custom-select" class="form-control" [ngClass]="{
+                                'is-valid': download.get('type').valid && download.get('type').touched,
+                                'is-invalid': download.get('type').invalid && download.get('type').touched
+                            }" id="inputDownloadTypeSelect" formControlName="type">
+                                <option *ngFor="let type of DLTKeys" [value]="DLT[type]"
+                                    [selected]="DLT[type] === download.value.type">{{ type }}</option>
+                            </select>
+                            <input type="text" class="form-control" [ngClass]="{
+                                'is-valid': download.get('link').valid && download.get('link').touched,
+                                'is-invalid': download.get('link').invalid && download.get('link').touched
+                            }" placeholder="Value" formControlName="link">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-danger" type="button"
+                                    (click)="removeItemFromDownloadFormArray(i)">
+                                    <fa-icon [icon]="['fas', 'trash-alt']"></fa-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                <br />
+                <button type="button" class="btn btn-success" (click)="addItemInDownloadFormArray()">Add download
+                    link</button>
+            </div>
+        </div>
+    </div>
+
+    <button type="button" class="btn btn-warning" (click)="resetForm()">Reset</button>
+    <button type="submit" class="btn btn-primary">{{ getSubmitLabel() }}</button>
+</form>

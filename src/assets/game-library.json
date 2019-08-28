@@ -7,21 +7,39 @@
         "summary": "For The King is a turn based roguelike, RPG that can be played solo or cooperatively online and features strategic adventuring, turn based combat, and persistent choices. Players must survive cunning enemies and creatures, wicked weather and brutal traps in their quest to solve the mysterious death of the king and bring order to the land.",
         "downloads": [
             {
+                "id": 0,
                 "type": "DDL",
                 "link": ""
             },
             {
+                "id": 1,
                 "type": "TORRENT",
                 "link": ""
             }
         ],
         "size": 0.150,
-        "infos": {
-            "Developer": "IronOak Games",
-            "Publisher": "Curve Digital",
-            "Genres": "Roguelike, Strategy, Turn-based",
-            "Release Date": "April 18, 2018"
-        }
+        "infos": [
+            {
+                "id": 0,
+                "name": "Developer",
+                "value": "IronOak Games"
+            },
+            {
+                "id": 1,
+                "name": "Publisher",
+                "value": "Curve Digital"
+            },
+            {
+                "id": 2,
+                "name": "Genre",
+                "value": "Roguelike, Strategy, Turn-based"
+            },
+            {
+                "id": 3,
+                "name": "Release Date",
+                "value": "April 18, 2018"
+            }
+        ]
     },
     {
         "id": 10760,
@@ -30,10 +48,12 @@
         "summary": "Bloodstained: Ritual of the Night is an upcoming metroidvania video game developed by Inti Creates and published by 505 Games. The game is led by former Castlevania series producer Koji Igarashi, and is considered a spiritual successor to the series. Bloodstained is expected to be released in 2019 for Microsoft Windows, OS X, Linux, Nintendo Switch, PlayStation 4, and Xbox One.",
         "downloads": [
             {
+                "id": 0,
                 "type": "DDL",
                 "link": ""
             },
             {
+                "id": 1,
                 "type": "TORRENT",
                 "link": ""
             }
