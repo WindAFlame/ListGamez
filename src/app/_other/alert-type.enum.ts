@@ -1,7 +1,7 @@
 /** Refers to alert type of bootstrap library. */
 export enum AlertType {
     INFO = 'info',
-    SUCCESS = 'sucess',
+    SUCCESS = 'success',
     WARNING = 'warning',
     DANGER = 'danger'
 }
