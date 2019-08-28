@@ -18,7 +18,9 @@ export class DownloadLink {
 
 export enum DownloadLinkType {
     Torrent = 'TORRENT',
-    DDl = 'DDL'
+    DDl = 'DDL',
+    Store = 'STORE',
+    Playable = 'PLAYABLE'
 }
 
 export class GameInformations {
@@ -62,6 +64,14 @@ export class Game implements GameInterface {
 
     public hasTorrentLink() {
         return this.downloads && !!this.downloads.find(d => d.type === DownloadLinkType.Torrent);
+    }
+
+    public hasStoreLink() {
+        return this.downloads && !!this.downloads.find(d => d.type === DownloadLinkType.Store);
+    }
+
+    public hasPlayableLink() {
+        return this.downloads && !!this.downloads.find(d => d.type === DownloadLinkType.Playable);
     }
 
 }
