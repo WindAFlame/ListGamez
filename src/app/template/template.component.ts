@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Event, NavigationEnd, Router } from '@angular/router';
-import { SessionService } from '../_other/session.service';
 
 @Component({
   selector: 'app-template',
@@ -12,18 +11,21 @@ export class TemplateComponent implements OnInit {
   public showSearchBar = false;
 
   constructor(
-    private router: Router,
-    private sessionService: SessionService
+    private router: Router
   ) { }
 
   ngOnInit() {
     this.subscribeRouteUrlEvent();
   }
 
+  public onUserInput(userInput: string) {
+      console.log(`User want to search with these values : ${userInput}.`);
+  }
+
   private subscribeRouteUrlEvent() {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
-        this.showSearchBar = (event.url === '/');
+        this.showSearchBar = (event.url === '/library');
       }
     });
   }

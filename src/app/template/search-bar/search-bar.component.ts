@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { GameService } from 'src/app/_other/game.service';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-template-search-bar',
@@ -10,10 +9,10 @@ import { GameService } from 'src/app/_other/game.service';
 export class TemplateSearchBarComponent implements OnInit {
 
   public searchForm: FormGroup;
+  @Output() emitUserInput = new EventEmitter();
 
   constructor(
-    private formBuilder: FormBuilder,
-    private gameS: GameService
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit() {
@@ -22,7 +21,7 @@ export class TemplateSearchBarComponent implements OnInit {
 
   public searchSubmit() {
     if (this.searchForm.valid) {
-      this.gameS.search(this.searchForm.get('userInput').value);
+      this.emitUserInput.emit(this.searchForm.controls.userInput.value);
     }
   }
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LibraryService } from './library.service';
 import { ArticleType } from './article/article-type.enum';
-import { filter, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Game } from './article/game.class';
 import { Observable } from 'rxjs';
 
@@ -41,7 +41,7 @@ export class GameService {
     }
 
     public getGameById(id: string): Game {
-        return this.getList() ? (this.getList().find(g => g.id === id) as Game) : null;
+        return this.getList() ? (this.getList().find(g => g.id === Number(id)) as Game) : null;
     }
 
 }

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Game } from 'src/app/_other/article/game.class';
-import { GameService } from 'src/app/_other/game.service';
+import { ActivatedRoute } from '@angular/router';
 import { DownloadLinkType } from 'src/app/_other/article/download-link-type.enum';
+import { Game } from 'src/app/_other/article/game.class';
 
 @Component({
     selector: 'app-article-detail',
@@ -15,24 +14,11 @@ export class ArticleDetailComponent implements OnInit {
     public game: Game;
 
     constructor(
-        private route: ActivatedRoute,
-        private router: Router,
-        private gameS: GameService
+        private route: ActivatedRoute
     ) { }
 
     ngOnInit() {
-        this.loadGame();
-        this.navigateToHomeIfGameNotExist();
-    }
-
-    private loadGame() {
-        this.game = this.gameS.getGameById(this.route.snapshot.paramMap.get('id'));
-    }
-
-    private navigateToHomeIfGameNotExist() {
-        if (!this.game) {
-            this.router.navigateByUrl('/');
-        }
+        this.route.data.subscribe(data => this.game = data.game);
     }
 
 }

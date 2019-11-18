@@ -25,7 +25,7 @@
           <!-- TODO: Info -->
         </ul>
 
-        <app-template-search-bar *ngIf="showSearchBar"></app-template-search-bar>
+        <app-template-search-bar *ngIf="showSearchBar" (emitUserInput)="onUserInput($event)"></app-template-search-bar>
 
       </div>
     </div>

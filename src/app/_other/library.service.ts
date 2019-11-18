@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { plainToClass, serialize } from 'class-transformer';
+import { saveAs } from 'file-saver';
 import { Observable, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ArticleType } from './article/article-type.enum';
@@ -24,7 +25,7 @@ export class LibraryService {
         this.retrieveLibraryOverHttp();
     }
 
-    public getLibrary() {
+    public getLibrary(): Array<Game | Article> {
         return this.library;
     }
 
@@ -86,6 +87,11 @@ export class LibraryService {
     private store() {
         this.librarySubj.next(this.library);
         Storage.set(this.LIBRARY_STORAGE_KEY, serialize(this.library));
+    }
+
+    public export() {
+        const file = new File([JSON.stringify(this.library)], 'datas.json', { type: 'application/json;charset=utf-8' });
+        saveAs(file);
     }
 
 }

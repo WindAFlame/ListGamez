@@ -5,7 +5,7 @@ import { ArticleInformation } from './information.class';
 
 export class Article {
 
-    public id: string | number;
+    public id: number;
     public readonly type: ArticleType;
     public downloads: DownloadLink[];
     public infos: ArticleInformation[];

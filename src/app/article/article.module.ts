@@ -6,11 +6,15 @@ import { SharedModule } from '../_other/shared.module';
 import { ArticleListtComponent } from './list.2/list.component';
 import { ArticleListAlertComponent } from './list.2/alert/alert.component';
 import { ArticleListRowGameComponent } from './list.2/game/game.component';
+import { ArticleExistResolver } from './article-exist.resovler';
 
 @NgModule({
     imports: [
         SharedModule,
         ArticleRoutingModule
+    ],
+    providers: [
+        ArticleExistResolver
     ],
     declarations: [
         ArticleListComponent,

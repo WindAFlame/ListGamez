@@ -21,7 +21,7 @@ export class SessionService {
         this.http.get<{}>(this.INTERNAL_SESSION_CONFIG_FILE).pipe(
             first(),
             map(json => plainToClass(Map, json))
-        ).subscribe(
+        ).toPromise().then(
             (sessionCfg) => {
                 // tslint:disable-next-line: forin
                 for (const key in SessionEnum) {
