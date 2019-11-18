@@ -25,7 +25,7 @@ export class TemplateComponent implements OnInit {
   private subscribeRouteUrlEvent() {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
-        this.showSearchBar = (event.url === '/library');
+        this.showSearchBar = (event.url === '/');
       }
     });
   }

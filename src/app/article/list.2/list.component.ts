@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Article } from 'src/app/_other/article/article.class';
 import { LibraryService } from 'src/app/_other/library.service';
 import { ArticleType } from '../../_other/article/article-type.enum';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-article-listt',
@@ -15,7 +16,8 @@ export class ArticleListtComponent implements OnInit {
     public showTable = false;
 
     constructor(
-        private library: LibraryService
+        private library: LibraryService,
+        private route: Router
     ) { }
 
     ngOnInit() {
@@ -27,6 +29,10 @@ export class ArticleListtComponent implements OnInit {
 
     public getArticleSize(size: number): string {
         return size ? size.toString() : null;
+    }
+
+    public viewArticle(id: number) {
+        this.route.navigate(['/', 'view', id]);
     }
 
 }

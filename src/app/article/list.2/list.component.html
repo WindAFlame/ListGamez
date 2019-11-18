@@ -15,7 +15,7 @@
             <ng-container *ngFor="let article of articles">
                 <ng-container [ngSwitch]="article.type">
                     <ng-container *ngSwitchCase="AT.GAME">
-                        <tr app-article-list-row-game [game]="article"></tr>
+                        <tr app-article-list-row-game [game]="article" (articleId)="viewArticle($event)"></tr>
                     </ng-container>
                 </ng-container>
             </ng-container>

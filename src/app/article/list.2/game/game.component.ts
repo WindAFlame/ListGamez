@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Game } from 'src/app/_other/article/game.class';
 
 @Component({
@@ -9,10 +9,15 @@ import { Game } from 'src/app/_other/article/game.class';
 export class ArticleListRowGameComponent implements OnInit {
 
     @Input() game: Game;
+    @Output() articleId = new EventEmitter<number>();
 
     constructor() { }
 
     ngOnInit() {
+    }
+
+    public view(id: number) {
+        this.articleId.emit(id);
     }
 
 }

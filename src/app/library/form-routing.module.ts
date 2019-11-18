@@ -3,9 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LibraryFormComponent } from './form/form.component';
 
 const formRoutes: Routes = [
-    { path: '', component: LibraryFormComponent },
-    { path: '', redirectTo: '', pathMatch: 'full' },
-    { path: '**', redirectTo: '' }
+    { path: '', component: LibraryFormComponent }
 ];
 
 @NgModule({
