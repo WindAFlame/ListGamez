@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AlertType } from 'src/app/_other/alert-type.enum';
 import { Alert } from 'src/app/_other/alert.interface';
-import { GameServiceStatus } from 'src/app/_other/game-service-status.enum';
-import { Game } from 'src/app/_other/game.class';
+import { Game } from 'src/app/_other/article/game.class';
 import { GameService } from 'src/app/_other/game.service';
 
 @Component({
@@ -31,7 +30,7 @@ export class ArticleListComponent implements OnInit {
 
     ngOnInit() {
         this.loadGameList();
-        this.subscribeGameServiceStatus();
+        // this.subscribeGameServiceStatus();
     }
 
     public close(alert: Alert) {
@@ -42,29 +41,29 @@ export class ArticleListComponent implements OnInit {
         this.games = this.gameS.getList();
     }
 
-    private subscribeGameServiceStatus() {
-        let previousState: GameServiceStatus;
-        this.gameS.getStatus().subscribe(
-            (status) => {
-                this.showTable = !(status === GameServiceStatus.EMPTY);
-                if (previousState === GameServiceStatus.EMPTY && status === GameServiceStatus.FOUND) {
-                    this.alerts.push(
-                        // TODO: Translation
-                        { type: AlertType.SUCCESS, message: 'Your library has been successfully loaded.' }
-                    );
-                } else if (status === GameServiceStatus.NOT_FOUND) {
-                    this.alerts.push(
-                        // TODO: Translation
-                        { type: AlertType.WARNING, message: 'Your search has 0 result.' }
-                    );
-                } else if (status === GameServiceStatus.EMPTY) {
-                    this.alerts.push(
-                        // TODO: Translation
-                        { type: AlertType.DANGER, message: 'You are no game in your library.' }
-                    );
-                }
-                previousState = status;
-            }
-        );
-    }
+    // private subscribeGameServiceStatus() {
+    //     let previousState: GameServiceStatus;
+    //     this.gameS.getStatus().subscribe(
+    //         (status) => {
+    //             this.showTable = !(status === GameServiceStatus.EMPTY);
+    //             if (previousState === GameServiceStatus.EMPTY && status === GameServiceStatus.FOUND) {
+    //                 this.alerts.push(
+    //                     // TODO: Translation
+    //                     { type: AlertType.SUCCESS, message: 'Your library has been successfully loaded.' }
+    //                 );
+    //             } else if (status === GameServiceStatus.NOT_FOUND) {
+    //                 this.alerts.push(
+    //                     // TODO: Translation
+    //                     { type: AlertType.WARNING, message: 'Your search has 0 result.' }
+    //                 );
+    //             } else if (status === GameServiceStatus.EMPTY) {
+    //                 this.alerts.push(
+    //                     // TODO: Translation
+    //                     { type: AlertType.DANGER, message: 'You are no game in your library.' }
+    //                 );
+    //             }
+    //             previousState = status;
+    //         }
+    //     );
+    // }
 }

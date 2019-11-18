@@ -1,0 +1,25 @@
+<div class="container">
+
+    <app-article-list-alert></app-article-list-alert>
+
+    <table class="table table-bordered" *ngIf="showTable">
+        <thead>
+            <tr>
+                <th scope="col">Category</th>
+                <th scope="col" sortable="name">Name</th>
+                <th scope="col" sortable="download">Link</th>
+                <th scope="col" sortable="size">Size</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let article of articles">
+                <ng-container [ngSwitch]="article.type">
+                    <ng-container *ngSwitchCase="AT.GAME">
+                        <tr app-article-list-row-game [game]="article"></tr>
+                    </ng-container>
+                </ng-container>
+            </ng-container>
+        </tbody>
+    </table>
+
+</div>

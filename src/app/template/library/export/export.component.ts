@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { GameServiceStatus } from 'src/app/_other/game-service-status.enum';
 import { GameService } from 'src/app/_other/game.service';
 
 @Component({
@@ -16,15 +15,14 @@ export class TemplateDataExportComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.subscribeGameStatus();
     }
 
-    private subscribeGameStatus() {
-        this.gameS.getStatus().subscribe(
-            (status) => {
-                this.hideExport = !(status === GameServiceStatus.FOUND);
-            }
-        )
-    }
+    // private subscribeGameStatus() {
+    //     this.gameS.getList().subscribe(
+    //         (status) => {
+    //             this.hideExport = !(status === GameServiceStatus.FOUND);
+    //         }
+    //     )
+    // }
 
 }

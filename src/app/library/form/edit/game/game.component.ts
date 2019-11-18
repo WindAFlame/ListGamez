@@ -2,7 +2,10 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angu
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { classToPlain, plainToClass } from 'class-transformer';
 import { Subject } from 'rxjs';
-import { DownloadLink, DownloadLinkType, Game, GameInformations } from 'src/app/_other/game.class';
+import { DownloadLinkType } from 'src/app/_other/article/download-link-type.enum';
+import { DownloadLink } from 'src/app/_other/article/download-link.class';
+import { Game } from 'src/app/_other/article/game.class';
+import { ArticleInformation } from 'src/app/_other/article/information.class';
 
 @Component({
     selector: 'app-library-form-edit-game',
@@ -119,12 +122,12 @@ export class LibraryFormEditGameComponent implements OnInit, OnDestroy {
         list.removeAt(formArrayItemId);
     }
 
-    public addItemInInformationFormArray(info?: GameInformations) {
+    public addItemInInformationFormArray(info?: ArticleInformation) {
         const list = (this.libraryForm.get('infos') as FormArray);
         list.push(this.generateGameInformationFormControl(list.length, info));
     }
 
-    private generateGameInformationFormControl(index: number, info: GameInformations) {
+    private generateGameInformationFormControl(index: number, info: ArticleInformation) {
         return this.formBuilder.group({
             id: [info ? info.id : index, [Validators.required]],
             name: [info ? info.name : '', [Validators.required]],

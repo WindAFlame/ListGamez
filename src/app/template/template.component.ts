@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Event, NavigationEnd, Router } from '@angular/router';
+import { SessionService } from '../_other/session.service';
 
 @Component({
   selector: 'app-template',
@@ -11,7 +12,8 @@ export class TemplateComponent implements OnInit {
   public showSearchBar = false;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private sessionService: SessionService
   ) { }
 
   ngOnInit() {

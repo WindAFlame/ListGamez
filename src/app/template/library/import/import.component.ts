@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { CustomValidators } from 'src/app/_other/custom-validator';
 import { GameService } from 'src/app/_other/game.service';
+import { LibraryService } from 'src/app/_other/library.service';
 
 @Component({
     selector: 'app-template-data-import',
@@ -18,7 +19,7 @@ export class TemplateDataImportComponent implements OnInit {
     constructor(
         private modalService: NgbModal,
         private fb: FormBuilder,
-        private gameS: GameService
+        private libraryService: LibraryService
     ) { }
 
     ngOnInit() {
@@ -45,7 +46,7 @@ export class TemplateDataImportComponent implements OnInit {
 
     public onSubmit() {
         if (this.importForm.valid && this.importForm.dirty) {
-            this.gameS.loadGameLibraryFromUserInput(this.file).subscribe(
+            this.libraryService.retrieveLibraryOverHttpFromUserInput(this.file).subscribe(
                 () => { this.modalRef.close(); }
             );
         }

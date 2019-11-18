@@ -22,7 +22,7 @@ export class TemplateSearchBarComponent implements OnInit {
 
   public searchSubmit() {
     if (this.searchForm.valid) {
-      this.gameS.searchGame(this.searchForm.get('userInput').value);
+      this.gameS.search(this.searchForm.get('userInput').value);
     }
   }
 

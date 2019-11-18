@@ -3,7 +3,9 @@ import { NgModule } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faEdit as farEdit } from '@fortawesome/free-regular-svg-icons';
-import { faDatabase, faDownload, faExternalLinkAlt, faFileImport, faFileUpload, faMagnet, faTrashAlt, faPlus, faMinus, faGamepad, faStore } from '@fortawesome/free-solid-svg-icons';
+import {
+    faDatabase, faDownload, faExternalLinkAlt, faFileImport, faFileUpload, faMagnet, faTrashAlt, faPlus, faMinus, faGamepad, faStore
+} from '@fortawesome/free-solid-svg-icons';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({

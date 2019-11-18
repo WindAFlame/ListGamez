@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Game, DownloadLinkType } from 'src/app/_other/game.class';
+import { Game } from 'src/app/_other/article/game.class';
 import { GameService } from 'src/app/_other/game.service';
+import { DownloadLinkType } from 'src/app/_other/article/download-link-type.enum';
 
 @Component({
     selector: 'app-article-detail',

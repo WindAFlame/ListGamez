@@ -1,157 +1,47 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { deserialize, plainToClass, serialize } from 'class-transformer';
-import { saveAs } from 'file-saver';
-import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
-import { GameServiceStatus } from './game-service-status.enum';
-import { Game } from './game.class';
-import { StorageService, STORAGE_KEY } from './storage.service';
+import { LibraryService } from './library.service';
+import { ArticleType } from './article/article-type.enum';
+import { filter, map } from 'rxjs/operators';
+import { Game } from './article/game.class';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class GameService {
 
-    private get list(): Game[] {
-        return deserialize(Game, this.dataStorage.get(STORAGE_KEY.GAME)) as unknown as Game[];
-    }
-
-    private set list(val: Game[]) {
-        this.dataStorage.set(STORAGE_KEY.GAME, serialize(val));
-    }
-
-    private listSubj = new BehaviorSubject<Game[]>(this.list);
-
-    private listStatusSubj = new BehaviorSubject<GameServiceStatus>(GameServiceStatus.EMPTY);
-
-    public userSearch = false;
-
-    // Server default value assets/game-library.json
-    private readonly INTERNAL_PATH_GAME_LIBRARY = ``;
-
     constructor(
-        private http: HttpClient,
-        private dataStorage: StorageService
-    ) {
-        if (this.dataStorage.has(STORAGE_KEY.GAME)) {
-            this.listStatusSubj.next(GameServiceStatus.FOUND);
+        private libraryService: LibraryService
+    ) {}
+
+    public getList(): Game[] {
+        return this.libraryService.getLibrary().filter(a => a.type === ArticleType.GAME) as Game[];
+    }
+
+    public getList$(): Observable<Game[]> {
+        return this.libraryService.library$.pipe(
+            map(articles => articles.filter(a => a.type === ArticleType.GAME) as Game[])
+        );
+    }
+
+    public search(userInput: string) {
+        return this.getList().find(g => g.name === userInput);
+    }
+
+    public push(game: Game) {
+        this.libraryService.add(game);
+    }
+
+    public remove(gameOrId: Game | number) {
+        let index;
+        if (gameOrId instanceof Game) {
+            index = this.getList().findIndex(a => a.id === gameOrId.id);
         } else {
-            this.getInternalGameLibrary();
+            index = gameOrId;
         }
-    }
-
-    public getList(): Observable<Game[]> {
-        return this.listSubj.asObservable();
-    }
-
-    private setList(newList: Game[]) {
-        this.dataStorage.clean();
-        this.list = newList;
-        this.listSubj.next(this.list);
+        this.libraryService.remove(index);
     }
 
     public getGameById(id: string): Game {
-        let game: Game;
-        if (this.list && id) {
-            game = this.list.find(g => g.id === Number(id));
-        }
-        return game;
+        return this.getList() ? (this.getList().find(g => g.id === id) as Game) : null;
     }
 
-    public getStatus(): Observable<GameServiceStatus> {
-        return this.listStatusSubj.asObservable();
-    }
-
-    public pushGame(game: Game) {
-        const aListGame = this.list ? this.list : new Array<Game>();
-        let aGame: Game;
-        if (aGame = aListGame.find(g => g.id === game.id)) {
-            aListGame.splice(
-                aListGame.findIndex(g => g.id === game.id),
-                1,
-                game
-            );
-        } else {
-            aListGame.push(game);
-        }
-        this.setList(aListGame);
-    }
-
-    public removeGame(id: number) {
-        const aListGame = this.list;
-        let aGame: Game;
-        if (aGame = aListGame.find(g => g.id === id)) {
-            aListGame.splice(
-                aListGame.findIndex(g => g.id === id),
-                1
-            );
-        }
-        this.setList(aListGame);
-    }
-
-    public searchGame(userInput: string) {
-        let newList: Game[] = this.list;
-        if (userInput) {
-            newList = newList.filter(i => i.name.toLowerCase().includes(userInput.toLowerCase()));
-            (newList.length === 0) ?
-                this.listStatusSubj.next(GameServiceStatus.NOT_FOUND) : this.listStatusSubj.next(GameServiceStatus.FOUND);
-        }
-        this.userSearch = !!userInput;
-        this.listSubj.next(newList);
-    }
-
-    public getGameLibraryFromLink(link: string) {
-        this.getGameLibraryFromHttp(link);
-        return this.getList();
-    }
-
-    private getInternalGameLibrary() {
-        this.getGameLibraryFromHttp(this.INTERNAL_PATH_GAME_LIBRARY)
-            .catch(
-                (err: HttpErrorResponse) => {
-                    if (err.status === 404) {
-                        this.listStatusSubj.next(GameServiceStatus.EMPTY);
-                        return of(null);
-                    } else {
-                        return throwError(err);
-                    }
-                }
-            );
-    }
-
-    private getGameLibraryFromHttp(link: string) {
-        return this.http.get<Game[]>(link).toPromise()
-            .then(
-                datas => {
-                    this.listStatusSubj.next(GameServiceStatus.FOUND);
-                    this.setList(plainToClass(Game, datas));
-                }
-            );
-    }
-
-    public loadGameLibraryFromUserInput(file: File): Observable<null> {
-        const self = this;
-        return Observable.create((observer) => {
-            const reader = new FileReader();
-            reader.readAsText(file, 'UTF-8');
-            reader.onload = (evt) => {
-                const json = JSON.parse(reader.result.toString());
-                const games: any = plainToClass(Game, json);
-                this.listStatusSubj.next(GameServiceStatus.FOUND);
-                self.setList(games as Game[]);
-                observer.next();
-                observer.complete();
-            };
-            reader.onerror = (evt) => {
-                this.listStatusSubj.next(GameServiceStatus.NOT_FOUND);
-                observer.throwError(evt);
-                observer.complete();
-            };
-        });
-    }
-
-    public downloadLibrary() {
-        this.getList().subscribe(res => {
-            const file = new File([JSON.stringify(res)], 'datas.json', { type: 'application/json;charset=utf-8' });
-            saveAs(file);
-        });
-    }
 }

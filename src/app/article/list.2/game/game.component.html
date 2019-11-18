@@ -1,0 +1,17 @@
+<th scope="row">{{ game.id }}</th>
+<td><a [routerLink]="[game.id]">{{ game.name }}</a></td>
+<td>
+    <a href="" *ngIf="!!game.hasStoreLink()" style="margin-right: 5px;">
+        <fa-icon [icon]="['fas', 'store']"></fa-icon>
+    </a>
+    <a href="" *ngIf="!!game.hasPlayableLink()" style="margin-right: 5px;">
+        <fa-icon [icon]="['fas', 'gamepad']"></fa-icon>
+    </a>
+    <a href="" *ngIf="!!game.hasDdlLink()" style="margin-right: 5px;">
+        <fa-icon [icon]="['fas', 'download']"></fa-icon>
+    </a>
+    <a href="" *ngIf="!!game.hasTorrentLink()">
+        <fa-icon [icon]="['fas', 'magnet']"></fa-icon>
+    </a>
+</td>
+<td>{{ game.size }}</td>
