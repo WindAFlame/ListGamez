@@ -46,7 +46,7 @@ export class TemplateDataImportComponent implements OnInit {
 
     public onSubmit() {
         if (this.importForm.valid && this.importForm.dirty) {
-            this.libraryService.retrieveLibraryOverHttpFromUserInput(this.file).subscribe(
+            this.libraryService.retrieveOverHttpFromUserInput(this.file).subscribe(
                 () => { this.modalRef.close(); }
             );
         }

@@ -22,8 +22,10 @@ export class ArticleListtComponent implements OnInit {
 
     ngOnInit() {
         this.library.library$.subscribe(datas => {
-            this.articles = datas;
-            this.showTable = true;
+            this.showTable = (datas && datas.length > 0);
+            if (this.showTable) {
+                this.articles = datas;
+            }
         });
     }
 

@@ -15,10 +15,10 @@ export class ArticleExistResolver implements Resolve<Game | Article> {
 
   resolve(route: ActivatedRouteSnapshot): Observable<Game | Article> {
     const articleId = Number(route.paramMap.get('id'));
-    if (this.library.getLibrary()) {
-        const result = this.library.getLibrary().find(a => a.id === articleId);
+    if (this.library.get()) {
+        const result = this.library.get().find(a => a.id === articleId);
         if (result) {
-            return of(this.library.getLibrary().find(a => a.id === articleId));
+            return of(this.library.get().find(a => a.id === articleId));
         } else {
             this.handleError(articleId);
         }

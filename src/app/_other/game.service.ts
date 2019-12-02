@@ -13,7 +13,7 @@ export class GameService {
     ) {}
 
     public getList(): Game[] {
-        return this.libraryService.getLibrary().filter(a => a.type === ArticleType.GAME) as Game[];
+        return this.libraryService.get().filter(a => a.type === ArticleType.GAME) as Game[];
     }
 
     public getList$(): Observable<Game[]> {

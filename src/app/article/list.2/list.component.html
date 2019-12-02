@@ -1,6 +1,6 @@
 <div class="container">
 
-    <app-article-list-alert></app-article-list-alert>
+    <app-article-list-alert [libraryAlertObs]="library.libraryNotification$"></app-article-list-alert>
 
     <table class="table table-bordered" *ngIf="showTable">
         <thead>
