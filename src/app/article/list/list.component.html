@@ -1,39 +1,25 @@
 <div class="container">
 
-  <p *ngFor="let alert of alerts">
-    <ngb-alert [type]="alert.type" (close)="close(alert)">{{ alert.message }}</ngb-alert>
-  </p>
+    <app-article-list-alert [libraryAlertObs]="library.libraryNotification$"></app-article-list-alert>
 
-  <table class="table table-striped" *ngIf="showTable">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col" sortable="name">Name</th>
-        <th scope="col" sortable="download">Link</th>
-        <th scope="col" sortable="size">Size (GB)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let game of games | async">
-        <th scope="row">{{ game.id }}</th>
-        <td><a [routerLink]="[game.id]">{{ game.name }}</a></td>
-        <td>
-            <a href="" *ngIf="!!game.hasStoreLink()" style="margin-right: 5px;">
-              <fa-icon [icon]="['fas', 'store']"></fa-icon>
-            </a>
-            <a href="" *ngIf="!!game.hasPlayableLink()" style="margin-right: 5px;">
-              <fa-icon [icon]="['fas', 'gamepad']"></fa-icon>
-            </a>
-          <a href="" *ngIf="!!game.hasDdlLink()" style="margin-right: 5px;">
-            <fa-icon [icon]="['fas', 'download']"></fa-icon>
-          </a>
-          <a href="" *ngIf="!!game.hasTorrentLink()">
-            <fa-icon [icon]="['fas', 'magnet']"></fa-icon>
-          </a>
-        </td>
-        <td>{{ game.size | number }}</td>
-      </tr>
-    </tbody>
-  </table>
+    <table class="table table-bordered" *ngIf="showTable">
+        <thead>
+            <tr>
+                <th scope="col">Category</th>
+                <th scope="col" sortable="name">Name</th>
+                <th scope="col" sortable="download">Link</th>
+                <th scope="col" sortable="size">Size</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let article of articles">
+                <ng-container [ngSwitch]="article.type">
+                    <ng-container *ngSwitchCase="AT.GAME">
+                        <tr app-article-list-row-game [game]="article" (articleId)="viewArticle($event)"></tr>
+                    </ng-container>
+                </ng-container>
+            </ng-container>
+        </tbody>
+    </table>
 
 </div>
