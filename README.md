@@ -1,5 +1,6 @@
 # List Gamez
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/87ef41a4-3045-4100-9af9-124420068872/deploy-status)](https://app.netlify.com/sites/ewa-listgamez/deploys)
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.
 
 ## Development server
